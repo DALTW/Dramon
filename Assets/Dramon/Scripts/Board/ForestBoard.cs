@@ -1,0 +1,285 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Dramon
+{
+    /// <summary>
+    /// 숲 보드의 상태와 규칙: 둥지 배치, 안전한 칸 밝히기(연쇄), 경고 표식, 둥지 상태(봉인·결투 중·정화), 승리 판정.
+    /// "어떤 도구로 골랐을 때 무엇을 할지"는 TileActionResolver가 정하고, 보드는 요청받은 일만 한다.
+    /// 칸은 Scene에 미리 배치된 ForestTile을 그대로 쓰며, 실행 중에 칸을 만들거나 옮기지 않는다.
+    /// </summary>
+    [RequireComponent(typeof(NestPlacer))]
+    public class ForestBoard : MonoBehaviour
+    {
+        [Header("보드 크기 ('칸 다시 만들기' 버튼에서만 사용)")]
+        [Tooltip("가로 칸 수. 바꾼 뒤 Inspector 아래 '칸 다시 만들기'를 눌러야 Scene에 반영돼요")]
+        [SerializeField, Min(2)] int width = 9;
+        [Tooltip("세로 칸 수. 바꾼 뒤 '칸 다시 만들기'를 눌러야 반영돼요")]
+        [SerializeField, Min(2)] int height = 9;
+        [Tooltip("칸 사이 간격(월드 단위, 1 = 32px). '칸 다시 만들기' 때 배치에 쓰여요")]
+        [SerializeField, Min(0.1f)] float tileSpacing = 1f;
+
+        [Header("연결")]
+        [Tooltip("'칸 다시 만들기'에 쓸 숲 칸 Prefab")]
+        [SerializeField] ForestTile tilePrefab;
+        [Tooltip("둥지 배치를 맡는 컴포넌트 (같은 오브젝트에 붙어 있음)")]
+        [SerializeField] NestPlacer nestPlacer;
+        [Tooltip("이 보드의 칸 목록. Scene에서 칸을 지우거나 옮겨도 목록에 남은 칸으로 게임이 진행돼요")]
+        [SerializeField] List<ForestTile> tiles = new List<ForestTile>();
+
+        /// <summary>첫 행동으로 둥지가 배치됐을 때</summary>
+        public event Action FirstRevealed;
+        /// <summary>둥지를 뺀 모든 칸이 밝혀졌을 때</summary>
+        public event Action Cleared;
+        /// <summary>경고 표식 수가 바뀌었을 때</summary>
+        public event Action<int> MarkerCountChanged;
+
+        enum NestStatus { Hidden, Active, Sealed }
+
+        class TileState
+        {
+            public ForestTile view;
+            public bool nest, revealed, marked;
+            public NestStatus nestStatus;
+            public int nearbyNests;
+        }
+
+        public static readonly Vector2Int[] NeighborOffsets =
+        {
+            new(-1, -1), new(0, -1), new(1, -1),
+            new(-1, 0),              new(1, 0),
+            new(-1, 1),  new(0, 1),  new(1, 1),
+        };
+
+        readonly Dictionary<Vector2Int, TileState> states = new();
+        bool nestsPlaced;
+        int nestTotal;
+        int revealedSafeCount;
+
+        public int Width => width;
+        public int Height => height;
+        public float TileSpacing => tileSpacing;
+        public ForestTile TilePrefab => tilePrefab;
+        public IReadOnlyList<ForestTile> Tiles => tiles;
+
+        /// <summary>true면 입력을 받지 않는다 (게임 오버·클리어·결투 중).</summary>
+        public bool IsLocked { get; private set; }
+        public int MarkerCount { get; private set; }
+        public int NestCount => nestsPlaced ? nestTotal : Mathf.Clamp(nestPlacer.NestCount, 1, Mathf.Max(1, states.Count - 1));
+        /// <summary>남은 둥지 수 = 전체 둥지 - 경고 표식 - 이미 처리된(봉인·결투) 둥지</summary>
+        public int NestsLeft => NestCount - MarkerCount - CountHandledNests();
+
+        void Reset()
+        {
+            nestPlacer = GetComponent<NestPlacer>();
+        }
+
+        void Awake()
+        {
+            if (nestPlacer == null) nestPlacer = GetComponent<NestPlacer>();
+            BuildLookup();
+            ResetBoard();
+        }
+
+        void BuildLookup()
+        {
+            states.Clear();
+            foreach (var tile in tiles)
+            {
+                if (tile == null) continue;
+                if (states.ContainsKey(tile.GridPosition))
+                {
+                    Debug.LogWarning($"[ForestBoard] 좌표 {tile.GridPosition}가 겹치는 칸이 있어요: {tile.name}", tile);
+                    continue;
+                }
+                states[tile.GridPosition] = new TileState { view = tile };
+            }
+        }
+
+        /// <summary>모든 칸을 가려진 숲으로 되돌린다. 칸의 위치·배치는 건드리지 않는다.</summary>
+        public void ResetBoard()
+        {
+            foreach (var s in states.Values)
+            {
+                s.nest = s.revealed = s.marked = false;
+                s.nestStatus = NestStatus.Hidden;
+                s.nearbyNests = 0;
+                s.view.ShowHidden();
+            }
+            nestsPlaced = false;
+            nestTotal = 0;
+            revealedSafeCount = 0;
+            IsLocked = false;
+            SetMarkerCount(0);
+        }
+
+        public void SetLocked(bool locked) => IsLocked = locked;
+
+        // ── 조회 ─────────────────────────────────
+        public bool HasTile(Vector2Int pos) => states.ContainsKey(pos);
+        public bool IsRevealed(Vector2Int pos) => states.TryGetValue(pos, out var s) && s.revealed;
+        public bool IsMarked(Vector2Int pos) => states.TryGetValue(pos, out var s) && s.marked;
+        /// <summary>아직 아무것도 하지 않은 칸(가려짐, 표식 없음)인지</summary>
+        public bool IsUntouched(Vector2Int pos) => states.TryGetValue(pos, out var s) && !s.revealed && !s.marked;
+        /// <summary>둥지인지. 둥지가 배치되기 전에는 항상 false (EnsureNestsPlaced 먼저 호출)</summary>
+        public bool IsNest(Vector2Int pos) => states.TryGetValue(pos, out var s) && s.nest;
+
+        /// <summary>
+        /// 밝혀진 숫자 칸 주변에서 '둥지로 확인된 칸'(경고 표식 + 봉인·결투한 둥지) 수가 숫자와 같으면 true.
+        /// 이때 주변의 나머지 칸을 한꺼번에 골라도 된다.
+        /// </summary>
+        public bool CanActAround(Vector2Int pos)
+        {
+            if (!states.TryGetValue(pos, out var s) || !s.revealed || s.nest || s.nearbyNests == 0) return false;
+            int known = 0;
+            foreach (var n in Neighbors(pos))
+                if (n.marked || (n.nest && n.revealed)) known++;
+            return known == s.nearbyNests;
+        }
+
+        // ── 행동 ─────────────────────────────────
+        /// <summary>첫 행동 전이라면 firstPos와 주변을 피해 둥지를 배치한다.</summary>
+        public void EnsureNestsPlaced(Vector2Int firstPos)
+        {
+            if (nestsPlaced) return;
+            PlaceNests(firstPos);
+            FirstRevealed?.Invoke();
+        }
+
+        /// <summary>안전한 칸을 밝힌다. 숫자 표시, 0이면 연쇄로 밝힘. 마지막 안전 칸이면 클리어.</summary>
+        public void RevealSafe(Vector2Int pos)
+        {
+            if (IsLocked || !states.TryGetValue(pos, out var s) || s.revealed || s.marked || s.nest) return;
+            FloodReveal(pos);
+            if (revealedSafeCount >= states.Count - nestTotal)
+            {
+                IsLocked = true;
+                MarkAllNests();
+                Cleared?.Invoke();
+            }
+        }
+
+        /// <summary>둥지를 봉인한다 (레몬). 결투 없이 정화된 둥지로 표시.</summary>
+        public void SealNest(Vector2Int pos)
+        {
+            if (!TryGetNest(pos, out var s)) return;
+            s.revealed = true;
+            s.nestStatus = NestStatus.Sealed;
+            s.view.ShowNestPurified();
+        }
+
+        /// <summary>둥지를 결투 중 상태로 바꾼다 (검).</summary>
+        public void ActivateNest(Vector2Int pos)
+        {
+            if (!TryGetNest(pos, out var s)) return;
+            s.revealed = true;
+            s.nestStatus = NestStatus.Active;
+            s.view.ShowNestActive();
+        }
+
+        /// <summary>결투에서 이긴 둥지를 정화된 상태로 바꾼다.</summary>
+        public void PurifyNest(Vector2Int pos)
+        {
+            if (!states.TryGetValue(pos, out var s) || !s.nest) return;
+            s.revealed = true;
+            s.nestStatus = NestStatus.Sealed;
+            s.view.ShowNestPurified();
+        }
+
+        public void ToggleMarker(Vector2Int pos)
+        {
+            if (IsLocked || !states.TryGetValue(pos, out var s) || s.revealed) return;
+            s.marked = !s.marked;
+            if (s.marked) s.view.ShowWarningMarker(); else s.view.ShowHidden();
+            SetMarkerCount(MarkerCount + (s.marked ? 1 : -1));
+        }
+
+        /// <summary>아직 드러나지 않은 둥지를 모두 보여준다 (게임 오버 연출용).</summary>
+        public void RevealAllNests()
+        {
+            foreach (var s in states.Values)
+                if (s.nest && !s.revealed && !s.marked) s.view.ShowNest();
+        }
+
+        // ── 내부 ─────────────────────────────────
+        bool TryGetNest(Vector2Int pos, out TileState s)
+        {
+            return states.TryGetValue(pos, out s) && s.nest && !s.revealed && !s.marked && !IsLocked;
+        }
+
+        int CountHandledNests()
+        {
+            int count = 0;
+            foreach (var s in states.Values) if (s.nest && s.revealed) count++;
+            return count;
+        }
+
+        void PlaceNests(Vector2Int firstPos)
+        {
+            var nests = nestPlacer.Place(states.Keys, firstPos);
+            foreach (var p in nests) states[p].nest = true;
+            nestTotal = nests.Count;
+
+            foreach (var pair in states)
+            {
+                int count = 0;
+                foreach (var n in Neighbors(pair.Key)) if (n.nest) count++;
+                pair.Value.nearbyNests = count;
+            }
+            nestsPlaced = true;
+        }
+
+        void FloodReveal(Vector2Int start)
+        {
+            var queue = new Queue<Vector2Int>();
+            queue.Enqueue(start);
+            while (queue.Count > 0)
+            {
+                var p = queue.Dequeue();
+                var s = states[p];
+                if (s.revealed || s.marked || s.nest) continue;
+
+                s.revealed = true;
+                revealedSafeCount++;
+                s.view.ShowRevealed(s.nearbyNests);
+
+                if (s.nearbyNests != 0) continue;
+                foreach (var offset in NeighborOffsets)
+                {
+                    var np = p + offset;
+                    if (states.TryGetValue(np, out var n) && !n.revealed) queue.Enqueue(np);
+                }
+            }
+        }
+
+        IEnumerable<TileState> Neighbors(Vector2Int pos)
+        {
+            foreach (var offset in NeighborOffsets)
+                if (states.TryGetValue(pos + offset, out var n)) yield return n;
+        }
+
+        void MarkAllNests()
+        {
+            int newMarkers = 0;
+            foreach (var s in states.Values)
+            {
+                if (!s.nest || s.marked || s.revealed) continue;
+                s.marked = true;
+                s.view.ShowWarningMarker();
+                newMarkers++;
+            }
+            SetMarkerCount(MarkerCount + newMarkers);
+        }
+
+        void SetMarkerCount(int value)
+        {
+            MarkerCount = value;
+            MarkerCountChanged?.Invoke(value);
+        }
+
+        /// <summary>'칸 다시 만들기' 때 칸이 놓일 로컬 위치 (보드 중심 기준).</summary>
+        public Vector3 GetDefaultTileLocalPosition(int x, int y) =>
+            new Vector3((x - (width - 1) * 0.5f) * tileSpacing, (y - (height - 1) * 0.5f) * tileSpacing, 0f);
+    }
+}

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ba7554f86da594c858d5e1d53276c7, type: 3}
+  m_Name: ForestTileSpriteSet
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.ForestTileSpriteSet
+  hidden: {fileID: 21300000, guid: 3ceaaf308142c8ea91d93080f9b439fc, type: 3}
+  hover: {fileID: 21300000, guid: 6301bbfca0c5154e0ff9bb510944fe0c, type: 3}
+  warningMarker: {fileID: 21300000, guid: 3a124c647e02ff05b7c1dce27f7695f5, type: 3}
+  grassPlain: {fileID: 21300000, guid: b120a366f0bbe9cf42f2dc05873f9bd0, type: 3}
+  numbers:
+  - {fileID: 21300000, guid: c498b6e73648245edafa3a387f006745, type: 3}
+  - {fileID: 21300000, guid: c1b87f1a7323691b19f9cbef0f69a4d0, type: 3}
+  - {fileID: 21300000, guid: ac3e0b5bc29177094c1e26038dabf68e, type: 3}
+  - {fileID: 21300000, guid: bafe9bd120c5d1529127c47089bf36a2, type: 3}
+  - {fileID: 21300000, guid: 9280ba2e153453fd735771b237d047c9, type: 3}
+  - {fileID: 21300000, guid: 98daa4bf75592f89b3fb95ee22432045, type: 3}
+  - {fileID: 21300000, guid: 6a015b665e4a329cdbe7df00cba497dd, type: 3}
+  - {fileID: 21300000, guid: 23961c522970e819ae6f8f356f02bfb4, type: 3}
+  nestRevealed: {fileID: 21300000, guid: 614d292e1f1eabfaa3003324c470d28b, type: 3}
+  nestActiveFrames:
+  - {fileID: 2027718474853001696, guid: 90237de7232aa9defed432292ed99a49, type: 3}
+  - {fileID: 8758856775034014029, guid: 90237de7232aa9defed432292ed99a49, type: 3}
+  nestPurified: {fileID: 21300000, guid: 9e450909a8d12dea1ddfc65e144b2080, type: 3}
