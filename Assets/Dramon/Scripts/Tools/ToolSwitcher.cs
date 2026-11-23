@@ -7,6 +7,10 @@ namespace Dramon
     /// <summary>도구 전환 입력(기본 R)을 받아 레몬 ↔ 검을 바꾸고, 바뀌었다는 이벤트를 알린다.</summary>
     public class ToolSwitcher : MonoBehaviour
     {
+        [Header("사용 여부")]
+        [Tooltip("끄면 R키 도구 전환이 동작하지 않아요. (레몬 표시 → 검 사냥 설계로 바뀌면서 꺼 둠)")]
+        [SerializeField] bool switchingEnabled = true;
+
         [Header("도구")]
         [Tooltip("게임을 시작하거나 다시 시작할 때 들고 있을 도구")]
         [SerializeField] PlayerTool startingTool = PlayerTool.Lemon;
@@ -55,9 +59,9 @@ namespace Dramon
         }
 
         public bool CanSwitch =>
-            explorationState == null ||
+            switchingEnabled && (explorationState == null ||
             explorationState.Phase == ExplorationPhase.Ready ||
-            explorationState.Phase == ExplorationPhase.Exploring;
+            explorationState.Phase == ExplorationPhase.Exploring);
 
         public void SetTool(PlayerTool tool)
         {

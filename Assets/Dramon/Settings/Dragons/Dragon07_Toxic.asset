@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d61e2ec13d24654a8ba57917fff9155, type: 3}
+  m_Name: Dragon07_Toxic
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.DragonSpecies
+  number: 7
+  displayName: "\uB3C5\uB2AA \uB4DC\uB798\uACE4"
+  breathColor: {r: 0.62, g: 1, b: 0.3, a: 1}
+  maxHealth: 100
+  battleIdle: {fileID: 21300000, guid: 467b8f64ae152000f7b67e0f85ecd5b2, type: 3}
+  battleAttack: {fileID: 21300000, guid: 9051a6319563e61034f106e152b03c0c, type: 3}
+  battleHurt: {fileID: 21300000, guid: 90b52345056befef14299b71a39cf693, type: 3}
+  fieldSleeping: {fileID: 21300000, guid: 0fc8edc6722fb0df19f3b71bef4e3171, type: 3}
+  fieldSleepingGlow: {fileID: 21300000, guid: f5bc2c2aa8ac046fe82ad12ed3b96572, type: 3}
+  nestSprites: {fileID: 11400000, guid: 8371df52f0c567246b9d9060262945fc, type: 2}
+  cry: {fileID: 0}
+  attackPower: 0
+  materialDrops: []

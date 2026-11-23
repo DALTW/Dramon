@@ -40,6 +40,7 @@ namespace Dramon.EditorTools
             FillIfEmpty(so.FindProperty("grassPlain"), "Board/Tile_Grass_Plain");
             FillIfEmpty(so.FindProperty("nestRevealed"), "Board/Nest_Revealed");
             FillIfEmpty(so.FindProperty("nestPurified"), "Board/Nest_Purified");
+            FillIfEmpty(so.FindProperty("lemonGround"), "Lemon/Lemon_Ground");
             var active = so.FindProperty("nestActiveFrames");
             if (active.arraySize < 2) active.arraySize = 2;
             for (int i = 0; i < 2; i++) FillIfEmpty(active.GetArrayElementAtIndex(i), "Board/Nest_Active_Sheet", $"Nest_Active_{i}");
@@ -72,6 +73,7 @@ namespace Dramon.EditorTools
             so.FindProperty("spriteSet").objectReferenceValue = spriteSet;
             so.ApplyModifiedPropertiesWithoutUndo();
             AddGroundAnimator(tile, ground);
+            AddLemonLayer(tile, root);
 
             var prefab = PrefabUtility.SaveAsPrefabAsset(root, TilePrefabPath);
             Object.DestroyImmediate(root);
@@ -132,14 +134,78 @@ namespace Dramon.EditorTools
                 var groundT = root.transform.Find("Ground");
                 if (tile == null || groundT == null) return;
                 var so = new SerializedObject(tile);
-                if (so.FindProperty("groundAnimator").objectReferenceValue != null) return;
-                AddGroundAnimator(tile, groundT.GetComponent<SpriteRenderer>());
-                PrefabUtility.SaveAsPrefabAsset(root, TilePrefabPath);
+                bool changed = false;
+                if (so.FindProperty("groundAnimator").objectReferenceValue == null)
+                {
+                    AddGroundAnimator(tile, groundT.GetComponent<SpriteRenderer>());
+                    changed = true;
+                }
+                if (so.FindProperty("lemonRenderer").objectReferenceValue == null)
+                {
+                    AddLemonLayer(tile, root);
+                    changed = true;
+                }
+                if (changed) PrefabUtility.SaveAsPrefabAsset(root, TilePrefabPath);
             }
             finally
             {
                 PrefabUtility.UnloadPrefabContents(root);
             }
+        }
+
+        static void AddLemonLayer(ForestTile tile, GameObject root)
+        {
+            var t = root.transform.Find("Lemon");
+            var lemon = t != null ? t.GetComponent<SpriteRenderer>() : NewSpriteChild(root, "Lemon", 2, null);
+            lemon.enabled = false;
+            var so = new SerializedObject(tile);
+            so.FindProperty("lemonRenderer").objectReferenceValue = lemon;
+            so.ApplyModifiedPropertiesWithoutUndo();
+        }
+
+        public const string RewardSettingsPath = SettingsFolder + "/MarkingRewardSettings.asset";
+        public const string PhaseCursorSettingsPath = SettingsFolder + "/PhaseCursorSettings.asset";
+
+        /// <summary>레몬 표시 보상금 규칙 에셋. 없을 때만 기본값(60s→100, 120s→70, 180s→40, 그 이상 20)으로 만든다.</summary>
+        public static MarkingRewardSettings EnsureMarkingRewardSettings()
+        {
+            EnsureFolder(SettingsFolder);
+            var settings = AssetDatabase.LoadAssetAtPath<MarkingRewardSettings>(RewardSettingsPath);
+            if (settings != null) return settings;
+            settings = ScriptableObject.CreateInstance<MarkingRewardSettings>();
+            AssetDatabase.CreateAsset(settings, RewardSettingsPath);
+            AssetDatabase.SaveAssets();
+            return settings;
+        }
+
+        /// <summary>단계별 커서 설정 에셋. 이미 있으면 비어 있는 스프라이트만 채운다.</summary>
+        public static PhaseCursorSettings EnsurePhaseCursorSettings()
+        {
+            EnsureFolder(SettingsFolder);
+            var settings = AssetDatabase.LoadAssetAtPath<PhaseCursorSettings>(PhaseCursorSettingsPath);
+            bool created = settings == null;
+            if (created)
+            {
+                settings = ScriptableObject.CreateInstance<PhaseCursorSettings>();
+                AssetDatabase.CreateAsset(settings, PhaseCursorSettingsPath);
+            }
+            var so = new SerializedObject(settings);
+            var lemon = so.FindProperty("lemonMarking");
+            var sword = so.FindProperty("swordHunt");
+            FillIfEmpty(lemon.FindPropertyRelative("sprite"), "Lemon/Lemon_Icon");
+            // 검 전용 커서 (칼끝이 왼쪽 위)
+            FillIfEmpty(sword.FindPropertyRelative("sprite"), "UI/Cursor_Sword");
+            FillIfEmpty(sword.FindPropertyRelative("highlightSprite"), "UI/Cursor_Sword_Glow"); // 봉인된 굴 위
+            if (created)
+            {
+                lemon.FindPropertyRelative("size").vector2Value = new Vector2(24, 24);
+                lemon.FindPropertyRelative("hotspot").vector2Value = new Vector2(0.5f, 0.5f);
+                sword.FindPropertyRelative("size").vector2Value = new Vector2(32, 32);
+                sword.FindPropertyRelative("hotspot").vector2Value = new Vector2(0.125f, 0.875f); // 칼끝: 이미지 왼쪽 위에서 (4,4)px
+            }
+            so.ApplyModifiedPropertiesWithoutUndo();
+            AssetDatabase.SaveAssets();
+            return settings;
         }
 
         static void AddGroundAnimator(ForestTile tile, SpriteRenderer ground)
@@ -173,14 +239,14 @@ namespace Dramon.EditorTools
             var lemon = so.FindProperty("lemon");
             var sword = so.FindProperty("sword");
             FillIfEmpty(lemon.FindPropertyRelative("cursorSprite"), "Lemon/Lemon_Icon");
-            // 검 전용 커서 에셋이 아직 없어서 임시로 카드 그림을 쓴다
-            FillIfEmpty(sword.FindPropertyRelative("cursorSprite"), "Battle/CardArt/CardArt_SwordSlash");
+            // 검 전용 커서 (칼끝이 왼쪽 위)
+            FillIfEmpty(sword.FindPropertyRelative("cursorSprite"), "UI/Cursor_Sword");
             if (created)
             {
                 lemon.FindPropertyRelative("cursorSize").vector2Value = new Vector2(24, 24);
                 lemon.FindPropertyRelative("hotspot").vector2Value = new Vector2(0.5f, 0.5f);
                 sword.FindPropertyRelative("cursorSize").vector2Value = new Vector2(32, 32);
-                sword.FindPropertyRelative("hotspot").vector2Value = new Vector2(0.83f, 0.85f); // 칼끝
+                sword.FindPropertyRelative("hotspot").vector2Value = new Vector2(0.125f, 0.875f); // 칼끝: 이미지 왼쪽 위에서 (4,4)px
             }
             so.ApplyModifiedPropertiesWithoutUndo();
             AssetDatabase.SaveAssets();

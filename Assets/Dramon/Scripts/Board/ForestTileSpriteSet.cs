@@ -30,7 +30,12 @@ namespace Dramon
         [Tooltip("레몬으로 봉인했거나 결투에서 이겨 정화된 둥지 (Nest_Purified)")]
         [SerializeField] Sprite nestPurified;
 
+        [Header("레몬")]
+        [Tooltip("굴로 표시하려고 칸 위에 놓은 레몬 (Lemon_Ground) — 바닥 위에 겹쳐 표시")]
+        [SerializeField] Sprite lemonGround;
+
         public Sprite Hidden => hidden;
+        public Sprite LemonGround => lemonGround;
         public Sprite Hover => hover;
         public Sprite WarningMarker => warningMarker;
         public Sprite GrassPlain => grassPlain;

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489b2942823f8bd4282a60a5a791cd9e, type: 3}
+  m_Name: PhaseCursorSettings
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.PhaseCursorSettings
+  lemonMarking:
+    sprite: {fileID: 21300000, guid: f0cbb970378b470c76428c7a968a89b8, type: 3}
+    highlightSprite: {fileID: 0}
+    size: {x: 24, y: 24}
+    hotspot: {x: 0.5, y: 0.5}
+  swordHunt:
+    sprite: {fileID: 21300000, guid: 62b4b39961f6a01a6b5d839f2c969224, type: 3}
+    highlightSprite: {fileID: 21300000, guid: db7483fd360967271be166d62e6ef685, type: 3}
+    size: {x: 32, y: 32}
+    hotspot: {x: 0.125, y: 0.875}

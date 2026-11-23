@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794582b0782f46dd9092d7154441cb33, type: 3}
+  m_Name: ForestDragonSpawnList
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.DragonSpawnList
+  species:
+  - {fileID: 11400000, guid: 9cb6fd80b5be558418484b1f49bdd728, type: 2}
+  - {fileID: 11400000, guid: bc307d5edf276ce49bd1f6e89992d202, type: 2}
+  - {fileID: 11400000, guid: 29ebe632b6226d04b967cd6095cd7406, type: 2}
+  - {fileID: 11400000, guid: e821d72b97758ab46a65667475df96a5, type: 2}
+  - {fileID: 11400000, guid: aac350759d934394295bfb1ee4453696, type: 2}
+  - {fileID: 11400000, guid: c7305bf88d980094fb74b42775180691, type: 2}
+  - {fileID: 11400000, guid: 0055320986e1f9d4dbadd5bb7678ab8b, type: 2}
+  - {fileID: 11400000, guid: cd7b00d890d8cbb4787408b0e809b842, type: 2}
+  - {fileID: 11400000, guid: 5de6cc5eca8894e4aa3aa406378354dc, type: 2}
+  - {fileID: 11400000, guid: c617595a2efece046a16be674d5fafa7, type: 2}
+  avoidSameTwiceInARow: 0

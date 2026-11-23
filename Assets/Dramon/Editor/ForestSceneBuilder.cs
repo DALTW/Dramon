@@ -113,6 +113,7 @@ namespace Dramon.EditorTools
 
             // 이후 추가된 기능들도 함께 설치
             ToolFeatureInstaller.Install();
+            LemonMarkingInstaller.Install();
 
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene);

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d61e2ec13d24654a8ba57917fff9155, type: 3}
+  m_Name: Dragon05_Gold
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.DragonSpecies
+  number: 5
+  displayName: "\uD669\uAE08 \uB4DC\uB798\uACE4"
+  breathColor: {r: 1, g: 0.72, b: 0.2, a: 1}
+  maxHealth: 100
+  battleIdle: {fileID: 21300000, guid: 7198d64948969fad92e3543fd3cf696d, type: 3}
+  battleAttack: {fileID: 21300000, guid: 6b8ff9940fd2a8466dd8882d006fbcb8, type: 3}
+  battleHurt: {fileID: 21300000, guid: 9f750d7f605de526c74560cf1aec441e, type: 3}
+  fieldSleeping: {fileID: 21300000, guid: be7fb3699243a80ea0552e744523c23e, type: 3}
+  fieldSleepingGlow: {fileID: 21300000, guid: 9e1cf218e9fe57ce8f9134ec759eab36, type: 3}
+  nestSprites: {fileID: 11400000, guid: 90db36d5450e2e745a0f2a1bd67b544a, type: 2}
+  cry: {fileID: 0}
+  attackPower: 0
+  materialDrops: []

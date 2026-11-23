@@ -20,6 +20,10 @@ namespace Dramon
         [Tooltip("칸 사이 간격(월드 단위, 1 = 32px). '칸 다시 만들기' 때 배치에 쓰여요")]
         [SerializeField, Min(0.1f)] float tileSpacing = 1f;
 
+        [Header("규칙")]
+        [Tooltip("켜면 안전한 칸을 모두 열었을 때 남은 둥지에 경고 표식을 자동으로 세우고 보드를 잠가요 (옛 지뢰찾기 방식). 레몬 표시 단계에서는 꺼 두세요")]
+        [SerializeField] bool autoCompleteWhenSafeCleared = true;
+
         [Header("연결")]
         [Tooltip("'칸 다시 만들기'에 쓸 숲 칸 Prefab")]
         [SerializeField] ForestTile tilePrefab;
@@ -34,13 +38,18 @@ namespace Dramon
         public event Action Cleared;
         /// <summary>경고 표식 수가 바뀌었을 때</summary>
         public event Action<int> MarkerCountChanged;
+        /// <summary>칸이 밝혀지거나 레몬이 놓이는 등 보드 상태가 바뀌었을 때</summary>
+        public event Action BoardChanged;
+
+        /// <summary>레몬을 놓은 결과</summary>
+        public enum LemonPlacement { Ignored, OnNest, OnSafeTile }
 
         enum NestStatus { Hidden, Active, Sealed }
 
         class TileState
         {
             public ForestTile view;
-            public bool nest, revealed, marked;
+            public bool nest, revealed, marked, lemoned;
             public NestStatus nestStatus;
             public int nearbyNests;
         }
@@ -66,6 +75,12 @@ namespace Dramon
         /// <summary>true면 입력을 받지 않는다 (게임 오버·클리어·결투 중).</summary>
         public bool IsLocked { get; private set; }
         public int MarkerCount { get; private set; }
+        /// <summary>둥지 배치가 끝났는지 (첫 칸을 연 뒤 true)</summary>
+        public bool NestsPlaced => nestsPlaced;
+        /// <summary>굴에 맞게 놓인 레몬 수</summary>
+        public int LemonCount { get; private set; }
+        /// <summary>둥지가 아닌 칸이 모두 밝혀졌는지</summary>
+        public bool AllSafeRevealed => nestsPlaced && revealedSafeCount >= states.Count - nestTotal;
         public int NestCount => nestsPlaced ? nestTotal : Mathf.Clamp(nestPlacer.NestCount, 1, Mathf.Max(1, states.Count - 1));
         /// <summary>남은 둥지 수 = 전체 둥지 - 경고 표식 - 이미 처리된(봉인·결투) 둥지</summary>
         public int NestsLeft => NestCount - MarkerCount - CountHandledNests();
@@ -102,7 +117,7 @@ namespace Dramon
         {
             foreach (var s in states.Values)
             {
-                s.nest = s.revealed = s.marked = false;
+                s.nest = s.revealed = s.marked = s.lemoned = false;
                 s.nestStatus = NestStatus.Hidden;
                 s.nearbyNests = 0;
                 s.view.ShowHidden();
@@ -110,8 +125,10 @@ namespace Dramon
             nestsPlaced = false;
             nestTotal = 0;
             revealedSafeCount = 0;
+            LemonCount = 0;
             IsLocked = false;
             SetMarkerCount(0);
+            BoardChanged?.Invoke();
         }
 
         public void SetLocked(bool locked) => IsLocked = locked;
@@ -121,9 +138,13 @@ namespace Dramon
         public bool IsRevealed(Vector2Int pos) => states.TryGetValue(pos, out var s) && s.revealed;
         public bool IsMarked(Vector2Int pos) => states.TryGetValue(pos, out var s) && s.marked;
         /// <summary>아직 아무것도 하지 않은 칸(가려짐, 표식 없음)인지</summary>
-        public bool IsUntouched(Vector2Int pos) => states.TryGetValue(pos, out var s) && !s.revealed && !s.marked;
+        public bool IsUntouched(Vector2Int pos) => states.TryGetValue(pos, out var s) && !s.revealed && !s.marked && !s.lemoned;
+        /// <summary>레몬이 놓인 칸인지</summary>
+        public bool HasLemon(Vector2Int pos) => states.TryGetValue(pos, out var s) && s.lemoned;
         /// <summary>둥지인지. 둥지가 배치되기 전에는 항상 false (EnsureNestsPlaced 먼저 호출)</summary>
         public bool IsNest(Vector2Int pos) => states.TryGetValue(pos, out var s) && s.nest;
+        /// <summary>검 사냥 대상인 '봉인된 굴'인지: 레몬으로 막아 두고 아직 결투·정화하지 않은 굴</summary>
+        public bool IsSealedNest(Vector2Int pos) => states.TryGetValue(pos, out var s) && s.nest && s.lemoned && s.nestStatus == NestStatus.Hidden;
 
         /// <summary>
         /// 밝혀진 숫자 칸 주변에서 '둥지로 확인된 칸'(경고 표식 + 봉인·결투한 둥지) 수가 숫자와 같으면 true.
@@ -134,7 +155,7 @@ namespace Dramon
             if (!states.TryGetValue(pos, out var s) || !s.revealed || s.nest || s.nearbyNests == 0) return false;
             int known = 0;
             foreach (var n in Neighbors(pos))
-                if (n.marked || (n.nest && n.revealed)) known++;
+                if (n.marked || n.lemoned || (n.nest && n.revealed)) known++;
             return known == s.nearbyNests;
         }
 
@@ -150,9 +171,10 @@ namespace Dramon
         /// <summary>안전한 칸을 밝힌다. 숫자 표시, 0이면 연쇄로 밝힘. 마지막 안전 칸이면 클리어.</summary>
         public void RevealSafe(Vector2Int pos)
         {
-            if (IsLocked || !states.TryGetValue(pos, out var s) || s.revealed || s.marked || s.nest) return;
+            if (IsLocked || !states.TryGetValue(pos, out var s) || s.revealed || s.marked || s.lemoned || s.nest) return;
             FloodReveal(pos);
-            if (revealedSafeCount >= states.Count - nestTotal)
+            BoardChanged?.Invoke();
+            if (autoCompleteWhenSafeCleared && AllSafeRevealed)
             {
                 IsLocked = true;
                 MarkAllNests();
@@ -178,18 +200,59 @@ namespace Dramon
             s.view.ShowNestActive();
         }
 
+        /// <summary>검 사냥: 봉인된 굴(레몬으로 막은 굴)에 들어가 결투 중 상태로 바꾼다.</summary>
+        /// nestSprites에 드래곤 종류별 둥지 그림을 주면 그 그림을 쓴다 (비어 있으면 기본 그림).
+        public void ActivateSealedNest(Vector2Int pos, NestSpriteSet nestSprites = null)
+        {
+            if (!IsSealedNest(pos)) return;
+            var s = states[pos];
+            s.nestStatus = NestStatus.Active;
+            s.view.ShowNestActive(nestSprites != null ? nestSprites.ActiveFrames : null);
+        }
+
         /// <summary>결투에서 이긴 둥지를 정화된 상태로 바꾼다.</summary>
-        public void PurifyNest(Vector2Int pos)
+        /// nestSprites에 드래곤 종류별 둥지 그림을 주면 그 정화된 둥지 그림을 쓴다 (비어 있으면 기본 그림).
+        public void PurifyNest(Vector2Int pos, NestSpriteSet nestSprites = null)
         {
             if (!states.TryGetValue(pos, out var s) || !s.nest) return;
             s.revealed = true;
             s.nestStatus = NestStatus.Sealed;
-            s.view.ShowNestPurified();
+            s.view.ShowNestPurified(nestSprites != null ? nestSprites.Purified : null);
+        }
+
+        /// <summary>
+        /// 가려진 칸에 레몬을 놓는다. 둥지면 레몬이 남고(OnNest), 둥지가 아니면 실수(OnSafeTile).
+        /// 레몬을 놓은 칸은 다시 열거나 레몬을 뺄 수 없다.
+        /// </summary>
+        public LemonPlacement PlaceLemon(Vector2Int pos)
+        {
+            if (IsLocked || !nestsPlaced || !states.TryGetValue(pos, out var s) || s.revealed || s.marked || s.lemoned)
+                return LemonPlacement.Ignored;
+
+            s.lemoned = true;
+            if (s.nest)
+            {
+                LemonCount++;
+                s.view.ShowLemonOnForest();
+                BoardChanged?.Invoke();
+                return LemonPlacement.OnNest;
+            }
+
+            s.view.ShowWrongLemon();
+            BoardChanged?.Invoke();
+            return LemonPlacement.OnSafeTile;
+        }
+
+        /// <summary>레몬으로 막아 둔 굴을 모두 '봉인된 굴'(Nest_Revealed + 레몬) 모습으로 바꾼다.</summary>
+        public void ShowLemonedNestsAsSealed()
+        {
+            foreach (var s in states.Values)
+                if (s.nest && s.lemoned) s.view.ShowSealedNest();
         }
 
         public void ToggleMarker(Vector2Int pos)
         {
-            if (IsLocked || !states.TryGetValue(pos, out var s) || s.revealed) return;
+            if (IsLocked || !states.TryGetValue(pos, out var s) || s.revealed || s.lemoned) return;
             s.marked = !s.marked;
             if (s.marked) s.view.ShowWarningMarker(); else s.view.ShowHidden();
             SetMarkerCount(MarkerCount + (s.marked ? 1 : -1));
@@ -199,13 +262,13 @@ namespace Dramon
         public void RevealAllNests()
         {
             foreach (var s in states.Values)
-                if (s.nest && !s.revealed && !s.marked) s.view.ShowNest();
+                if (s.nest && !s.revealed && !s.marked && !s.lemoned) s.view.ShowNest();
         }
 
         // ── 내부 ─────────────────────────────────
         bool TryGetNest(Vector2Int pos, out TileState s)
         {
-            return states.TryGetValue(pos, out s) && s.nest && !s.revealed && !s.marked && !IsLocked;
+            return states.TryGetValue(pos, out s) && s.nest && !s.revealed && !s.marked && !s.lemoned && !IsLocked;
         }
 
         int CountHandledNests()
@@ -238,7 +301,7 @@ namespace Dramon
             {
                 var p = queue.Dequeue();
                 var s = states[p];
-                if (s.revealed || s.marked || s.nest) continue;
+                if (s.revealed || s.marked || s.lemoned || s.nest) continue;
 
                 s.revealed = true;
                 revealedSafeCount++;

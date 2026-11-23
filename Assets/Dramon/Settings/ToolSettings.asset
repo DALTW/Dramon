@@ -20,7 +20,7 @@ MonoBehaviour:
   lemonsPerReveal: 1
   lemonsPerSeal: 1
   sword:
-    cursorSprite: {fileID: 21300000, guid: 065d0325f503d1c274f64c1dca59b626, type: 3}
+    cursorSprite: {fileID: 21300000, guid: 62b4b39961f6a01a6b5d839f2c969224, type: 3}
     cursorSize: {x: 32, y: 32}
-    hotspot: {x: 0.83, y: 0.85}
+    hotspot: {x: 0.125, y: 0.875}
     indicatorIcon: {fileID: 0}

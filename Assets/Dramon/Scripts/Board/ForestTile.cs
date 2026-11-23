@@ -20,6 +20,8 @@ namespace Dramon
         [SerializeField] SpriteRenderer groundRenderer;
         [Tooltip("숫자(드래곤의 기척)를 그리는 SpriteRenderer — 자식 Number")]
         [SerializeField] SpriteRenderer numberRenderer;
+        [Tooltip("칸 위에 놓인 레몬을 그리는 SpriteRenderer — 자식 Lemon")]
+        [SerializeField] SpriteRenderer lemonRenderer;
         [Tooltip("바닥 프레임 애니메이션(결투 중 둥지)을 재생하는 컴포넌트 — 자식 Ground")]
         [SerializeField] SpriteFrameAnimator groundAnimator;
         [Tooltip("상태별 스프라이트 묶음. Prefab에서 바꾸면 모든 칸에 적용돼요.")]
@@ -35,6 +37,7 @@ namespace Dramon
             showingHiddenForest = true;
             SetGround(spriteSet ? spriteSet.Hidden : null);
             SetNumber(null);
+            SetLemon(false);
         }
 
         public void ShowWarningMarker()
@@ -42,6 +45,7 @@ namespace Dramon
             showingHiddenForest = false;
             SetGround(spriteSet ? spriteSet.WarningMarker : null);
             SetNumber(null);
+            SetLemon(false);
         }
 
         public void ShowRevealed(int nearbyNests)
@@ -49,6 +53,7 @@ namespace Dramon
             showingHiddenForest = false;
             SetGround(spriteSet ? spriteSet.GrassPlain : null);
             SetNumber(spriteSet ? spriteSet.GetNumber(nearbyNests) : null);
+            SetLemon(false);
         }
 
         public void ShowNest()
@@ -56,23 +61,68 @@ namespace Dramon
             showingHiddenForest = false;
             SetGround(spriteSet ? spriteSet.NestRevealed : null);
             SetNumber(null);
+            SetLemon(false);
         }
 
-        /// <summary>결투 직전·진행 중인 둥지 (Nest_Active 프레임 반복).</summary>
-        public void ShowNestActive()
+        /// <summary>
+        /// 결투 직전·진행 중인 둥지 (프레임 반복). framesOverride에 드래곤 종류별 둥지 그림을 주면 그것을 쓰고,
+        /// 비어 있으면 ForestTileSpriteSet의 기본 Nest_Active 그림을 쓴다.
+        /// </summary>
+        public void ShowNestActive(Sprite[] framesOverride = null)
         {
             showingHiddenForest = false;
             SetNumber(null);
-            if (groundAnimator != null && spriteSet != null) groundAnimator.Play(spriteSet.NestActiveFrames, true);
+            SetLemon(false);
+            var frames = IsComplete(framesOverride) ? framesOverride : (spriteSet ? spriteSet.NestActiveFrames : null);
+            if (groundAnimator != null && frames != null) groundAnimator.Play(frames, true);
             else SetGround(spriteSet ? spriteSet.NestRevealed : null);
         }
 
-        /// <summary>봉인되었거나 결투에서 이겨 정화된 둥지.</summary>
-        public void ShowNestPurified()
+        /// <summary>
+        /// 봉인되었거나 결투에서 이겨 정화된 둥지. purifiedOverride에 드래곤 종류별 그림을 주면 그것을 쓰고,
+        /// 비어 있으면 기본 Nest_Purified 그림을 쓴다.
+        /// </summary>
+        public void ShowNestPurified(Sprite purifiedOverride = null)
         {
             showingHiddenForest = false;
-            SetGround(spriteSet ? spriteSet.NestPurified : null);
+            SetGround(purifiedOverride != null ? purifiedOverride : (spriteSet ? spriteSet.NestPurified : null));
             SetNumber(null);
+            SetLemon(false);
+        }
+
+        static bool IsComplete(Sprite[] frames)
+        {
+            if (frames == null || frames.Length == 0) return false;
+            foreach (var f in frames)
+                if (f == null) return false;
+            return true;
+        }
+
+        /// <summary>레몬 표시 단계: 가려진 숲 위에 레몬을 놓아 둔 모습 (굴 표시).</summary>
+        public void ShowLemonOnForest()
+        {
+            showingHiddenForest = false;
+            SetGround(spriteSet ? spriteSet.Hidden : null);
+            SetNumber(null);
+            SetLemon(true);
+        }
+
+        /// <summary>봉인된 굴: 드러난 둥지(Nest_Revealed) 위에 레몬이 겹친 모습. 검 사냥 단계의 대상.</summary>
+        public void ShowSealedNest()
+        {
+            showingHiddenForest = false;
+            SetGround(spriteSet ? spriteSet.NestRevealed : null);
+            SetNumber(null);
+            SetLemon(true);
+        }
+
+        /// <summary>굴이 아닌 칸에 레몬을 놓은 실수: 풀밭 위에 레몬.</summary>
+        public void ShowWrongLemon()
+        {
+            showingHiddenForest = false;
+            SetGround(spriteSet ? spriteSet.GrassPlain : null);
+            SetNumber(null);
+            SetLemon(true);
         }
 
         /// <summary>마우스 올림 표시. 가려진 숲 상태(표식 없음)일 때만 바뀐다.</summary>
@@ -92,6 +142,13 @@ namespace Dramon
                 return;
             }
             groundRenderer.sprite = sprite;
+        }
+
+        void SetLemon(bool visible)
+        {
+            if (lemonRenderer == null) return;
+            if (visible && spriteSet != null) lemonRenderer.sprite = spriteSet.LemonGround;
+            lemonRenderer.enabled = visible && lemonRenderer.sprite != null;
         }
 
         void SetNumber(Sprite sprite)

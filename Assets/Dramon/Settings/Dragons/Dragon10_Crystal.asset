@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d61e2ec13d24654a8ba57917fff9155, type: 3}
+  m_Name: Dragon10_Crystal
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.DragonSpecies
+  number: 10
+  displayName: "\uC218\uC815 \uB4DC\uB798\uACE4"
+  breathColor: {r: 1, g: 0.3, b: 0.85, a: 1}
+  maxHealth: 100
+  battleIdle: {fileID: 21300000, guid: 9b022db3bdc7dc0f5d9bbfdc15ba07d6, type: 3}
+  battleAttack: {fileID: 21300000, guid: 08c2aa1ee8472333c9cec51cf58657e5, type: 3}
+  battleHurt: {fileID: 21300000, guid: 4d7eb9d156b45f474ab804159dcfa2e5, type: 3}
+  fieldSleeping: {fileID: 21300000, guid: da1ab2d0824c41f302d1544c624cb817, type: 3}
+  fieldSleepingGlow: {fileID: 21300000, guid: f0dc71caef94037b38a4c87c1076fe15, type: 3}
+  nestSprites: {fileID: 11400000, guid: ec8edd8573250be48b4dde833ebc567b, type: 2}
+  cry: {fileID: 0}
+  attackPower: 0
+  materialDrops: []
