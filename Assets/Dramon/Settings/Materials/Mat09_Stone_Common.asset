@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9068b2b2eb0df74c9d7d06418ea8a52, type: 3}
+  m_Name: Mat09_Stone_Common
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.MaterialData
+  displayName: "\uBC14\uC704 \uBE44\uB298"
+  icon: {fileID: 1382003131, guid: eee4c862f4d3f634482f7f74b4fba8dc, type: 3}
+  rarity: 0
+  sellPrice: 15

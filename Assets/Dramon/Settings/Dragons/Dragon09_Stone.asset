@@ -23,5 +23,21 @@ MonoBehaviour:
   fieldSleepingGlow: {fileID: 21300000, guid: 5a744e2b28e799d01c5f4c9c4a82d779, type: 3}
   nestSprites: {fileID: 11400000, guid: 22a9574c75bbb6c42bb4401e4466ed8c, type: 2}
   cry: {fileID: 0}
+  duelBackground: {fileID: 21300000, guid: 70106f77ebc7a82498a86e557d1540a0, type: 3}
+  useStandPoints: 1
+  dragonStandPoint: {x: 0.72, y: 0.55}
+  playerStandPoint: {x: 0.2, y: 0.2}
   attackPower: 0
-  materialDrops: []
+  materialDrops:
+  - material: {fileID: 11400000, guid: 8f91111d0ed786c40846f9b0c77d9807, type: 2}
+    chance: 0.8
+    minCount: 1
+    maxCount: 3
+  - material: {fileID: 11400000, guid: 3fdb266a7cd62bc4aa8454831ce63861, type: 2}
+    chance: 0.4
+    minCount: 1
+    maxCount: 2
+  - material: {fileID: 11400000, guid: 1a527bc36a84832449a798c4be1c0bfe, type: 2}
+    chance: 0.1
+    minCount: 1
+    maxCount: 1

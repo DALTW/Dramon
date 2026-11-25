@@ -39,6 +39,8 @@ namespace Dramon
         [SerializeField] bool revealAllNestsOnGameOver = true;
 
         public event Action<GamePhase> PhaseChanged;
+        /// <summary>다시 시작(Restart)을 눌렀을 때. 돈·재료처럼 다시 시작할 때만 비울 것들이 듣는다.</summary>
+        public event Action Restarted;
 
         public GamePhase Phase { get; private set; } = GamePhase.LemonMarking;
         public GameOverReason LastGameOverReason { get; private set; }
@@ -108,6 +110,7 @@ namespace Dramon
         {
             LastGameOverReason = GameOverReason.None;
             if (board != null) board.ResetBoard();
+            Restarted?.Invoke();
             SetPhase(GamePhase.LemonMarking);
         }
 

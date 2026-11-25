@@ -8,7 +8,8 @@ namespace Dramon
     /// 드래곤 등장 연출을 순서대로 진행한다.
     /// ① 둥지 위 깨어나는 드래곤 + 화면 번쩍임 → ② 검게 덮는 전환 → ③ 결투 화면 슬라이드 인
     /// → ④ 어두운 색에서 원래 색 + 울음소리 → ⑤ 체력 표시 창 → ⑥ 메시지 → ⑦ 임시 승패 버튼.
-    /// 결투에서 이기면 결투 화면을 페이드 아웃하고 숲으로 돌아간다. 단계마다 켜고 끄기·시간 조절 가능.
+    /// ②와 ③ 사이(검은 화면)에 배경을 그 드래곤의 결투 둥지로 바꾸고, 드래곤·플레이어를 둥지 발판 위치에 세운다.
+    /// 결투에서 이기면 결투 화면을 페이드 아웃하고 숲으로 돌아간다 (기본 배경·Scene 배치 위치로 복귀). 단계마다 켜고 끄기·시간 조절 가능.
     /// </summary>
     public class EncounterIntroSequence : MonoBehaviour
     {
@@ -31,6 +32,12 @@ namespace Dramon
         [SerializeField] EncounterMessageUI message;
         [Tooltip("둥지 위에 깨어나는 드래곤을 보여 줄 표시")]
         [SerializeField] NestWakeSpriteView wakeSprite;
+        [Tooltip("결투 화면 배경 (드래곤별 결투 둥지 배경으로 바꿔요)")]
+        [SerializeField] DuelBackgroundView background;
+
+        [Header("결투 둥지")]
+        [Tooltip("켜면 화면이 검게 덮인 동안 배경을 그 드래곤의 결투 둥지로 바꾸고, 드래곤·플레이어를 그 둥지의 발판 위치에 세워요")]
+        [SerializeField] bool useNestStage = true;
 
         [Header("① 둥지 번쩍임")]
         [Tooltip("켜면 화면이 하얗게 번쩍여요")]
@@ -148,15 +155,16 @@ namespace Dramon
             }
             if (healthUI != null) healthUI.Hide();
             if (message != null) message.Hide();
-            if (slideIn != null)
-            {
-                if (useSlideIn) slideIn.PrepareOffscreen();
-                else slideIn.SnapHome();
-            }
             if (duelScreen != null)
             {
                 duelScreen.ShowStage();
                 duelScreen.SetButtonsVisible(false);
+            }
+            ApplyNestStage(species); // 검은 화면이 덮인 동안 배경·발판 위치 바꾸기
+            if (slideIn != null)
+            {
+                if (useSlideIn) slideIn.PrepareOffscreen();
+                else slideIn.SnapHome();
             }
             if (wiped) StartCoroutine(wipe.Uncover(uncoverDuration));
             if (useSlideIn && slideIn != null) yield return slideIn.SlideIn(slideDuration);
@@ -191,8 +199,34 @@ namespace Dramon
             if (duelScreen != null) yield return duelScreen.FadeOut(outroFadeDuration);
             if (healthUI != null) healthUI.Hide();
             if (message != null) message.Hide();
+            RestoreNestStage();
             IsPlaying = false;
             onFinished?.Invoke();
+        }
+
+        /// <summary>결투 배경을 그 드래곤의 둥지로, 도착 위치를 그 둥지의 발판 위치로 바꾼다.</summary>
+        void ApplyNestStage(DragonSpecies species)
+        {
+            if (!useNestStage || species == null)
+            {
+                RestoreNestStage(false);
+                return;
+            }
+            if (background != null) background.Apply(species);
+            if (slideIn != null)
+            {
+                if (species.UseStandPoints) slideIn.SetArrivalFromStandPoints(species.DragonStandPoint, species.PlayerStandPoint);
+                else slideIn.ResetArrival();
+            }
+        }
+
+        /// <summary>기본 배경과 Scene 배치 위치로 되돌린다.</summary>
+        void RestoreNestStage(bool movePositions = true)
+        {
+            if (background != null) background.RestoreDefault();
+            if (slideIn == null) return;
+            if (movePositions) slideIn.RestoreScenePositions();
+            else slideIn.ResetArrival();
         }
 
         void StopAll()
@@ -210,7 +244,7 @@ namespace Dramon
             StopAll();
             if (healthUI != null) healthUI.Hide();
             if (message != null) message.Hide();
-            if (slideIn != null) slideIn.SnapHome();
+            RestoreNestStage();
         }
     }
 }

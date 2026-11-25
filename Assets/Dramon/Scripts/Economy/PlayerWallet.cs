@@ -9,7 +9,7 @@ namespace Dramon
         [Header("돈")]
         [Tooltip("게임을 시작할 때 가진 돈")]
         [SerializeField, Min(0)] int startingMoney = 0;
-        [Tooltip("켜면 다시 시작할 때 시작 금액으로 되돌려요")]
+        [Tooltip("켜면 다시 시작(Restart)할 때 시작 금액으로 되돌려요. 게임 오버만으로는 그대로 둬요")]
         [SerializeField] bool resetOnRestart = true;
 
         [Header("연결")]
@@ -27,12 +27,12 @@ namespace Dramon
 
         void OnEnable()
         {
-            if (phaseController != null) phaseController.PhaseChanged += HandlePhaseChanged;
+            if (phaseController != null) phaseController.Restarted += HandleRestarted;
         }
 
         void OnDisable()
         {
-            if (phaseController != null) phaseController.PhaseChanged -= HandlePhaseChanged;
+            if (phaseController != null) phaseController.Restarted -= HandleRestarted;
         }
 
         public void Add(int amount)
@@ -51,9 +51,9 @@ namespace Dramon
             return true;
         }
 
-        void HandlePhaseChanged(GamePhase phase)
+        void HandleRestarted()
         {
-            if (phase == GamePhase.LemonMarking && resetOnRestart && Money != startingMoney)
+            if (resetOnRestart && Money != startingMoney)
             {
                 Money = startingMoney;
                 MoneyChanged?.Invoke(Money);

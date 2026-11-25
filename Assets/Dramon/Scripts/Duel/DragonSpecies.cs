@@ -4,22 +4,22 @@ using UnityEngine;
 
 namespace Dramon
 {
-    /// <summary>드래곤 한 종류의 데이터: 이름, 체력, 그림, 둥지 그림, 울음소리. 나올 드래곤은 DragonSpawnList에 넣어서 정한다.</summary>
+    /// <summary>드래곤 한 종류의 데이터: 이름, 체력, 그림, 둥지 그림, 결투 둥지, 울음소리, 재료 드랍표. 나올 드래곤은 DragonSpawnList에 넣어서 정한다.</summary>
     [CreateAssetMenu(fileName = "DragonSpecies", menuName = "Dramon/Dragon Species")]
     public class DragonSpecies : ScriptableObject
     {
-        /// <summary>결투에서 이겼을 때 떨어뜨리는 재료 한 줄 (다음 단계에서 사용)</summary>
+        /// <summary>결투에서 이겼을 때 떨어뜨리는 재료 한 줄. 재료 정보(이름·아이콘·판매가)는 MaterialData에, 확률·개수는 여기에.</summary>
         [Serializable]
         public class MaterialDrop
         {
-            [Tooltip("재료 이름 (예: 비늘, 발톱, 뿔)")]
-            public string materialName;
-            [Tooltip("재료 아이콘")]
-            public Sprite icon;
-            [Tooltip("떨어뜨릴 확률 (0~1)")]
+            [Tooltip("떨어뜨릴 재료 (Settings/Materials의 MaterialData)")]
+            public MaterialData material;
+            [Tooltip("떨어뜨릴 확률 (0~1). 재료마다 따로 굴려요")]
             [Range(0f, 1f)] public float chance = 0.5f;
-            [Tooltip("상점에 팔 때 받는 돈")]
-            [Min(0)] public int sellPrice;
+            [Tooltip("나올 때 최소 개수")]
+            [Min(1)] public int minCount = 1;
+            [Tooltip("나올 때 최대 개수 (최소와 같으면 항상 그 개수)")]
+            [Min(1)] public int maxCount = 1;
         }
 
         [Header("기본 정보")]
@@ -53,13 +53,23 @@ namespace Dramon
         [Tooltip("등장할 때 울음소리 (비워 두면 생략)")]
         [SerializeField] AudioClip cry;
 
+        [Header("결투 둥지")]
+        [Tooltip("결투 화면 배경. 비워 두면 기본 배경(BattleBG_ForestNight)을 써요")]
+        [SerializeField] Sprite duelBackground;
+        [Tooltip("켜면 아래 두 발판 위치에 드래곤과 플레이어를 세워요. 끄면 Scene에 배치된 위치를 그대로 써요")]
+        [SerializeField] bool useStandPoints;
+        [Tooltip("드래곤 발밑이 닿을 둥지 윗면 가운데 (배경 왼쪽 아래 = 0,0 / 오른쪽 위 = 1,1)")]
+        [SerializeField] Vector2 dragonStandPoint = new Vector2(0.72f, 0.56f);
+        [Tooltip("플레이어 발밑이 닿을 작은 발판 윗면 가운데 (배경 왼쪽 아래 = 0,0 / 오른쪽 위 = 1,1)")]
+        [SerializeField] Vector2 playerStandPoint = new Vector2(0.22f, 0.22f);
+
         [Header("결투 수치 (다음 단계에서 사용)")]
         [Tooltip("공격력 (카드 결투 단계에서 사용)")]
         [Min(0)]
         [SerializeField] int attackPower;
 
-        [Header("재료 드랍표 (다음 단계에서 사용)")]
-        [Tooltip("결투에서 이겼을 때 떨어뜨릴 수 있는 재료들")]
+        [Header("재료 드랍표")]
+        [Tooltip("결투에서 이겼을 때 떨어뜨릴 수 있는 재료들 (줄마다 확률을 따로 굴려요)")]
         [SerializeField] List<MaterialDrop> materialDrops = new List<MaterialDrop>();
 
         public int Number => number;
@@ -73,6 +83,10 @@ namespace Dramon
         public Sprite FieldSleepingGlow => fieldSleepingGlow;
         public NestSpriteSet NestSprites => nestSprites;
         public AudioClip Cry => cry;
+        public Sprite DuelBackground => duelBackground;
+        public bool UseStandPoints => useStandPoints;
+        public Vector2 DragonStandPoint => dragonStandPoint;
+        public Vector2 PlayerStandPoint => playerStandPoint;
         public int AttackPower => attackPower;
         public IReadOnlyList<MaterialDrop> MaterialDrops => materialDrops;
     }

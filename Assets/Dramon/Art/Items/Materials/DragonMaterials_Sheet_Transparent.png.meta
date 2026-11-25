@@ -1,0 +1,945 @@
+fileFormatVersion: 2
+guid: eee4c862f4d3f634482f7f74b4fba8dc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1991510892563082078
+    second: DragonMaterials_Sheet_Transparent_0
+  - first:
+      213: -4169193390785512447
+    second: DragonMaterials_Sheet_Transparent_1
+  - first:
+      213: -3635976890174278898
+    second: DragonMaterials_Sheet_Transparent_2
+  - first:
+      213: 4378332022344402040
+    second: DragonMaterials_Sheet_Transparent_3
+  - first:
+      213: -7020058961526948124
+    second: DragonMaterials_Sheet_Transparent_4
+  - first:
+      213: 8020367152865237697
+    second: DragonMaterials_Sheet_Transparent_5
+  - first:
+      213: -110003077702208029
+    second: DragonMaterials_Sheet_Transparent_6
+  - first:
+      213: 5463277647022576440
+    second: DragonMaterials_Sheet_Transparent_7
+  - first:
+      213: 3030374850380745904
+    second: DragonMaterials_Sheet_Transparent_8
+  - first:
+      213: -3092376687068950971
+    second: DragonMaterials_Sheet_Transparent_9
+  - first:
+      213: 3352116032623736012
+    second: DragonMaterials_Sheet_Transparent_10
+  - first:
+      213: 4104313530633508605
+    second: DragonMaterials_Sheet_Transparent_11
+  - first:
+      213: -2076156950894291915
+    second: DragonMaterials_Sheet_Transparent_12
+  - first:
+      213: -4267208839562457315
+    second: DragonMaterials_Sheet_Transparent_13
+  - first:
+      213: 2243849930415663395
+    second: DragonMaterials_Sheet_Transparent_14
+  - first:
+      213: 4743391318731950699
+    second: DragonMaterials_Sheet_Transparent_15
+  - first:
+      213: -5059958839245689806
+    second: DragonMaterials_Sheet_Transparent_16
+  - first:
+      213: 4089070303686662635
+    second: DragonMaterials_Sheet_Transparent_17
+  - first:
+      213: 3715296773519526471
+    second: DragonMaterials_Sheet_Transparent_18
+  - first:
+      213: 509109024655197289
+    second: DragonMaterials_Sheet_Transparent_19
+  - first:
+      213: 8108946664144077207
+    second: DragonMaterials_Sheet_Transparent_20
+  - first:
+      213: -5266147223929412413
+    second: DragonMaterials_Sheet_Transparent_21
+  - first:
+      213: -368547163715334569
+    second: DragonMaterials_Sheet_Transparent_22
+  - first:
+      213: -2334598226083661022
+    second: DragonMaterials_Sheet_Transparent_23
+  - first:
+      213: -3145791070726895797
+    second: DragonMaterials_Sheet_Transparent_24
+  - first:
+      213: 6278111215386218973
+    second: DragonMaterials_Sheet_Transparent_25
+  - first:
+      213: 8551456933976365227
+    second: DragonMaterials_Sheet_Transparent_26
+  - first:
+      213: -8269032206329688149
+    second: DragonMaterials_Sheet_Transparent_27
+  - first:
+      213: -6831592129835248775
+    second: DragonMaterials_Sheet_Transparent_28
+  - first:
+      213: -1389311423057397494
+    second: DragonMaterials_Sheet_Transparent_29
+  - first:
+      213: 4032664076826891538
+    second: DragonMaterials_Sheet_Transparent_30
+  - first:
+      213: 2684375532496538299
+    second: DragonMaterials_Sheet_Transparent_31
+  - first:
+      213: 1889874327432975694
+    second: DragonMaterials_Sheet_Transparent_32
+  - first:
+      213: 4130831826973419811
+    second: DragonMaterials_Sheet_Transparent_33
+  - first:
+      213: -1194438422580276573
+    second: DragonMaterials_Sheet_Transparent_34
+  - first:
+      213: 4210961238778090940
+    second: DragonMaterials_Sheet_Transparent_35
+  - first:
+      213: 1626569487782051983
+    second: DragonMaterials_Sheet_Transparent_36
+  - first:
+      213: -2936992238171942385
+    second: DragonMaterials_Sheet_Transparent_37
+  - first:
+      213: 5916711318660473530
+    second: DragonMaterials_Sheet_Transparent_38
+  - first:
+      213: 544862533993933691
+    second: DragonMaterials_Sheet_Transparent_39
+  - first:
+      213: -5716547782644333282
+    second: DragonMaterials_Sheet_Transparent_40
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Mat01_Ember_Common
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 1249
+        width: 108
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a3ae0995009e15448b90c284f2b69ae
+      internalID: 266716465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat01_Ember_Uncommon
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1241
+        width: 120
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83b772ecbaf7cef4aaa9e29e81c1aa4c
+      internalID: 244097601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat01_Ember_Rare
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 1245
+        width: 108
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52c71960adc4ca54c8736afabbc9def3
+      internalID: -625409044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat02_Forest_Common
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 1109
+        width: 108
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6393fd25ba6ca284ba2d84c824fdb557
+      internalID: -1159642448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat02_Forest_Uncommon
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 1105
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 902c3f0211ef01f4fa7cc903cad8d379
+      internalID: -616970797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat02_Forest_Rare
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1102
+        width: 98
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cdb1743b27cb6c4d9eb769a97fbe905
+      internalID: -601473909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat03_Storm_Common
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 971
+        width: 111
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ed393656b347604d88b7b4c4e3c512c
+      internalID: 1937949103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat03_Storm_Uncommon
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 967
+        width: 145
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5c48742c372b2f44a4d3a8abcceb887
+      internalID: -406594966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat03_Storm_Rare
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 967
+        width: 95
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7364af153bddd12478b76e43cd33d061
+      internalID: -597566769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat04_Shadow_Common
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 839
+        width: 101
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5558b4f75e13341898b4009c790cef
+      internalID: 1644233894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat04_Shadow_Uncommon
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 839
+        width: 149
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a72b1cfeacecfcc4aa1656c3647ae3af
+      internalID: -727583028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat04_Shadow_Rare
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 833
+        width: 114
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c89bf03a048e6c446917cf8ef8b9cf06
+      internalID: -1951905411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat05_Gold_Common
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 699
+        width: 108
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31c7df626962ae24baa17e88dec98890
+      internalID: -630558365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat05_Gold_Uncommon
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 699
+        width: 116
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cddf77d2817b9724999ac409f19a427b
+      internalID: 1481327494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat05_Gold_Rare
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 697
+        width: 114
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a8b603d8c032a4428bf8d425b44b139
+      internalID: 1884439242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat06_Frost_Common
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 564
+        width: 108
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95bca87e95ff63f4eab6a7e15dad8bcc
+      internalID: -1158351665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat06_Frost_Uncommon
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 561
+        width: 119
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e775dc52e691da48b10f87f80748b16
+      internalID: 2105029595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat06_Frost_Rare
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 561
+        width: 108
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4525a30076ce43f4d87cb65b587c254e
+      internalID: -1459326521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat07_Toxic_Common
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 428
+        width: 108
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 749d6928a69088b47804152d06059d9f
+      internalID: 149036306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat07_Toxic_Uncommon
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 424
+        width: 114
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d31565914538b6449ebb7c78463795d
+      internalID: 1559555703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat07_Toxic_Rare
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 427
+        width: 110
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f7685febdd4c4348a606f98537a400a
+      internalID: -1385919293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat08_Tide_Common
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 292
+        width: 108
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdf661d76c6712c44b87fdf3d01ca384
+      internalID: -2104325524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat08_Tide_Uncommon
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 287
+        width: 119
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a48d511652b62b74b8284e3dbcd04069
+      internalID: -404996037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat08_Tide_Rare
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 293
+        width: 116
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1463a4aec24a4e14a9309db885ce0ee3
+      internalID: 117088723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat09_Stone_Common
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 155
+        width: 108
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2b344eda1f6d7641bddb92cf31e2823
+      internalID: 1382003131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat09_Stone_Uncommon
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 151
+        width: 119
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e74b9aea8b1c545ab7812074c7476e
+      internalID: 1087690467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat09_Stone_Rare
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 155
+        width: 105
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8502fce8fa2ec364484fcd3cf5ffd562
+      internalID: 1523240700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat10_Crystal_Common
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 17
+        width: 108
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08f0a71922793a04fa4a34041d9f9d20
+      internalID: 464597440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat10_Crystal_Uncommon
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 11
+        width: 112
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 619c8884a1d80204096db3f613571860
+      internalID: -1816428187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mat10_Crystal_Rare
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 13
+        width: 106
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b092fcd950497dd4cabca3adc17be45c
+      internalID: 1725810250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ccf45696bf9605c48a58bc570574913b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Mat01_Ember_Common: 266716465
+      Mat01_Ember_Rare: -625409044
+      Mat01_Ember_Uncommon: 244097601
+      Mat02_Forest_Common: -1159642448
+      Mat02_Forest_Rare: -601473909
+      Mat02_Forest_Uncommon: -616970797
+      Mat03_Storm_Common: 1937949103
+      Mat03_Storm_Rare: -597566769
+      Mat03_Storm_Uncommon: -406594966
+      Mat04_Shadow_Common: 1644233894
+      Mat04_Shadow_Rare: -1951905411
+      Mat04_Shadow_Uncommon: -727583028
+      Mat05_Gold_Common: -630558365
+      Mat05_Gold_Rare: 1884439242
+      Mat05_Gold_Uncommon: 1481327494
+      Mat06_Frost_Common: -1158351665
+      Mat06_Frost_Rare: -1459326521
+      Mat06_Frost_Uncommon: 2105029595
+      Mat07_Toxic_Common: 149036306
+      Mat07_Toxic_Rare: -1385919293
+      Mat07_Toxic_Uncommon: 1559555703
+      Mat08_Tide_Common: -2104325524
+      Mat08_Tide_Rare: 117088723
+      Mat08_Tide_Uncommon: -404996037
+      Mat09_Stone_Common: 1382003131
+      Mat09_Stone_Rare: 1523240700
+      Mat09_Stone_Uncommon: 1087690467
+      Mat10_Crystal_Common: 464597440
+      Mat10_Crystal_Rare: 1725810250
+      Mat10_Crystal_Uncommon: -1816428187
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: dramon-import-setup
+  assetBundleName: 
+  assetBundleVariant: 

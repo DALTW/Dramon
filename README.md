@@ -85,14 +85,37 @@ Unity로 개발 중인 2D 탑다운 게임 **Dramon** 프로젝트입니다.
 
 1. 둥지가 깨어나는 둥지 그림으로 바뀌고, 둥지 위에 깨어나는 드래곤(빛나는 수면 그림) + 화면 번쩍임
 2. 화면을 검게 덮는 전환
-3. 결투 화면: 배경과 드래곤 쪽·플레이어 쪽 발판이 양옆에서 슬라이드 인
+3. 결투 화면: 화면이 검게 덮인 동안 배경이 그 드래곤의 **결투 둥지**로 바뀌고, 드래곤 쪽·플레이어 쪽이 둥지 발판 위치로 양옆에서 슬라이드 인
 4. 드래곤이 어두운 색으로 들어왔다가 원래 색으로 돌아옴 (울음소리 자리 있음)
 5. 드래곤 **체력 막대만** 표시 (이름·레벨 등 다른 정보 없음)
 6. 메시지: "앗! 둥지에서 ○○ 드래곤이 깨어났다!"
 7. 임시 [결투 승리] / [결투 패배] 버튼
 
-- 이기면 숲 화면으로 돌아오고, 그 둥지는 해당 드래곤의 정화된 둥지로 바뀝니다.
-- 지면 즉시 게임 오버입니다.
+- 이기면 재료를 떨어뜨리고 **전리품 창**이 뜹니다. [확인]을 누르면 숲 화면으로 돌아오고, 그 둥지는 해당 드래곤의 정화된 둥지로 바뀝니다.
+- 지면 재료 없이 즉시 게임 오버입니다.
+
+### 재료 드랍 (결투 승리)
+
+- 드래곤의 재료 드랍표에서 재료마다 확률을 따로 굴립니다. 나오면 최소~최대 개수 중 하나 (흔함 1~3개, 보통 1~2개, 희귀 1개).
+- 아무것도 안 나오면 흔함 재료 1개를 보장합니다 (`LootRoller`에서 켜고 끄기).
+- 메시지 창: "○○ 드래곤이(가) ○○을(를) 떨어뜨렸다!"
+- 얻은 재료는 인벤토리에 재료별 개수로 쌓이고, HUD에 "재료 n개"로 표시됩니다. 판매는 상점 단계에서 추가 예정.
+- 게임 오버만으로는 돈·재료를 그대로 두고, **Restart(다시 시작)** 를 누르면 둘 다 비웁니다.
+
+| 번호 | 흔함 (80%) | 보통 (40%) | 희귀 (10%) |
+| --- | --- | --- | --- |
+| 01 화염 | 불꽃 비늘 15 | 용암 발톱 40 | 불씨 심장 120 |
+| 02 숲 | 이끼 비늘 15 | 가지 뿔 조각 40 | 생명의 씨앗 120 |
+| 03 폭풍 | 뇌운 비늘 15 | 폭풍 날개막 40 | 번개 결정 120 |
+| 04 그림자 | 흑요 비늘 20 | 핏빛 날개막 50 | 그림자 눈 150 |
+| 05 황금 | 황금 비늘 30 | 보석 박힌 발톱 70 | 황금 진주 200 |
+| 06 서리 | 서리 비늘 15 | 얼음 송곳니 40 | 영원의 얼음 결정 120 |
+| 07 독늪 | 독 비늘 15 | 독샘 주머니 40 | 보랏빛 독침 120 |
+| 08 해류 | 물결 비늘 15 | 산호 뿔 조각 40 | 바다 진주 120 |
+| 09 바위 | 바위 비늘 15 | 화강 발톱 40 | 대지의 핵 120 |
+| 10 수정 | 수정 비늘 20 | 수정 뿔 조각 50 | 마력 수정 핵 150 |
+
+(숫자 = 판매가)
 
 ### 드래곤 10종
 
@@ -109,7 +132,7 @@ Unity로 개발 중인 2D 탑다운 게임 **Dramon** 프로젝트입니다.
 | 09 | 바위 드래곤 | `Art/Dragon/Types/09_Stone` |
 | 10 | 수정 드래곤 | `Art/Dragon/Types/10_Crystal` |
 
-종류마다 결투 기본 / 공격 / 피격, 필드 수면 / 빛나는 수면 그림이 있습니다.
+종류마다 결투 기본 / 공격 / 피격, 필드 수면 / 빛나는 수면 그림과 결투 둥지 배경(`Art/Battle/Nests/BattleBG_Nest##_*`)이 있습니다.
 드래곤별 둥지 그림은 아직 없어서 `NestSprites##` 에셋에 기본 둥지 그림이 임시로 연결되어 있습니다.
 
 ## 폴더 구조
@@ -119,21 +142,25 @@ Assets/
 ├─ Dramon/
 │  ├─ Art/            # 아트 에셋 (임포트 설정·파일 이름은 변경 금지)
 │  │  ├─ Board/  Lemon/  Player/  Battle/  UI/
+│  │  ├─ Battle/Nests/  # 드래곤별 결투 둥지 배경 10장
+│  │  ├─ Items/Materials/  # 재료 아이콘 시트 (원본 + 투명 사본, 아이콘 30개로 자름)
 │  │  └─ Dragon/Types/01_Ember … 10_Crystal
 │  ├─ Scenes/         # Forest.unity (메인 Scene)
 │  ├─ Prefabs/
 │  │  ├─ Board/       # ForestTile (Ground / Number / Lemon 레이어)
-│  │  └─ UI/          # HudButton
+│  │  └─ UI/          # HudButton, LootRow (전리품 창 재료 한 줄)
 │  ├─ Settings/       # ForestTileSpriteSet, MarkingRewardSettings, PhaseCursorSettings, ToolSettings
-│  │  └─ Dragons/     # DragonSpecies 10종, ForestDragonSpawnList, Nests/NestSprites 10종
+│  │  ├─ Dragons/     # DragonSpecies 10종, ForestDragonSpawnList, Nests/NestSprites 10종
+│  │  └─ Materials/   # 재료 MaterialData 30개 (Mat01_Ember_Common …)
 │  ├─ Scripts/
 │  │  ├─ Board/       # 숲 보드 규칙, 칸 표시, 둥지 배치, 프레임 애니메이션
 │  │  ├─ Game/        # 게임 단계 관리 (GamePhaseController)
 │  │  ├─ Marking/     # 레몬 표시 단계: 입력, 칸 열기, 레몬 놓기, 집계, 타이머, 보상금
 │  │  ├─ SwordHunt/   # 검 사냥 단계: 봉인된 굴 감지, 드래곤 등장 시작
 │  │  ├─ Encounter/   # 등장 연출: 번쩍임, 화면 전환, 슬라이드 인, 메시지, 깨어나는 드래곤
-│  │  ├─ Duel/        # 드래곤 데이터, 등장 목록, 결투 세션, 드래곤 체력·그림
-│  │  ├─ Economy/     # 플레이어 지갑
+│  │  ├─ Duel/        # 드래곤 데이터, 등장 목록, 결투 세션, 드래곤 체력·그림, 결투 배경, 재료 드랍
+│  │  ├─ Items/       # 재료 데이터 (MaterialData)
+│  │  ├─ Economy/     # 플레이어 지갑, 인벤토리
 │  │  ├─ UI/          # HUD, 커서, 완료·게임 오버·결투 화면, 체력 표시
 │  │  ├─ Exploration/ # (예전 도구 전환 방식, 꺼 둠)
 │  │  └─ Tools/       # (예전 도구 전환 방식, 꺼 둠)
@@ -150,9 +177,10 @@ Forest
 ├─ Managers
 │  ├─ GamePhaseController     단계 관리 (레몬 표시 → 완료 안내 → 검 사냥 → 등장 → 결투 / 게임 오버)
 │  ├─ PlayerWallet            돈 보관
+│  ├─ PlayerInventory         재료 보관 (재료별 개수)
 │  ├─ Marking                 MarkingInput, TileOpener, LemonMarker, NestMarkCounter, MarkingTimer, MarkingRewardCalculator
 │  ├─ SwordHunt               SealedNestHoverDetector, DragonEncounterTrigger,
-│  │                          DuelSession (드래곤 선택·결투 시작/종료, DragonHealth)
+│  │                          DuelSession (드래곤 선택·결투 시작/종료, DragonHealth), LootRoller (재료 드랍)
 │  └─ (회색, 꺼 둠)           예전 도구 전환 방식 오브젝트들
 ├─ Forest
 │  └─ ForestBoard             ForestBoard + NestPlacer
@@ -160,10 +188,10 @@ Forest
 ├─ Effects                    NestWakeSprite (깨어나는 드래곤)
 └─ UI
    ├─ HUD Canvas
-   │  ├─ TopBar               남은 굴 수(레몬 카운터) · 경과 시간 · 단계 이름 · 상점 · Restart
+   │  ├─ TopBar               남은 굴 수(레몬 카운터) · 경과 시간 · 단계 이름 · 재료 개수(MaterialPanel) · 상점 · Restart
    │  ├─ MarkingResult        레몬 표시 완료 창 (평소 꺼짐)
    │  ├─ GameOver             게임 오버 창 (평소 꺼짐)
-   │  ├─ DuelScreen           결투 화면: 배경, 드래곤 쪽·플레이어 쪽, 체력 창, 메시지 창, 임시 버튼 (평소 꺼짐)
+   │  ├─ DuelScreen           결투 화면: 배경, 드래곤 쪽·플레이어 쪽, 체력 창, 메시지 창, 임시 버튼, 전리품 창(LootWindow) (평소 꺼짐)
    │  └─ EncounterOverlay     화면 번쩍임 · 화면 전환
    ├─ Cursor Canvas
    │  └─ PhaseCursor          단계별 커서 (레몬 / 검)
@@ -190,10 +218,15 @@ Forest
 | Duel | `DragonSpecies` / `NestSpriteSet` / `DragonSpawnList` | 드래곤 데이터 / 둥지 그림 / 나올 수 있는 드래곤 목록 |
 | Duel | `DuelSession` / `DuelManager` | 결투 시작·종료 |
 | Duel | `DragonHealth` / `DragonBattlerView` | 드래곤 체력 / 결투 화면 드래곤 그림 |
+| Duel | `DuelBackgroundView` | 결투 배경을 드래곤별 결투 둥지로 교체 / 기본 배경 복귀 |
+| Duel | `LootRoller` | 드랍표로 얻을 재료 굴리기 (흔함 재료 보장) |
+| Items | `MaterialData` | 재료 하나의 이름·아이콘·희귀도·판매가 |
 | Economy | `PlayerWallet` | 돈 보관 (넣기 / 쓰기) |
+| Economy | `PlayerInventory` | 재료별 개수 보관 (넣기 / 빼기) |
 | UI | `PhaseCursorView` / `PhaseCursorSettings` | 단계별 커서 |
 | UI | `NestCounterUI` / `MarkingTimerUI` / `PhaseNameUI` / `ShopButtonUI` | HUD 표시 |
 | UI | `MarkingResultUI` / `GameOverUI` / `DuelScreenUI` / `DragonHealthUI` | 창·결투 화면·체력 막대 |
+| UI | `LootResultUI` / `LootRowView` / `MaterialCountUI` | 전리품 창 / 재료 한 줄 / HUD 재료 개수 |
 
 ## 에디터에서 수정하기
 
@@ -203,6 +236,11 @@ Forest
 - **보상 구간**: `Settings/MarkingRewardSettings`
 - **커서 (스프라이트·크기·클릭 기준점)**: `Settings/PhaseCursorSettings`
 - **드래곤 (이름·체력·그림·둥지 그림·울음소리)**: `Settings/Dragons/Dragon##_*`
+- **결투 둥지 배경·발판 위치**: `Dragon##_*`의 [결투 둥지] (발판 위치는 배경 왼쪽 아래 = 0,0 비율)
+- **재료 드랍 확률·개수**: `Dragon##_*`의 [재료 드랍표] / **재료 이름·아이콘·판매가**: `Settings/Materials/Mat##_*`
+- **흔함 재료 보장**: `Managers/SwordHunt/LootRoller` / **전리품 문구**: `DuelScreen`의 `LootResultUI`
+- **다시 시작할 때 비우기**: `PlayerWallet` / `PlayerInventory`
+- **테스트 (고정 드래곤, 드랍 100%)**: `Managers/SwordHunt/DuelSession`의 [테스트] (에디터에서만)
 - **나올 수 있는 드래곤 목록**: `Settings/Dragons/ForestDragonSpawnList`
 - **등장 연출 시간·켜고 끄기·등장 메시지 문구**: `EncounterIntroSequence`
 - **표시 문구**: 각 UI 컴포넌트 (`GameOverUI`, `PhaseNameUI`, `MarkingResultUI` 등)
@@ -218,9 +256,23 @@ Scene에 배치한 오브젝트와 Inspector 설정은 실행 중 스크립트�
 | `기능 설치 - 도구 전환 (현재 Scene)` | (예전 방식) 도구 전환 기능 추가 |
 | `기능 설치 - 레몬 표시 단계 (현재 Scene)` | 레몬 표시 단계 추가, 예전 도구 전환 오브젝트는 꺼 둠 |
 | `기능 설치 - 드래곤 등장·결투 화면 (현재 Scene)` | 드래곤 데이터·등장 연출·결투 화면 추가 |
+| `기능 설치 - 결투 둥지 배경·재료 드랍 (현재 Scene)` | 둥지 배경·재료 아이콘 Import·자르기, 재료 데이터, 드랍표, 전리품 창·재료 개수 HUD 추가 |
 | `Minesweeper/Build Minesweeper Scene` | 초기 지뢰찾기 프로토타입 Scene 구성 |
 
 ## 작업 기록
+
+### 2026-11-25
+- **드래곤별 결투 둥지 배경**
+  - 둥지 배경 10장을 `Art/Battle/Nests`로 복사 (Sprite, Point, 압축 없음, Max 2048)
+  - 그림마다 드래곤 둥지·플레이어 발판의 윗면 가운데를 재서 `DragonSpecies`에 배경과 발판 위치 입력
+  - 등장 연출 중 화면이 검게 덮인 동안 배경을 바꾸고, 드래곤·플레이어를 그 발판 위치로 슬라이드 인
+  - 숲으로 돌아오거나 게임 오버·다시 시작이면 기본 배경과 Scene 배치 위치로 복귀
+- **승리 시 재료 드랍**
+  - 재료 아이콘 시트의 검은 배경을 투명하게 만든 사본을 만들고 아이콘 30개로 자름
+  - 재료 데이터 `MaterialData` 30개, 드래곤별 드랍표(흔함 80% / 보통 40% / 희귀 10%) 작성
+  - 같은 재료가 여러 개 나올 수 있게 함 (흔함 1~3, 보통 1~2, 희귀 1)
+  - 전리품 창 + 드랍 메시지, [확인]을 누르면 숲으로. 인벤토리에 쌓고 HUD에 "재료 n개" 표시
+  - Restart를 누를 때만 돈·재료를 비우고, 게임 오버만으로는 유지
 
 ### 2026-11-23
 - **설계 변경: 레몬 표시 → 검 사냥 → 상점**
