@@ -16,17 +16,40 @@ MonoBehaviour:
   displayName: "\uD574\uB958 \uB4DC\uB798\uACE4"
   breathColor: {r: 0.3, g: 0.6, b: 1, a: 1}
   maxHealth: 100
-  battleIdle: {fileID: 21300000, guid: d814f3a77dfddd7ef2c10a251924d3ea, type: 3}
-  battleAttack: {fileID: 21300000, guid: a7d8f5613e3ecf7bd39b1bb4bd16fcd9, type: 3}
-  battleHurt: {fileID: 21300000, guid: 245add0c681197b1ecda15ae47c85826, type: 3}
+  battleIdle: {fileID: -949245876, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  battleAttack: {fileID: -1737981324, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  battleHurt: {fileID: -1699794425, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  flyFrames:
+  - {fileID: -949245876, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  - {fileID: -81827467, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  - {fileID: 35281330, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  - {fileID: 1448627517, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  attackFrames:
+  - {fileID: 274145831, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  - {fileID: -1677025273, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  - {fileID: -1737981324, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  - {fileID: 1787743563, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  hurtFrames:
+  - {fileID: -1699794425, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  - {fileID: 764375938, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  defeatFrames:
+  - {fileID: -174811583, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  - {fileID: 1093333281, guid: 46b97b830f18b494e843aaa02f1e46c3, type: 3}
+  flyFps: 8
+  attackFps: 10
+  hurtFps: 8
+  defeatFps: 6
+  hoverAmplitude: 5
+  hoverPeriod: 1.2
   fieldSleeping: {fileID: 21300000, guid: 09f9224e96a96f7c9415d46a5ad5000d, type: 3}
   fieldSleepingGlow: {fileID: 21300000, guid: 0ca8d1f451282bf28ce389a0695d04c5, type: 3}
   nestSprites: {fileID: 11400000, guid: 742fb95d14bf5db4da4f60d3adf0d8b5, type: 2}
   cry: {fileID: 0}
   duelBackground: {fileID: 21300000, guid: c5daed7168fc85c45a2d4466295209f7, type: 3}
   useStandPoints: 1
-  dragonStandPoint: {x: 0.72, y: 0.56}
+  dragonStandPoint: {x: 0.73, y: 0.54}
   playerStandPoint: {x: 0.2, y: 0.21}
+  battleSizeMultiplier: 0.84
   attackPower: 0
   materialDrops:
   - material: {fileID: 11400000, guid: ea1530de68fbdc847b1089d739ff9531, type: 2}

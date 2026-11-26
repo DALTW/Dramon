@@ -1,0 +1,462 @@
+fileFormatVersion: 2
+guid: 7f7449285052e674e9bb4682b8499f0a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2890683328266722197
+    second: Dragon10_Crystal_MotionSheet_0
+  - first:
+      213: 9162282958106790728
+    second: Dragon10_Crystal_MotionSheet_1
+  - first:
+      213: -6645931978624648362
+    second: Dragon10_Crystal_MotionSheet_2
+  - first:
+      213: 6346141674734028303
+    second: Dragon10_Crystal_MotionSheet_3
+  - first:
+      213: 3243592846544270765
+    second: Dragon10_Crystal_MotionSheet_4
+  - first:
+      213: -195524339488553314
+    second: Dragon10_Crystal_MotionSheet_5
+  - first:
+      213: 4588475845196786994
+    second: Dragon10_Crystal_MotionSheet_6
+  - first:
+      213: -5831029381484550930
+    second: Dragon10_Crystal_MotionSheet_7
+  - first:
+      213: -6909585627468155703
+    second: Dragon10_Crystal_MotionSheet_8
+  - first:
+      213: -8516822140893094627
+    second: Dragon10_Crystal_MotionSheet_9
+  - first:
+      213: -5056341491645017854
+    second: Dragon10_Crystal_MotionSheet_10
+  - first:
+      213: 3145703607901852827
+    second: Dragon10_Crystal_MotionSheet_11
+  - first:
+      213: -6374685227782642908
+    second: Dragon10_Crystal_MotionSheet_12
+  - first:
+      213: 4210852287026633778
+    second: Dragon10_Crystal_MotionSheet_13
+  - first:
+      213: 7780008565780346463
+    second: Dragon10_Crystal_MotionSheet_14
+  - first:
+      213: 403351000104844854
+    second: Dragon10_Crystal_MotionSheet_15
+  - first:
+      213: 6229855522090292676
+    second: Dragon10_Crystal_MotionSheet_16
+  - first:
+      213: 7858058063163390974
+    second: Dragon10_Crystal_MotionSheet_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dragon10_Crystal_Fly_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9815856c662da78408485826784d3e26
+      internalID: 753699724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon10_Crystal_Fly_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06faed397a52a7b43a905f25f09ce48b
+      internalID: -1408650409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon10_Crystal_Fly_2
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b0bd00e74d65a542ac72641d7680dd8
+      internalID: -7707685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon10_Crystal_Fly_3
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4fa183827bd1a740a2f49bc93505eb1
+      internalID: -2131612480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon10_Crystal_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f2e56f5d9bdd374ca262f898da83226
+      internalID: 468018679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon10_Crystal_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c564bc443213fd45b44e37d3f84ddf2
+      internalID: 841923271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon10_Crystal_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcd8916a3ae1dec44b8ae6eb9b86c79b
+      internalID: 117514557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon10_Crystal_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c7796c4e43d4884c905c4c0b8b5eebd
+      internalID: 1429735837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon10_Crystal_Hurt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d6406c615fa23c40ad94a30612b9763
+      internalID: 1549000043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon10_Crystal_Hurt_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 0
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ed65b80ce4aca04bb8c737f0afe13f2
+      internalID: -1571672957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon10_Crystal_Defeat_0
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 0
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.50581396, y: 0.0234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d0f0b27f9acec846828048c74642b76
+      internalID: -966541507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon10_Crystal_Defeat_1
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 0
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.50581396, y: 0.078125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d2673c31ae4e24eb745294e087c0fb
+      internalID: -1324991430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 62e817a9ee70fdf4fbd1999a1b5ad9f0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Dragon10_Crystal_Attack_0: 468018679
+      Dragon10_Crystal_Attack_1: 841923271
+      Dragon10_Crystal_Attack_2: 117514557
+      Dragon10_Crystal_Attack_3: 1429735837
+      Dragon10_Crystal_Defeat_0: -966541507
+      Dragon10_Crystal_Defeat_1: -1324991430
+      Dragon10_Crystal_Fly_0: 753699724
+      Dragon10_Crystal_Fly_1: -1408650409
+      Dragon10_Crystal_Fly_2: -7707685
+      Dragon10_Crystal_Fly_3: -2131612480
+      Dragon10_Crystal_Hurt_0: 1549000043
+      Dragon10_Crystal_Hurt_1: -1571672957
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: dramon-import-setup
+  assetBundleName: 
+  assetBundleVariant: 

@@ -34,11 +34,12 @@ namespace Dramon.EditorTools
         static readonly string[] Keys = { "Ember", "Forest", "Storm", "Shadow", "Gold", "Frost", "Toxic", "Tide", "Stone", "Crystal" };
         static readonly string[] RarityKeys = { "Common", "Uncommon", "Rare" };
 
-        // 배경 그림을 열어서 잰 발판 윗면 가운데 (배경 왼쪽 아래 = 0,0)
+        // 배경 그림을 열어서 잰 발판 위치 (배경 왼쪽 아래 = 0,0)
+        // 드래곤: 둥지 안쪽 바닥 가운데보다 조금 앞 (쓰러진 모습이 둥지 안에 눕는 자리)
         static readonly Vector2[] DragonStandPoints =
         {
-            new Vector2(0.70f, 0.48f), new Vector2(0.75f, 0.59f), new Vector2(0.79f, 0.58f), new Vector2(0.71f, 0.59f), new Vector2(0.75f, 0.62f),
-            new Vector2(0.73f, 0.56f), new Vector2(0.68f, 0.51f), new Vector2(0.72f, 0.56f), new Vector2(0.72f, 0.55f), new Vector2(0.69f, 0.56f),
+            new Vector2(0.70f, 0.485f), new Vector2(0.76f, 0.58f), new Vector2(0.785f, 0.58f), new Vector2(0.72f, 0.575f), new Vector2(0.76f, 0.585f),
+            new Vector2(0.75f, 0.505f), new Vector2(0.73f, 0.52f), new Vector2(0.73f, 0.54f), new Vector2(0.72f, 0.50f), new Vector2(0.69f, 0.515f),
         };
         static readonly Vector2[] PlayerStandPoints =
         {

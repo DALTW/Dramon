@@ -1,0 +1,459 @@
+fileFormatVersion: 2
+guid: cd5b3474a6f689f4f8258697e86305a0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4370541765995172050
+    second: Dragon04_Shadow_MotionSheet_0
+  - first:
+      213: 3043899843605315701
+    second: Dragon04_Shadow_MotionSheet_1
+  - first:
+      213: -308326052296300293
+    second: Dragon04_Shadow_MotionSheet_2
+  - first:
+      213: -5230524502685875186
+    second: Dragon04_Shadow_MotionSheet_3
+  - first:
+      213: 3886934053795273712
+    second: Dragon04_Shadow_MotionSheet_4
+  - first:
+      213: 5368793350910857840
+    second: Dragon04_Shadow_MotionSheet_5
+  - first:
+      213: 4165538166437450954
+    second: Dragon04_Shadow_MotionSheet_6
+  - first:
+      213: 248252921427159489
+    second: Dragon04_Shadow_MotionSheet_7
+  - first:
+      213: 5413818797258163608
+    second: Dragon04_Shadow_MotionSheet_8
+  - first:
+      213: -4389528457322150851
+    second: Dragon04_Shadow_MotionSheet_9
+  - first:
+      213: -6188979760287245899
+    second: Dragon04_Shadow_MotionSheet_10
+  - first:
+      213: -9027777379066229017
+    second: Dragon04_Shadow_MotionSheet_11
+  - first:
+      213: -2076133175616646522
+    second: Dragon04_Shadow_MotionSheet_12
+  - first:
+      213: 515303827305865090
+    second: Dragon04_Shadow_MotionSheet_13
+  - first:
+      213: 4373495796993512336
+    second: Dragon04_Shadow_MotionSheet_14
+  - first:
+      213: -1681791731346470804
+    second: Dragon04_Shadow_MotionSheet_15
+  - first:
+      213: 1213478464551654237
+    second: Dragon04_Shadow_MotionSheet_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dragon04_Shadow_Fly_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8905da44aab2264d94a1f783e0974be
+      internalID: -712412823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon04_Shadow_Fly_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 512
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5116279, y: -0.04296875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2e19c3c754056244882e4dd4af2ee07
+      internalID: 1935774539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon04_Shadow_Fly_2
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 512
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.51744187, y: -0.015625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 812c51b091348ac41bee4aef1b0dad13
+      internalID: 563371613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon04_Shadow_Fly_3
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 512
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5261628, y: 0.01171875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bd0c9fe794a8244a8b444029a083d81
+      internalID: -369648825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon04_Shadow_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b35358feed227b4fa4eb516e687a31d
+      internalID: 1944061875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon04_Shadow_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24499a7b5268fa640905ee3f4957be94
+      internalID: -542172141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon04_Shadow_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b96e0fe1c70ad514dbd88df88bc16719
+      internalID: 1763949578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon04_Shadow_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88441e0be13dd2b40bfedfcfa9f75e07
+      internalID: -432548884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon04_Shadow_Hurt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f95bd4e51d308241b9504c2913ad594
+      internalID: 1941796342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon04_Shadow_Hurt_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 0
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f6e6192decd800469abadccc5ef3e5d
+      internalID: -1314462136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon04_Shadow_Defeat_0
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 0
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5232558, y: 0.0546875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 716a3f714d1487048b00b4f4566840df
+      internalID: 1703820842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon04_Shadow_Defeat_1
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 0
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.51744187, y: 0.14453125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61cb7ef36ecfc404cacd25681667933f
+      internalID: -1397344059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 97c1c0cb5bec3cc49bd4e90701324c34
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Dragon04_Shadow_Attack_0: 1944061875
+      Dragon04_Shadow_Attack_1: -542172141
+      Dragon04_Shadow_Attack_2: 1763949578
+      Dragon04_Shadow_Attack_3: -432548884
+      Dragon04_Shadow_Defeat_0: 1703820842
+      Dragon04_Shadow_Defeat_1: -1397344059
+      Dragon04_Shadow_Fly_0: -712412823
+      Dragon04_Shadow_Fly_1: 1935774539
+      Dragon04_Shadow_Fly_2: 563371613
+      Dragon04_Shadow_Fly_3: -369648825
+      Dragon04_Shadow_Hurt_0: 1941796342
+      Dragon04_Shadow_Hurt_1: -1314462136
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: dramon-import-setup
+  assetBundleName: 
+  assetBundleVariant: 

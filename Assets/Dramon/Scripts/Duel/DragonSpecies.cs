@@ -33,13 +33,43 @@ namespace Dramon
         [Min(1)]
         [SerializeField] int maxHealth = 100;
 
-        [Header("결투 그림 (208×144, 왼쪽을 바라봄)")]
+        [Header("결투 그림 (왼쪽을 바라봄, 모션 프레임이 없을 때 사용)")]
         [Tooltip("결투 중 기본 모습 (비행 기본)")]
         [SerializeField] Sprite battleIdle;
         [Tooltip("숨결 공격")]
         [SerializeField] Sprite battleAttack;
         [Tooltip("레몬즙을 맞았을 때 (피격)")]
         [SerializeField] Sprite battleHurt;
+
+        [Header("모션 프레임 (비어 있으면 위의 결투 그림 1장씩 사용)")]
+        [Tooltip("날갯짓 비행 프레임 (반복 재생, MotionSheet 1행 Fly_0~3)")]
+        [SerializeField] Sprite[] flyFrames = new Sprite[0];
+        [Tooltip("공격 프레임 (준비 → 돌진 → 숨결 → 복귀, 한 번 재생 후 비행으로)")]
+        [SerializeField] Sprite[] attackFrames = new Sprite[0];
+        [Tooltip("피격 프레임 (피격 → 움찔, 한 번 재생 후 비행으로)")]
+        [SerializeField] Sprite[] hurtFrames = new Sprite[0];
+        [Tooltip("패배 프레임 (쓰러지는 중 → 쓰러짐, 마지막 프레임에서 멈춤)")]
+        [SerializeField] Sprite[] defeatFrames = new Sprite[0];
+        [Tooltip("비행 초당 프레임 수 (클수록 날갯짓이 빨라요)")]
+        [Min(0.1f)]
+        [SerializeField] float flyFps = 8f;
+        [Tooltip("공격 초당 프레임 수")]
+        [Min(0.1f)]
+        [SerializeField] float attackFps = 10f;
+        [Tooltip("피격 초당 프레임 수")]
+        [Min(0.1f)]
+        [SerializeField] float hurtFps = 8f;
+        [Tooltip("패배 초당 프레임 수")]
+        [Min(0.1f)]
+        [SerializeField] float defeatFps = 6f;
+
+        [Header("비행 흔들림")]
+        [Tooltip("날갯짓에 맞춰 몸이 위아래로 움직이는 거리 (픽셀, 0이면 흔들리지 않음)")]
+        [Min(0f)]
+        [SerializeField] float hoverAmplitude = 4f;
+        [Tooltip("한 번 오르내리는 데 걸리는 시간 (초)")]
+        [Min(0.05f)]
+        [SerializeField] float hoverPeriod = 1.2f;
 
         [Header("필드 그림 (88×64)")]
         [Tooltip("보드 위에서 잠든 모습")]
@@ -62,6 +92,9 @@ namespace Dramon
         [SerializeField] Vector2 dragonStandPoint = new Vector2(0.72f, 0.56f);
         [Tooltip("플레이어 발밑이 닿을 작은 발판 윗면 가운데 (배경 왼쪽 아래 = 0,0 / 오른쪽 위 = 1,1)")]
         [SerializeField] Vector2 playerStandPoint = new Vector2(0.22f, 0.22f);
+        [Tooltip("이 드래곤의 결투 그림 크기 배율 (결투 화면 DragonBattlerView의 크기 배율과 곱해져요). 둥지에 맞게 드래곤마다 조절")]
+        [Range(0.3f, 2f)]
+        [SerializeField] float battleSizeMultiplier = 1f;
 
         [Header("결투 수치 (다음 단계에서 사용)")]
         [Tooltip("공격력 (카드 결투 단계에서 사용)")]
@@ -79,6 +112,25 @@ namespace Dramon
         public Sprite BattleIdle => battleIdle;
         public Sprite BattleAttack => battleAttack;
         public Sprite BattleHurt => battleHurt;
+        public Sprite[] FlyFrames => flyFrames;
+        public Sprite[] AttackFrames => attackFrames;
+        public Sprite[] HurtFrames => hurtFrames;
+        public Sprite[] DefeatFrames => defeatFrames;
+        public float FlyFps => flyFps;
+        public float AttackFps => attackFps;
+        public float HurtFps => hurtFps;
+        public float DefeatFps => defeatFps;
+        public float HoverAmplitude => hoverAmplitude;
+        public float HoverPeriod => hoverPeriod;
+        public bool HasFlyFrames => HasFrames(flyFrames);
+
+        /// <summary>프레임 배열에 그림이 한 장이라도 있는지</summary>
+        public static bool HasFrames(Sprite[] frames)
+        {
+            if (frames == null) return false;
+            foreach (var f in frames) if (f != null) return true;
+            return false;
+        }
         public Sprite FieldSleeping => fieldSleeping;
         public Sprite FieldSleepingGlow => fieldSleepingGlow;
         public NestSpriteSet NestSprites => nestSprites;
@@ -87,6 +139,7 @@ namespace Dramon
         public bool UseStandPoints => useStandPoints;
         public Vector2 DragonStandPoint => dragonStandPoint;
         public Vector2 PlayerStandPoint => playerStandPoint;
+        public float BattleSizeMultiplier => battleSizeMultiplier;
         public int AttackPower => attackPower;
         public IReadOnlyList<MaterialDrop> MaterialDrops => materialDrops;
     }

@@ -7,7 +7,7 @@ namespace Dramon
     /// <summary>
     /// 검 사냥 단계의 결투 한 판을 관리한다.
     /// 봉인된 둥지에 들어가면 DragonSpawnList에서 드래곤을 무작위로 정하고(깜짝 등장) 등장 연출 → 결투.
-    /// 이기면 재료 드랍 → 전리품 창 → [확인] → 페이드 아웃 후 그 둥지를 정화하고 검 사냥으로. 지면 바로 게임 오버.
+    /// 이기면 드래곤 패배 모션 → 재료 드랍 → 전리품 창 → [확인] → 페이드 아웃 후 그 둥지를 정화하고 검 사냥으로. 지면 바로 게임 오버.
     /// </summary>
     public class DuelSession : MonoBehaviour
     {
@@ -24,6 +24,8 @@ namespace Dramon
         [SerializeField] EncounterIntroSequence introSequence;
         [Tooltip("결투 화면 (승리를 누르면 임시 승패 버튼을 숨겨요)")]
         [SerializeField] DuelScreenUI duelScreen;
+        [Tooltip("결투 화면의 드래곤 그림 (이기면 패배 모션을 보여 준 뒤 전리품으로)")]
+        [SerializeField] DragonBattlerView battler;
 
         [Header("전리품")]
         [Tooltip("드랍표로 얻을 재료를 굴려요")]
@@ -88,13 +90,21 @@ namespace Dramon
             return true;
         }
 
-        /// <summary>결투 승리 (임시 버튼 / 카드 결투가 호출): 재료 드랍 → 전리품 창 → 숲으로.</summary>
+        /// <summary>결투 승리 (임시 버튼 / 카드 결투가 호출): 드래곤 패배 모션 → 재료 드랍 → 전리품 창 → 숲으로.</summary>
         public void Win()
         {
             if (!InDuel || ending) return;
             ending = true;
             if (duelScreen != null) duelScreen.SetButtonsVisible(false);
 
+            if (battler != null) battler.ShowDefeat(GrantLoot);
+            else GrantLoot();
+        }
+
+        /// <summary>패배 모션이 끝난 뒤: 재료를 굴려 인벤토리에 넣고 전리품 창을 띄운다.</summary>
+        void GrantLoot()
+        {
+            if (!InDuel) return; // 그 사이 게임 오버·다시 시작이 됐으면 무시
             var loot = lootRoller != null ? lootRoller.Roll(CurrentSpecies, TestDropEverything) : new List<LootEntry>();
             if (inventory != null) inventory.AddAll(loot);
             LootGranted?.Invoke(CurrentSpecies, loot);

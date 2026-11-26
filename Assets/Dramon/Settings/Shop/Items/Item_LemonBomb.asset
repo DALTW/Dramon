@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653566a6ecaee6345a05c095db50a40c, type: 3}
+  m_Name: Item_LemonBomb
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.ShopItemData
+  displayName: "\uB808\uBAAC \uD3ED\uD0C4"
+  icon: {fileID: 21300000, guid: 82e70755851bd9f4ab2fadd1a93e0522, type: 3}
+  description: "\uB4DC\uB798\uACE4\uC5D0\uAC8C \uB808\uBAAC\uC999\uC744 \uD130\uB728\uB824 \uD53C\uD574\uB97C \uC918\uC694."
+  price: 45
+  unlimitedStock: 1
+  stock: 5
+  maxOwned: 5

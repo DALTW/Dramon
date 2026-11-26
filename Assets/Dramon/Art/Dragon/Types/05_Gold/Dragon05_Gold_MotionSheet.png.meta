@@ -1,0 +1,465 @@
+fileFormatVersion: 2
+guid: 65d7699d6b53c1b4dbf38fbef6597cfe
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7486747645833814198
+    second: Dragon05_Gold_MotionSheet_0
+  - first:
+      213: -6617116570346002150
+    second: Dragon05_Gold_MotionSheet_1
+  - first:
+      213: -1080355936697330025
+    second: Dragon05_Gold_MotionSheet_2
+  - first:
+      213: -9078395607338147104
+    second: Dragon05_Gold_MotionSheet_3
+  - first:
+      213: 1911279670709840420
+    second: Dragon05_Gold_MotionSheet_4
+  - first:
+      213: 4782290163554122610
+    second: Dragon05_Gold_MotionSheet_5
+  - first:
+      213: -199782048400232000
+    second: Dragon05_Gold_MotionSheet_6
+  - first:
+      213: 1355913676053498867
+    second: Dragon05_Gold_MotionSheet_7
+  - first:
+      213: -4920641615589869853
+    second: Dragon05_Gold_MotionSheet_8
+  - first:
+      213: 7071224302503232138
+    second: Dragon05_Gold_MotionSheet_9
+  - first:
+      213: -6446099097928340859
+    second: Dragon05_Gold_MotionSheet_10
+  - first:
+      213: 5127932002286404922
+    second: Dragon05_Gold_MotionSheet_11
+  - first:
+      213: -5415022895977442475
+    second: Dragon05_Gold_MotionSheet_12
+  - first:
+      213: 6692393096510904834
+    second: Dragon05_Gold_MotionSheet_13
+  - first:
+      213: -2671083636791024284
+    second: Dragon05_Gold_MotionSheet_14
+  - first:
+      213: -9216625045572963662
+    second: Dragon05_Gold_MotionSheet_15
+  - first:
+      213: -7678109728330553105
+    second: Dragon05_Gold_MotionSheet_16
+  - first:
+      213: 7888809384549994232
+    second: Dragon05_Gold_MotionSheet_17
+  - first:
+      213: 4225112556961743541
+    second: Dragon05_Gold_MotionSheet_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dragon05_Gold_Fly_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abb0c68a1a2bf0349ad27dc6411a857a
+      internalID: 1159126802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon05_Gold_Fly_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 809d33522bb159f4884c66bda2226920
+      internalID: -1385358088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon05_Gold_Fly_2
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 512
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.50872093, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c58f03b1ce3f6548a585e0183e624d5
+      internalID: 359348147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon05_Gold_Fly_3
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 512
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.51744187, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 825f6eebb672a994d9fde98f084b2bc7
+      internalID: -1821517102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon05_Gold_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc6873384b43401428a33ee656b0fd70
+      internalID: 212698620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon05_Gold_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d9dcdf11af62fd458662f5d0edcbabf
+      internalID: -169761032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon05_Gold_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 814510ca4f21cfd4996cb9651800c789
+      internalID: -84620800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon05_Gold_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a435bee5631024a8114a7a883c7cd2
+      internalID: 1825651076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon05_Gold_Hurt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942d49e6fdee07b47b8442cdc4ea577d
+      internalID: -40282979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon05_Gold_Hurt_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 0
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7420d045814df04f9fd650921f035c7
+      internalID: 478290715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon05_Gold_Defeat_0
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 0
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47093022, y: 0.0703125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3bb2175dbb65c44c80c7a38c9fe5065
+      internalID: 1622475041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon05_Gold_Defeat_1
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 0
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5145349, y: 0.09375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab5e4a77a2dd9a1449c50fca26e1444e
+      internalID: 1379298206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2d633b434af2613408bc0b69ee522138
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Dragon05_Gold_Attack_0: 212698620
+      Dragon05_Gold_Attack_1: -169761032
+      Dragon05_Gold_Attack_2: -84620800
+      Dragon05_Gold_Attack_3: 1825651076
+      Dragon05_Gold_Defeat_0: 1622475041
+      Dragon05_Gold_Defeat_1: 1379298206
+      Dragon05_Gold_Fly_0: 1159126802
+      Dragon05_Gold_Fly_1: -1385358088
+      Dragon05_Gold_Fly_2: 359348147
+      Dragon05_Gold_Fly_3: -1821517102
+      Dragon05_Gold_Hurt_0: -40282979
+      Dragon05_Gold_Hurt_1: 478290715
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: dramon-import-setup
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,483 @@
+fileFormatVersion: 2
+guid: 47154ccc1b3541845b887f8a8e01c372
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6122235676762368185
+    second: Dragon02_Forest_MotionSheet_0
+  - first:
+      213: -8171317941928769404
+    second: Dragon02_Forest_MotionSheet_1
+  - first:
+      213: 6939010832556745595
+    second: Dragon02_Forest_MotionSheet_2
+  - first:
+      213: 3038254338823361160
+    second: Dragon02_Forest_MotionSheet_3
+  - first:
+      213: -7363519492715844396
+    second: Dragon02_Forest_MotionSheet_4
+  - first:
+      213: 57441500728282329
+    second: Dragon02_Forest_MotionSheet_5
+  - first:
+      213: 3311660812518004687
+    second: Dragon02_Forest_MotionSheet_6
+  - first:
+      213: -7286399918341703967
+    second: Dragon02_Forest_MotionSheet_7
+  - first:
+      213: -5918562760532016901
+    second: Dragon02_Forest_MotionSheet_8
+  - first:
+      213: 2433716033762384803
+    second: Dragon02_Forest_MotionSheet_9
+  - first:
+      213: 3490920094690894461
+    second: Dragon02_Forest_MotionSheet_10
+  - first:
+      213: 6678259266966219289
+    second: Dragon02_Forest_MotionSheet_11
+  - first:
+      213: 1366095630746771797
+    second: Dragon02_Forest_MotionSheet_12
+  - first:
+      213: -4144684906205906028
+    second: Dragon02_Forest_MotionSheet_13
+  - first:
+      213: -715408475085352419
+    second: Dragon02_Forest_MotionSheet_14
+  - first:
+      213: -3839492346460664119
+    second: Dragon02_Forest_MotionSheet_15
+  - first:
+      213: -8795590315237794294
+    second: Dragon02_Forest_MotionSheet_16
+  - first:
+      213: 8470745764750390199
+    second: Dragon02_Forest_MotionSheet_17
+  - first:
+      213: -1873270354183490909
+    second: Dragon02_Forest_MotionSheet_18
+  - first:
+      213: -8959053767243410910
+    second: Dragon02_Forest_MotionSheet_19
+  - first:
+      213: 1789430827909612886
+    second: Dragon02_Forest_MotionSheet_20
+  - first:
+      213: -9027182605033462659
+    second: Dragon02_Forest_MotionSheet_21
+  - first:
+      213: 880726103960181969
+    second: Dragon02_Forest_MotionSheet_22
+  - first:
+      213: 2743508979576224794
+    second: Dragon02_Forest_MotionSheet_23
+  - first:
+      213: 7993676861921498911
+    second: Dragon02_Forest_MotionSheet_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dragon02_Forest_Fly_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87079e2e7933edd4b9f055f3076045f3
+      internalID: -438692088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon02_Forest_Fly_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 512
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.4883721, y: 0.00390625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3763d96cf2eddd7478a371bbd8354ff7
+      internalID: -615920866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon02_Forest_Fly_2
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 512
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.49127907, y: 0.00390625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e3ba0501b1e098498ab871b6c632c15
+      internalID: -2059463096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon02_Forest_Fly_3
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 512
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47965115, y: 0.00390625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39abca20dc33547458cd709c57292650
+      internalID: 1682458110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon02_Forest_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c523e3c17cff071498d6bf804c4308cd
+      internalID: 868774890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon02_Forest_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38b27295cd129a6439099707ee5d96c9
+      internalID: -1158120622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon02_Forest_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5492482a8a57b994cb01afa62a3f9896
+      internalID: 1584280247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon02_Forest_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dca23b3944767374384d4e64c1b2315e
+      internalID: 1205043806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon02_Forest_Hurt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d22e8d18b595f6a4fbae18d08b8c064f
+      internalID: -1636977431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon02_Forest_Hurt_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 0
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 261adc7dc162ccf449b596cec3d2e1bf
+      internalID: 75970510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon02_Forest_Defeat_0
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 0
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47674417, y: 0.08203125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 171a4fbd14904f94d97084c9efa29814
+      internalID: -1275672349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon02_Forest_Defeat_1
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 0
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.50581396, y: 0.04296875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551475ba14a1c1c47ba334ebf546ad29
+      internalID: 592945508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: fd4bb994394a65e4ea56b5e2d92344e9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Dragon02_Forest_Attack_0: 868774890
+      Dragon02_Forest_Attack_1: -1158120622
+      Dragon02_Forest_Attack_2: 1584280247
+      Dragon02_Forest_Attack_3: 1205043806
+      Dragon02_Forest_Defeat_0: -1275672349
+      Dragon02_Forest_Defeat_1: 592945508
+      Dragon02_Forest_Fly_0: -438692088
+      Dragon02_Forest_Fly_1: -615920866
+      Dragon02_Forest_Fly_2: -2059463096
+      Dragon02_Forest_Fly_3: 1682458110
+      Dragon02_Forest_Hurt_0: -1636977431
+      Dragon02_Forest_Hurt_1: 75970510
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: dramon-import-setup
+  assetBundleName: 
+  assetBundleVariant: 

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Dramon
 {
-    /// <summary>현재 단계 이름("레몬 표시" / "검 사냥")을 표시한다.</summary>
+    /// <summary>현재 단계 이름("레몬 표시" / "검 사냥" / "상점" …)을 표시한다.</summary>
     public class PhaseNameUI : MonoBehaviour
     {
         [Header("연결")]
@@ -18,6 +18,8 @@ namespace Dramon
         [SerializeField] string markingCompleteName = "레몬 표시";
         [SerializeField] string swordHuntName = "검 사냥";
         [SerializeField] string duelName = "결투";
+        [Tooltip("상점 창이 열려 있는 동안 보여줄 이름")]
+        [SerializeField] string shopName = "상점";
         [SerializeField] string gameOverName = "게임 오버";
 
         void OnEnable()
@@ -45,6 +47,7 @@ namespace Dramon
                 GamePhase.SwordHunt => swordHuntName,
                 GamePhase.Duel => duelName,
                 GamePhase.Encounter => duelName,
+                GamePhase.Shop => shopName,
                 _ => gameOverName,
             };
         }

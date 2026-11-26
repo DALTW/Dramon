@@ -17,13 +17,15 @@ namespace Dramon
         Duel,
         /// <summary>봉인된 굴에 들어가 드래곤 등장 연출이 진행되는 중</summary>
         Encounter,
+        /// <summary>검 사냥 중 상점 창을 연 상태 (보드·둥지 클릭이 막힘)</summary>
+        Shop,
     }
 
     /// <summary>게임 오버 이유</summary>
     public enum GameOverReason { None, OpenedNest, WrongLemon, LostDuel }
 
     /// <summary>
-    /// 현재 단계(레몬 표시 → 완료 안내 → 검 사냥 …)를 관리하고, 단계가 바뀌면 PhaseChanged로 알린다.
+    /// 현재 단계(레몬 표시 → 완료 안내 → 검 사냥 ⇄ 상점·등장·결투 …)를 관리하고, 단계가 바뀌면 PhaseChanged로 알린다.
     /// 각 단계에서 무엇을 할지는 이 이벤트를 받는 스크립트들이 정한다.
     /// </summary>
     public class GamePhaseController : MonoBehaviour
@@ -89,6 +91,21 @@ namespace Dramon
         public void ReturnToSwordHunt()
         {
             if (Phase != GamePhase.Duel) return;
+            SetPhase(GamePhase.SwordHunt);
+        }
+
+        /// <summary>검 사냥 중 상점 열기. (ShopWindowUI가 호출) 열었으면 true.</summary>
+        public bool EnterShop()
+        {
+            if (Phase != GamePhase.SwordHunt) return false;
+            SetPhase(GamePhase.Shop);
+            return true;
+        }
+
+        /// <summary>상점을 닫고 검 사냥으로 돌아가기. (ShopWindowUI가 호출)</summary>
+        public void LeaveShop()
+        {
+            if (Phase != GamePhase.Shop) return;
             SetPhase(GamePhase.SwordHunt);
         }
 

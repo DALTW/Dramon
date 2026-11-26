@@ -8,6 +8,7 @@ namespace Dramon
     /// 드래곤 등장 연출을 순서대로 진행한다.
     /// ① 둥지 위 깨어나는 드래곤 + 화면 번쩍임 → ② 검게 덮는 전환 → ③ 결투 화면 슬라이드 인
     /// → ④ 어두운 색에서 원래 색 + 울음소리 → ⑤ 체력 표시 창 → ⑥ 메시지 → ⑦ 임시 승패 버튼.
+    /// ③ 슬라이드 인부터 드래곤은 비행 모션(날갯짓 + 위아래 흔들림)을 반복하고, ④ 색 복귀는 그 위에 겹쳐서 진행된다.
     /// ②와 ③ 사이(검은 화면)에 배경을 그 드래곤의 결투 둥지로 바꾸고, 드래곤·플레이어를 둥지 발판 위치에 세운다.
     /// 결투에서 이기면 결투 화면을 페이드 아웃하고 숲으로 돌아간다 (기본 배경·Scene 배치 위치로 복귀). 단계마다 켜고 끄기·시간 조절 가능.
     /// </summary>
@@ -200,6 +201,7 @@ namespace Dramon
             if (healthUI != null) healthUI.Hide();
             if (message != null) message.Hide();
             RestoreNestStage();
+            if (battler != null) battler.StopMotion(); // 비행 모션·흔들림 멈춤
             IsPlaying = false;
             onFinished?.Invoke();
         }
@@ -245,6 +247,7 @@ namespace Dramon
             if (healthUI != null) healthUI.Hide();
             if (message != null) message.Hide();
             RestoreNestStage();
+            if (battler != null) battler.StopMotion(); // 비행 모션·흔들림 멈춤
         }
     }
 }

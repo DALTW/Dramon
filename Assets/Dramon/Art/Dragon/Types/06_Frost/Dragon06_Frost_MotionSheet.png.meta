@@ -1,0 +1,486 @@
+fileFormatVersion: 2
+guid: 5343644273d8dab4d97600aabb824cfa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6235733283701111289
+    second: Dragon06_Frost_MotionSheet_0
+  - first:
+      213: 791656190698828907
+    second: Dragon06_Frost_MotionSheet_1
+  - first:
+      213: 7191961748523656531
+    second: Dragon06_Frost_MotionSheet_2
+  - first:
+      213: 2315736330672532745
+    second: Dragon06_Frost_MotionSheet_3
+  - first:
+      213: -477965704642915655
+    second: Dragon06_Frost_MotionSheet_4
+  - first:
+      213: 18262263008277232
+    second: Dragon06_Frost_MotionSheet_5
+  - first:
+      213: 2606880802961988439
+    second: Dragon06_Frost_MotionSheet_6
+  - first:
+      213: -5405068784765510957
+    second: Dragon06_Frost_MotionSheet_7
+  - first:
+      213: 4267915794601241449
+    second: Dragon06_Frost_MotionSheet_8
+  - first:
+      213: 9150588221938948123
+    second: Dragon06_Frost_MotionSheet_9
+  - first:
+      213: -4861278013926336038
+    second: Dragon06_Frost_MotionSheet_10
+  - first:
+      213: 3686292937160936989
+    second: Dragon06_Frost_MotionSheet_11
+  - first:
+      213: -7989386678204606789
+    second: Dragon06_Frost_MotionSheet_12
+  - first:
+      213: -7839965343683054834
+    second: Dragon06_Frost_MotionSheet_13
+  - first:
+      213: -3677425920648743940
+    second: Dragon06_Frost_MotionSheet_14
+  - first:
+      213: 5445278242703164443
+    second: Dragon06_Frost_MotionSheet_15
+  - first:
+      213: -1147930549742551338
+    second: Dragon06_Frost_MotionSheet_16
+  - first:
+      213: 1917313895298016837
+    second: Dragon06_Frost_MotionSheet_17
+  - first:
+      213: -6778026612661047333
+    second: Dragon06_Frost_MotionSheet_18
+  - first:
+      213: -4500894263931748856
+    second: Dragon06_Frost_MotionSheet_19
+  - first:
+      213: 8340783226493386113
+    second: Dragon06_Frost_MotionSheet_20
+  - first:
+      213: -959109664107922163
+    second: Dragon06_Frost_MotionSheet_21
+  - first:
+      213: 335598049962134256
+    second: Dragon06_Frost_MotionSheet_22
+  - first:
+      213: 8795571305480215847
+    second: Dragon06_Frost_MotionSheet_23
+  - first:
+      213: -2995845809021733605
+    second: Dragon06_Frost_MotionSheet_24
+  - first:
+      213: 6537782360498587442
+    second: Dragon06_Frost_MotionSheet_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dragon06_Frost_Fly_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0954493406d65af43a76650c851ecea9
+      internalID: 1455696495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon06_Frost_Fly_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 697eb65d0ebc3884898ad8cdbe3da1ac
+      internalID: 1103168269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon06_Frost_Fly_2
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30c2de65719cdd34eb707ebdc134fb67
+      internalID: -1650765334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon06_Frost_Fly_3
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7e20c90904f4a34c815e3a2904881e3
+      internalID: -1661764960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon06_Frost_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 027e2322a7a774846832379ee0df2c4d
+      internalID: 691560842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon06_Frost_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6964d19ea6be7146b8c0cb69e84c5ed
+      internalID: -1069073141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon06_Frost_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6109c37df45a3b64b9328a49e2ddbee2
+      internalID: 2007500128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon06_Frost_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f43d4cbdb92904ba80ddf6d59ce406
+      internalID: 2138029715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon06_Frost_Hurt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0179195b75da0f45907729df27bad5f
+      internalID: 1856061283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon06_Frost_Hurt_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 0
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a51e4b83d3aba24dbd55a13205befc2
+      internalID: 1419755948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon06_Frost_Defeat_0
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 0
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5116279, y: 0.08203125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1049c05062cb0140aa51c523a3ffb1f
+      internalID: 385089921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon06_Frost_Defeat_1
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 0
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05859375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a9e78b65cbdda344ab1d683d89a2d80
+      internalID: -296483541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 527373e7f45589e4ba88eb42329df80d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Dragon06_Frost_Attack_0: 691560842
+      Dragon06_Frost_Attack_1: -1069073141
+      Dragon06_Frost_Attack_2: 2007500128
+      Dragon06_Frost_Attack_3: 2138029715
+      Dragon06_Frost_Defeat_0: 385089921
+      Dragon06_Frost_Defeat_1: -296483541
+      Dragon06_Frost_Fly_0: 1455696495
+      Dragon06_Frost_Fly_1: 1103168269
+      Dragon06_Frost_Fly_2: -1650765334
+      Dragon06_Frost_Fly_3: -1661764960
+      Dragon06_Frost_Hurt_0: 1856061283
+      Dragon06_Frost_Hurt_1: 1419755948
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: dramon-import-setup
+  assetBundleName: 
+  assetBundleVariant: 

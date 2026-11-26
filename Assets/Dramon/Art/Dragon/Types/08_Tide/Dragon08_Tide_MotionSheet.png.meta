@@ -1,0 +1,504 @@
+fileFormatVersion: 2
+guid: 46b97b830f18b494e843aaa02f1e46c3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6139287415459290868
+    second: Dragon08_Tide_MotionSheet_0
+  - first:
+      213: 8911275080667045887
+    second: Dragon08_Tide_MotionSheet_1
+  - first:
+      213: 4607666658187384354
+    second: Dragon08_Tide_MotionSheet_2
+  - first:
+      213: -1717590374616129477
+    second: Dragon08_Tide_MotionSheet_3
+  - first:
+      213: 2215002827025824199
+    second: Dragon08_Tide_MotionSheet_4
+  - first:
+      213: 6109381526394914582
+    second: Dragon08_Tide_MotionSheet_5
+  - first:
+      213: 1327292863420857521
+    second: Dragon08_Tide_MotionSheet_6
+  - first:
+      213: 7557437636938621444
+    second: Dragon08_Tide_MotionSheet_7
+  - first:
+      213: 483870054375348118
+    second: Dragon08_Tide_MotionSheet_8
+  - first:
+      213: 732785602215255299
+    second: Dragon08_Tide_MotionSheet_9
+  - first:
+      213: 5733342763016332676
+    second: Dragon08_Tide_MotionSheet_10
+  - first:
+      213: 5786966277471353298
+    second: Dragon08_Tide_MotionSheet_11
+  - first:
+      213: 360186872844232357
+    second: Dragon08_Tide_MotionSheet_12
+  - first:
+      213: 6475786309540025411
+    second: Dragon08_Tide_MotionSheet_13
+  - first:
+      213: 810776721906656871
+    second: Dragon08_Tide_MotionSheet_14
+  - first:
+      213: 2391927456959709905
+    second: Dragon08_Tide_MotionSheet_15
+  - first:
+      213: -678329020274366921
+    second: Dragon08_Tide_MotionSheet_16
+  - first:
+      213: 8556864228314613812
+    second: Dragon08_Tide_MotionSheet_17
+  - first:
+      213: 3541471899470594092
+    second: Dragon08_Tide_MotionSheet_18
+  - first:
+      213: -1161989252737396741
+    second: Dragon08_Tide_MotionSheet_19
+  - first:
+      213: -1506141319233553373
+    second: Dragon08_Tide_MotionSheet_20
+  - first:
+      213: -601759230453909235
+    second: Dragon08_Tide_MotionSheet_21
+  - first:
+      213: 2441930288238041581
+    second: Dragon08_Tide_MotionSheet_22
+  - first:
+      213: 1881435917025733225
+    second: Dragon08_Tide_MotionSheet_23
+  - first:
+      213: -4669512359060223337
+    second: Dragon08_Tide_MotionSheet_24
+  - first:
+      213: -8829300807488945539
+    second: Dragon08_Tide_MotionSheet_25
+  - first:
+      213: 4763678755875267842
+    second: Dragon08_Tide_MotionSheet_26
+  - first:
+      213: -6065509039166897089
+    second: Dragon08_Tide_MotionSheet_27
+  - first:
+      213: 1558611864711089824
+    second: Dragon08_Tide_MotionSheet_28
+  - first:
+      213: -38226180429772674
+    second: Dragon08_Tide_MotionSheet_29
+  - first:
+      213: 1661721278830479553
+    second: Dragon08_Tide_MotionSheet_30
+  - first:
+      213: -821423131278994483
+    second: Dragon08_Tide_MotionSheet_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dragon08_Tide_Fly_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e871522d8bb17f40a710f1636452fd1
+      internalID: -949245876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon08_Tide_Fly_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 512
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.49709302, y: -0.01953125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18fd93ef4d37b03438872dc8b3088f0a
+      internalID: -81827467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon08_Tide_Fly_2
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 512
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5261628, y: -0.03125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e05df73f34455ba43a921bdc892e805a
+      internalID: 35281330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon08_Tide_Fly_3
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 512
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.52034885, y: -0.0546875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06c4640b573c96141a9c1ac2dc69a9f4
+      internalID: 1448627517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon08_Tide_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 870178f453c16e741be60089f31425a4
+      internalID: 274145831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon08_Tide_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a2a1d1c0dba1ca468ca5970d80dbed2
+      internalID: -1677025273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon08_Tide_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74b0524cbb4005146a28428eab0623c1
+      internalID: -1737981324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon08_Tide_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 256
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b849fd260c18c1428c1f4e739c561da
+      internalID: 1787743563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon08_Tide_Hurt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7fe8d7ac8e62f0469df94ea3e4a78ec
+      internalID: -1699794425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon08_Tide_Hurt_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 0
+        width: 344
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 914697d9fcea81847ad9834b3ec99375
+      internalID: 764375938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon08_Tide_Defeat_0
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 0
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47674417, y: 0.04296875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c816166bcb377cf48be8bd4a9f074ee1
+      internalID: -174811583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon08_Tide_Defeat_1
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 0
+        width: 344
+        height: 256
+      alignment: 9
+      pivot: {x: 0.4883721, y: 0.03125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d322145fd2b9cfa4a91509a9788bd40f
+      internalID: 1093333281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b34d0df8cedb0b740832f1f200a82019
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Dragon08_Tide_Attack_0: 274145831
+      Dragon08_Tide_Attack_1: -1677025273
+      Dragon08_Tide_Attack_2: -1737981324
+      Dragon08_Tide_Attack_3: 1787743563
+      Dragon08_Tide_Defeat_0: -174811583
+      Dragon08_Tide_Defeat_1: 1093333281
+      Dragon08_Tide_Fly_0: -949245876
+      Dragon08_Tide_Fly_1: -81827467
+      Dragon08_Tide_Fly_2: 35281330
+      Dragon08_Tide_Fly_3: 1448627517
+      Dragon08_Tide_Hurt_0: -1699794425
+      Dragon08_Tide_Hurt_1: 764375938
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: dramon-import-setup
+  assetBundleName: 
+  assetBundleVariant: 
