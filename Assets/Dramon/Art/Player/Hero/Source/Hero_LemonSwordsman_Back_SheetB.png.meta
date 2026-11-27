@@ -1,0 +1,656 @@
+fileFormatVersion: 2
+guid: bea39d333d5a97a44ba9594a0a47bb2f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1168804014451828881
+    second: Hero_LemonSwordsman_Back_SheetB_0
+  - first:
+      213: 4418695094388240506
+    second: Hero_LemonSwordsman_Back_SheetB_1
+  - first:
+      213: 701220192596607208
+    second: Hero_LemonSwordsman_Back_SheetB_2
+  - first:
+      213: -7032851233559483217
+    second: Hero_LemonSwordsman_Back_SheetB_3
+  - first:
+      213: 7357843530511799057
+    second: Hero_LemonSwordsman_Back_SheetB_4
+  - first:
+      213: -1170189754187845322
+    second: Hero_LemonSwordsman_Back_SheetB_5
+  - first:
+      213: 1356648769891724468
+    second: Hero_LemonSwordsman_Back_SheetB_6
+  - first:
+      213: 5419668230830832556
+    second: Hero_LemonSwordsman_Back_SheetB_7
+  - first:
+      213: 6031815080254091920
+    second: Hero_LemonSwordsman_Back_SheetB_8
+  - first:
+      213: 1714821817589379391
+    second: Hero_LemonSwordsman_Back_SheetB_9
+  - first:
+      213: -3786647427868054003
+    second: Hero_LemonSwordsman_Back_SheetB_10
+  - first:
+      213: 4171432997998312702
+    second: Hero_LemonSwordsman_Back_SheetB_11
+  - first:
+      213: 3858124010733724887
+    second: Hero_LemonSwordsman_Back_SheetB_12
+  - first:
+      213: -7204876002797582135
+    second: Hero_LemonSwordsman_Back_SheetB_13
+  - first:
+      213: 1551341135610711550
+    second: Hero_LemonSwordsman_Back_SheetB_14
+  - first:
+      213: -5253023163038668771
+    second: Hero_LemonSwordsman_Back_SheetB_15
+  - first:
+      213: -7482719412341368439
+    second: Hero_LemonSwordsman_Back_SheetB_16
+  - first:
+      213: 5824592183203267015
+    second: Hero_LemonSwordsman_Back_SheetB_17
+  - first:
+      213: 2855607939175236095
+    second: Hero_LemonSwordsman_Back_SheetB_18
+  - first:
+      213: -4548548650651578006
+    second: Hero_LemonSwordsman_Back_SheetB_19
+  - first:
+      213: 7153998797561961147
+    second: Hero_LemonSwordsman_Back_SheetB_20
+  - first:
+      213: -2272950718881001804
+    second: Hero_LemonSwordsman_Back_SheetB_21
+  - first:
+      213: 5145970109225824667
+    second: Hero_LemonSwordsman_Back_SheetB_22
+  - first:
+      213: 298858212848252451
+    second: Hero_LemonSwordsman_Back_SheetB_23
+  - first:
+      213: 547850211203330004
+    second: Hero_LemonSwordsman_Back_SheetB_24
+  - first:
+      213: -6928113241405348827
+    second: Hero_LemonSwordsman_Back_SheetB_25
+  - first:
+      213: -3549431085964276205
+    second: Hero_LemonSwordsman_Back_SheetB_26
+  - first:
+      213: -3653086218986997323
+    second: Hero_LemonSwordsman_Back_SheetB_27
+  - first:
+      213: -874847865726882722
+    second: Hero_LemonSwordsman_Back_SheetB_28
+  - first:
+      213: -602514712951189449
+    second: Hero_LemonSwordsman_Back_SheetB_29
+  - first:
+      213: 2414369697537258955
+    second: Hero_LemonSwordsman_Back_SheetB_30
+  - first:
+      213: 9140833319938232149
+    second: Hero_LemonSwordsman_Back_SheetB_31
+  - first:
+      213: 8338266804889821001
+    second: Hero_LemonSwordsman_Back_SheetB_32
+  - first:
+      213: 4934340700701945270
+    second: Hero_LemonSwordsman_Back_SheetB_33
+  - first:
+      213: 6560283330929394783
+    second: Hero_LemonSwordsman_Back_SheetB_34
+  - first:
+      213: -874223886344441937
+    second: Hero_LemonSwordsman_Back_SheetB_35
+  - first:
+      213: 4873312738757105515
+    second: Hero_LemonSwordsman_Back_SheetB_36
+  - first:
+      213: 2498477155461346964
+    second: Hero_LemonSwordsman_Back_SheetB_37
+  - first:
+      213: 4848259135901631008
+    second: Hero_LemonSwordsman_Back_SheetB_38
+  - first:
+      213: -2657593614329357537
+    second: Hero_LemonSwordsman_Back_SheetB_39
+  - first:
+      213: 561289888636973994
+    second: Hero_LemonSwordsman_Back_SheetB_40
+  - first:
+      213: 1772975632866746904
+    second: Hero_LemonSwordsman_Back_SheetB_41
+  - first:
+      213: 4489494064294160273
+    second: Hero_LemonSwordsman_Back_SheetB_42
+  - first:
+      213: 1045139875706770712
+    second: Hero_LemonSwordsman_Back_SheetB_43
+  - first:
+      213: 5149906299195749303
+    second: Hero_LemonSwordsman_Back_SheetB_44
+  - first:
+      213: 240049115881802413
+    second: Hero_LemonSwordsman_Back_SheetB_45
+  - first:
+      213: 7433407910186241996
+    second: Hero_LemonSwordsman_Back_SheetB_46
+  - first:
+      213: 1860576007811428782
+    second: Hero_LemonSwordsman_Back_SheetB_47
+  - first:
+      213: -6055144862854637187
+    second: Hero_LemonSwordsman_Back_SheetB_48
+  - first:
+      213: 5370364526327506824
+    second: Hero_LemonSwordsman_Back_SheetB_49
+  - first:
+      213: -1132887538445977369
+    second: Hero_LemonSwordsman_Back_SheetB_50
+  - first:
+      213: 5893602543599365001
+    second: Hero_LemonSwordsman_Back_SheetB_51
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hero_Hit
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5449219, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 029a18311d8d7344eb94a16ab86e7fa6
+      internalID: -532057684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_HitRecover
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.453125, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0fc3b3f5b6892e48b8681e312e0060c
+      internalID: 98024803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Victory
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.48632812, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c8a97cb6cc4f564aa9106ed61dedfec
+      internalID: 1830530188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Defeated
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.44921875, y: 0.07421875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41271a346eb519243be03597a0d62207
+      internalID: 2121992383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_React_Burned
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.52734375, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92972345f0b7e3649b8a44a0542331b1
+      internalID: -140965718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_React_Shocked
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.49804688, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cc3ed63e40360244894eea227a17cc2
+      internalID: -1271779632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_React_Frozen
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47265625, y: 0.140625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e9c03d53b9268741b240a83267f8303
+      internalID: -416444183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_React_Poisoned
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.40039062, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27f8a549302d4df4d9d8a7f31f07c6d9
+      internalID: -953457671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_React_Drenched
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47851562, y: 0.10546875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84c423a262703ac449bef496746a520e
+      internalID: 1903039613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_React_StoneHit
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.41210938, y: 0.1015625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad024dbf5514a244aee5c5f52a0cb86
+      internalID: -129147186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_React_Fear
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.4765625, y: 0.10546875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0eff2d9affad804ba5c33c51ea81dfa
+      internalID: -1002045322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_React_CrystalShards
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.45703125, y: 0.1015625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0cfd6909701a0a4b90afa292eef0ab3
+      internalID: 163941741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Enter_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.46484375, y: 0.12890625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d2f4e3d35501ee4a8cfd8b6960748fb
+      internalID: 2097516325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Enter_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.49609375, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc7f22d6f7952834f9e45670437a9e8e
+      internalID: 466784535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_DrawCard
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.43554688, y: 0.109375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1147a1a9dcceef448a5730d9a832d74
+      internalID: 500406183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LowHealth
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.4375, y: 0.109375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed480e42ab2751445a2000a12f9357d8
+      internalID: 1982693671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: fa843f211ac776b419c3e56c6235f775
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Hero_Defeated: 2121992383
+      Hero_DrawCard: 500406183
+      Hero_Enter_0: 2097516325
+      Hero_Enter_1: 466784535
+      Hero_Hit: -532057684
+      Hero_HitRecover: 98024803
+      Hero_LowHealth: 1982693671
+      Hero_React_Burned: -140965718
+      Hero_React_CrystalShards: 163941741
+      Hero_React_Drenched: 1903039613
+      Hero_React_Fear: -1002045322
+      Hero_React_Frozen: -416444183
+      Hero_React_Poisoned: -953457671
+      Hero_React_Shocked: -1271779632
+      Hero_React_StoneHit: -129147186
+      Hero_Victory: 1830530188
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: dramon-import-setup
+  assetBundleName: 
+  assetBundleVariant: 

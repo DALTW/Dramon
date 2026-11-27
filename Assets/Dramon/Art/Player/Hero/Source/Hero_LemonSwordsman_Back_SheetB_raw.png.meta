@@ -1,0 +1,626 @@
+fileFormatVersion: 2
+guid: 9441dc24c5fea8544b8383b68bb41df4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1300205824278382010
+    second: Hero_LemonSwordsman_Back_SheetB_raw_0
+  - first:
+      213: -2336787415690298350
+    second: Hero_LemonSwordsman_Back_SheetB_raw_1
+  - first:
+      213: 1113968469100322967
+    second: Hero_LemonSwordsman_Back_SheetB_raw_2
+  - first:
+      213: 8016895683808433748
+    second: Hero_LemonSwordsman_Back_SheetB_raw_3
+  - first:
+      213: -2122664319181724076
+    second: Hero_LemonSwordsman_Back_SheetB_raw_4
+  - first:
+      213: -120277870635700597
+    second: Hero_LemonSwordsman_Back_SheetB_raw_5
+  - first:
+      213: -4586045868400548062
+    second: Hero_LemonSwordsman_Back_SheetB_raw_6
+  - first:
+      213: -5052678816309466040
+    second: Hero_LemonSwordsman_Back_SheetB_raw_7
+  - first:
+      213: 4734096031915467893
+    second: Hero_LemonSwordsman_Back_SheetB_raw_8
+  - first:
+      213: 3597946792936684544
+    second: Hero_LemonSwordsman_Back_SheetB_raw_9
+  - first:
+      213: -2445012191980529057
+    second: Hero_LemonSwordsman_Back_SheetB_raw_10
+  - first:
+      213: 5945931032102087027
+    second: Hero_LemonSwordsman_Back_SheetB_raw_11
+  - first:
+      213: 6822627227306799286
+    second: Hero_LemonSwordsman_Back_SheetB_raw_12
+  - first:
+      213: 233612293476058966
+    second: Hero_LemonSwordsman_Back_SheetB_raw_13
+  - first:
+      213: 1107086017084412859
+    second: Hero_LemonSwordsman_Back_SheetB_raw_14
+  - first:
+      213: 1179729365052894420
+    second: Hero_LemonSwordsman_Back_SheetB_raw_15
+  - first:
+      213: 1245722496159872882
+    second: Hero_LemonSwordsman_Back_SheetB_raw_16
+  - first:
+      213: 1432658454083414885
+    second: Hero_LemonSwordsman_Back_SheetB_raw_17
+  - first:
+      213: -1200193494687243571
+    second: Hero_LemonSwordsman_Back_SheetB_raw_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_0
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 771
+        width: 241
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64a3efc01bdb4fde0800000000000000
+      internalID: -1300205824278382010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_1
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 1014
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21c3d2ce930129fd0800000000000000
+      internalID: -2336787415690298350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 514
+        width: 261
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 790e5bbab6c957f00800000000000000
+      internalID: 1113968469100322967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_3
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 780
+        width: 239
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45693ca262cb14f60800000000000000
+      internalID: 8016895683808433748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_4
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 769
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 456e6cd4c08ca82e0800000000000000
+      internalID: -2122664319181724076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_5
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 489
+        width: 267
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8e2b66f9efa45ef0800000000000000
+      internalID: -120277870635700597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_6
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 759
+        width: 231
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2276652a4971b50c0800000000000000
+      internalID: -4586045868400548062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_7
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 751
+        width: 258
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84cabb5036741e9b0800000000000000
+      internalID: -5052678816309466040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_8
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 524
+        width: 231
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57468ea3243e2b140800000000000000
+      internalID: 4734096031915467893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_9
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 631
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00c3fb1ab897ee130800000000000000
+      internalID: 3597946792936684544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 513
+        width: 256
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5a50899d52911ed0800000000000000
+      internalID: -2445012191980529057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 266
+        width: 247
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 379aa6355c0348250800000000000000
+      internalID: 5945931032102087027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 244
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b0b78eb057deae50800000000000000
+      internalID: 6822627227306799286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 15
+        width: 249
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6570ec7a425fd3300800000000000000
+      internalID: 233612293476058966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_14
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 269
+        width: 233
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb35e10fdd82d5f00800000000000000
+      internalID: 1107086017084412859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_15
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 268
+        width: 248
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dc23176b9d3f5010800000000000000
+      internalID: 1179729365052894420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_16
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 15
+        width: 244
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27772589202b94110800000000000000
+      internalID: 1245722496159872882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_17
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 241
+        width: 249
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56b2a100643d1e310800000000000000
+      internalID: 1432658454083414885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_LemonSwordsman_Back_SheetB_raw_18
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 13
+        width: 247
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc2ae6f106e085fe0800000000000000
+      internalID: -1200193494687243571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Hero_LemonSwordsman_Back_SheetB_raw_0: -1300205824278382010
+      Hero_LemonSwordsman_Back_SheetB_raw_1: -2336787415690298350
+      Hero_LemonSwordsman_Back_SheetB_raw_10: -2445012191980529057
+      Hero_LemonSwordsman_Back_SheetB_raw_11: 5945931032102087027
+      Hero_LemonSwordsman_Back_SheetB_raw_12: 6822627227306799286
+      Hero_LemonSwordsman_Back_SheetB_raw_13: 233612293476058966
+      Hero_LemonSwordsman_Back_SheetB_raw_14: 1107086017084412859
+      Hero_LemonSwordsman_Back_SheetB_raw_15: 1179729365052894420
+      Hero_LemonSwordsman_Back_SheetB_raw_16: 1245722496159872882
+      Hero_LemonSwordsman_Back_SheetB_raw_17: 1432658454083414885
+      Hero_LemonSwordsman_Back_SheetB_raw_18: -1200193494687243571
+      Hero_LemonSwordsman_Back_SheetB_raw_2: 1113968469100322967
+      Hero_LemonSwordsman_Back_SheetB_raw_3: 8016895683808433748
+      Hero_LemonSwordsman_Back_SheetB_raw_4: -2122664319181724076
+      Hero_LemonSwordsman_Back_SheetB_raw_5: -120277870635700597
+      Hero_LemonSwordsman_Back_SheetB_raw_6: -4586045868400548062
+      Hero_LemonSwordsman_Back_SheetB_raw_7: -5052678816309466040
+      Hero_LemonSwordsman_Back_SheetB_raw_8: 4734096031915467893
+      Hero_LemonSwordsman_Back_SheetB_raw_9: 3597946792936684544
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

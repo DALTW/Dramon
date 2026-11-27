@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1befcec847b1b9e4aa8e02791b6826c2, type: 3}
+  m_Name: HeroSpriteSet
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.HeroSpriteSet
+  idle:
+    frames:
+    - {fileID: -698430867, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    - {fileID: -902303562, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    fps: 3
+  lowHealth:
+    frames:
+    - {fileID: 1982693671, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 2
+  enter:
+    frames:
+    - {fileID: 2097516325, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    - {fileID: 466784535, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 6
+  slash:
+    frames:
+    - {fileID: -165356036, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    - {fileID: -1358311732, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    - {fileID: 1428451358, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    - {fileID: -1529840950, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    fps: 10
+  block:
+    frames:
+    - {fileID: 900752796, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    - {fileID: -1967961636, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    fps: 5
+  roll:
+    frames:
+    - {fileID: -112084918, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    - {fileID: -288472208, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    fps: 5
+  lemonThrow:
+    frames:
+    - {fileID: -1050889187, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    - {fileID: 2022066830, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    fps: 5
+  lemonSqueeze:
+    frames:
+    - {fileID: 1711324742, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    fps: 2
+  herb:
+    frames:
+    - {fileID: 1080104450, guid: 1fab34e391e87a64babd1169deef4288, type: 3}
+    fps: 2
+  drawCard:
+    frames:
+    - {fileID: 500406183, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 2
+  hit:
+    frames:
+    - {fileID: -532057684, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 4
+  hitRecover:
+    frames:
+    - {fileID: 98024803, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 3
+  victory:
+    frames:
+    - {fileID: 1830530188, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 2
+  defeated:
+    frames:
+    - {fileID: 2121992383, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 2
+  burned:
+    frames:
+    - {fileID: -140965718, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 2
+  shocked:
+    frames:
+    - {fileID: -1271779632, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 2
+  frozen:
+    frames:
+    - {fileID: -416444183, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 2
+  poisoned:
+    frames:
+    - {fileID: -953457671, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 2
+  drenched:
+    frames:
+    - {fileID: 1903039613, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 2
+  stoneHit:
+    frames:
+    - {fileID: -129147186, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 2
+  fear:
+    frames:
+    - {fileID: -1002045322, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 2
+  crystalShards:
+    frames:
+    - {fileID: 163941741, guid: bea39d333d5a97a44ba9594a0a47bb2f, type: 3}
+    fps: 2

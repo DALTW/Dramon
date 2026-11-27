@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ec353857c1f2764b81c15106ae9f2ab, type: 3}
+  m_Name: Card_ThrownLemon
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.CardData
+  displayName: "\uB808\uBAAC \uB358\uC9C0\uAE30"
+  type: 2
+  cost: 1
+  composedImage: {fileID: 21300000, guid: d0350a977aea201fc967f6cd1624fdf5, type: 3}
+  art: {fileID: 21300000, guid: e306b57a7e14d344c2f3026f079f9dfe, type: 3}
+  description: "\uD53C\uD574 {0}\n\uC0B0\uBBF8 {1}"
+  tags: 2
+  effects:
+  - type: 0
+    value: 4
+    count: 1
+  - type: 3
+    value: 2
+    count: 1
+  exhaust: 0
+  heroAction: 4
+  heroActionRepeat: 1
+  shopPrice: 0
+  maxOwned: 3

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143f872834199a14da746d9846dc04ae, type: 3}
+  m_Name: StarterDeck
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.StarterDeck
+  entries:
+  - card: {fileID: 11400000, guid: f94c34095ccbe634d812d31e4092a8b2, type: 2}
+    count: 4
+  - card: {fileID: 11400000, guid: 0277a8cc4af1ce74c8ae43ff92d7a68f, type: 2}
+    count: 4
+  - card: {fileID: 11400000, guid: ccf9bd3880e27d14fa9d85d55e853882, type: 2}
+    count: 1
+  - card: {fileID: 11400000, guid: d843ccb3ce459b941bdf886280bd2486, type: 2}
+    count: 1

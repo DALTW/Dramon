@@ -28,34 +28,39 @@ namespace Dramon.EditorTools
         const string SellRowPath = RowPrefabFolder + "/ShopSellRow.prefab";
         const string UpgradeRowPath = RowPrefabFolder + "/ShopUpgradeRow.prefab";
         const string BuyRowPath = RowPrefabFolder + "/ShopBuyRow.prefab";
+        const string IconArtPath = "Items/Shop";
+        const string IconFolder = DramonAssetBuilder.ArtFolder + "/" + IconArtPath;
+        const string CoinIcon = "Shop_GoldCoin";
+        const string ImportSetupMark = "dramon-import-setup";
 
         static readonly string[] DragonKeys = { "Ember", "Forest", "Storm", "Shadow", "Gold", "Frost", "Toxic", "Tide", "Stone", "Crystal" };
         static readonly string[] RarityKeys = { "Common", "Uncommon", "Rare" };
 
+        // icon = 상점 아이콘 (Art/Items/Shop), oldIcon = 처음에 임시로 넣었던 카드 그림 (Art/Battle/CardArt)
         struct UpgradeSpec
         {
-            public string file, name, description, icon; public UpgradeStat stat; public int amount; public int[] prices;
+            public string file, name, description, icon, oldIcon; public UpgradeStat stat; public int amount; public int[] prices;
         }
 
         static readonly UpgradeSpec[] Upgrades =
         {
             new UpgradeSpec { file = "Upgrade_SwordTraining", name = "검 단련", description = "검 카드의 공격력이 올라가요.",
-                icon = "CardArt_SwordSlash", stat = UpgradeStat.SwordAttack, amount = 1, prices = new[] { 50, 80, 120, 170, 230 } },
+                icon = "Shop_SwordTraining", oldIcon = "CardArt_SwordSlash", stat = UpgradeStat.SwordAttack, amount = 1, prices = new[] { 50, 80, 120, 170, 230 } },
             new UpgradeSpec { file = "Upgrade_ShieldReinforce", name = "방패 보강", description = "방패 카드로 막는 피해가 늘어나요.",
-                icon = "CardArt_ShieldBlock", stat = UpgradeStat.ShieldDefense, amount = 1, prices = new[] { 50, 80, 120, 170, 230 } },
+                icon = "Shop_ShieldReinforce", oldIcon = "CardArt_ShieldBlock", stat = UpgradeStat.ShieldDefense, amount = 1, prices = new[] { 50, 80, 120, 170, 230 } },
             new UpgradeSpec { file = "Upgrade_MaxHealth", name = "체력 증가", description = "결투를 시작할 때 최대 체력이 늘어나요.",
-                icon = "CardArt_HealingHerb", stat = UpgradeStat.MaxHealth, amount = 10, prices = new[] { 40, 70, 110, 160, 220 } },
+                icon = "Shop_MaxHealth", oldIcon = "CardArt_HealingHerb", stat = UpgradeStat.MaxHealth, amount = 10, prices = new[] { 40, 70, 110, 160, 220 } },
             new UpgradeSpec { file = "Upgrade_AttackPower", name = "공격력 증가", description = "모든 공격의 피해가 올라가요.",
-                icon = "CardArt_LemonJuice", stat = UpgradeStat.AttackPower, amount = 1, prices = new[] { 60, 90, 130, 180, 240 } },
+                icon = "Shop_AttackPower", oldIcon = "CardArt_LemonJuice", stat = UpgradeStat.AttackPower, amount = 1, prices = new[] { 60, 90, 130, 180, 240 } },
         };
 
-        struct ItemSpec { public string file, name, description, icon; public int price; }
+        struct ItemSpec { public string file, name, description, icon, oldIcon; public int price; }
 
         static readonly ItemSpec[] Items =
         {
-            new ItemSpec { file = "Item_HealingHerb", name = "회복 약초", description = "결투 중에 체력을 회복해요.", icon = "CardArt_HealingHerb", price = 30 },
-            new ItemSpec { file = "Item_LemonBomb", name = "레몬 폭탄", description = "드래곤에게 레몬즙을 터뜨려 피해를 줘요.", icon = "CardArt_ThrownLemon", price = 45 },
-            new ItemSpec { file = "Item_SmokeRoll", name = "연막 구르기", description = "드래곤의 공격을 한 번 피해요.", icon = "CardArt_DodgeRoll", price = 40 },
+            new ItemSpec { file = "Item_HealingHerb", name = "회복 약초", description = "결투 중에 체력을 회복해요.", icon = "Shop_HealingHerb", oldIcon = "CardArt_HealingHerb", price = 30 },
+            new ItemSpec { file = "Item_LemonBomb", name = "레몬 폭탄", description = "드래곤에게 레몬즙을 터뜨려 피해를 줘요.", icon = "Shop_LemonBomb", oldIcon = "CardArt_ThrownLemon", price = 45 },
+            new ItemSpec { file = "Item_SmokeRoll", name = "연막 구르기", description = "드래곤의 공격을 한 번 피해요.", icon = "Shop_SmokeRoll", oldIcon = "CardArt_DodgeRoll", price = 40 },
         };
 
         static readonly Color RowBack = new Color(0.23f, 0.14f, 0.08f, 0.10f);
@@ -95,6 +100,7 @@ namespace Dramon.EditorTools
             }
 
             // ── 에셋 ─────────────────────────────
+            SetupIconImports();
             var catalog = EnsureCatalog();
             var buttonPrefab = DramonAssetBuilder.EnsureHudButtonPrefab();
             DramonAssetBuilder.EnsureFolder(RowPrefabFolder);
@@ -125,6 +131,10 @@ namespace Dramon.EditorTools
             if (shopUI == null)
                 shopUI = BuildShopWindow(hudCanvas.transform, phase, wallet, inventory, upgrades, catalog, seller, upgradePurchaser, itemPurchaser,
                     buttonPrefab, sellRow, upgradeRow, buyRow);
+
+            // ── 돈 표시의 동전 아이콘 (비어 있을 때만) ─
+            var moneyUI = Object.FindAnyObjectByType<ShopMoneyUI>(FindObjectsInactive.Include);
+            if (moneyUI != null) SetCoinIconIfEmpty(moneyUI);
 
             // ── HUD 상점 버튼 → 상점 열기 ─────────
             var shopButton = Object.FindAnyObjectByType<ShopButtonUI>(FindObjectsInactive.Include);
@@ -158,7 +168,7 @@ namespace Dramon.EditorTools
                     AssetDatabase.CreateAsset(data, path);
                     var so = new SerializedObject(data);
                     so.FindProperty("displayName").stringValue = spec.name;
-                    so.FindProperty("icon").objectReferenceValue = DramonAssetBuilder.LoadSprite("Battle/CardArt/" + spec.icon);
+                    so.FindProperty("icon").objectReferenceValue = Icon(spec.icon);
                     so.FindProperty("description").stringValue = spec.description;
                     so.FindProperty("stat").enumValueIndex = (int)spec.stat;
                     so.FindProperty("amountPerLevel").intValue = spec.amount;
@@ -169,6 +179,7 @@ namespace Dramon.EditorTools
                     so.ApplyModifiedPropertiesWithoutUndo();
                     EditorUtility.SetDirty(data);
                 }
+                else ReplacePlaceholderIcon(data, spec.icon, spec.oldIcon);
                 upgradeAssets.Add(data);
             }
 
@@ -183,12 +194,13 @@ namespace Dramon.EditorTools
                     AssetDatabase.CreateAsset(data, path);
                     var so = new SerializedObject(data);
                     so.FindProperty("displayName").stringValue = spec.name;
-                    so.FindProperty("icon").objectReferenceValue = DramonAssetBuilder.LoadSprite("Battle/CardArt/" + spec.icon);
+                    so.FindProperty("icon").objectReferenceValue = Icon(spec.icon);
                     so.FindProperty("description").stringValue = spec.description;
                     so.FindProperty("price").intValue = spec.price;
                     so.ApplyModifiedPropertiesWithoutUndo();
                     EditorUtility.SetDirty(data);
                 }
+                else ReplacePlaceholderIcon(data, spec.icon, spec.oldIcon);
                 itemAssets.Add(data);
             }
 
@@ -212,6 +224,59 @@ namespace Dramon.EditorTools
             cso.ApplyModifiedPropertiesWithoutUndo();
             EditorUtility.SetDirty(catalog);
             return catalog;
+        }
+
+        // ── 상점 아이콘 ───────────────────────────
+        static Sprite Icon(string name) => DramonAssetBuilder.LoadSprite(IconArtPath + "/" + name);
+
+        /// <summary>아이콘 Import 설정 (처음 한 번만 — 사용자가 바꾼 Import 설정은 그대로)</summary>
+        static void SetupIconImports()
+        {
+            AssetDatabase.Refresh();
+            var names = new List<string> { CoinIcon };
+            foreach (var spec in Upgrades) names.Add(spec.icon);
+            foreach (var spec in Items) names.Add(spec.icon);
+            foreach (var name in names)
+            {
+                string path = $"{IconFolder}/{name}.png";
+                var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+                if (importer == null) { Debug.LogWarning($"[Dramon] 그림을 찾을 수 없어요: {path}"); continue; }
+                if (importer.userData == ImportSetupMark) continue;
+                importer.textureType = TextureImporterType.Sprite;
+                importer.spriteImportMode = SpriteImportMode.Single;
+                importer.filterMode = FilterMode.Point;
+                importer.textureCompression = TextureImporterCompression.Uncompressed;
+                importer.mipmapEnabled = false;
+                importer.alphaIsTransparency = true;
+                importer.userData = ImportSetupMark;
+                importer.SaveAndReimport();
+            }
+        }
+
+        /// <summary>아이콘이 비어 있거나 처음 넣었던 임시 카드 그림이면 상점 아이콘으로 바꾼다. 사용자가 고른 그림은 그대로.</summary>
+        static void ReplacePlaceholderIcon(Object data, string icon, string oldIcon)
+        {
+            var so = new SerializedObject(data);
+            var prop = so.FindProperty("icon");
+            var current = prop.objectReferenceValue as Sprite;
+            if (current != null && current.name != oldIcon) return;
+            var sprite = Icon(icon);
+            if (sprite == null) return;
+            prop.objectReferenceValue = sprite;
+            so.ApplyModifiedPropertiesWithoutUndo();
+            EditorUtility.SetDirty(data);
+        }
+
+        static void SetCoinIconIfEmpty(ShopMoneyUI moneyUI)
+        {
+            var so = new SerializedObject(moneyUI);
+            var image = so.FindProperty("coinIcon").objectReferenceValue as Image;
+            if (image == null || image.sprite != null) return;
+            var sprite = Icon(CoinIcon);
+            if (sprite == null) return;
+            image.sprite = sprite;
+            image.enabled = true;
+            EditorUtility.SetDirty(image);
         }
 
         static void FillListIfEmpty<T>(SerializedProperty list, List<T> values) where T : Object
@@ -388,7 +453,8 @@ namespace Dramon.EditorTools
             var coin = coinGO.AddComponent<Image>();
             coin.preserveAspect = true;
             coin.raycastTarget = false;
-            coin.enabled = false; // 동전 그림이 생기면 Sprite를 넣고 켜 주세요
+            coin.sprite = Icon(CoinIcon);
+            coin.enabled = coin.sprite != null;
             var moneyLabel = NewText("MoneyText", money.transform, new Vector2(1, 0.5f), new Vector2(1, 0.5f), Vector2.zero, new Vector2(100, 22),
                 TextAnchor.MiddleRight, 14, "0 G");
             var moneyUI = money.AddComponent<ShopMoneyUI>();

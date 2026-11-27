@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_LemonBomb
   m_EditorClassIdentifier: Assembly-CSharp::Dramon.ShopItemData
   displayName: "\uB808\uBAAC \uD3ED\uD0C4"
-  icon: {fileID: 21300000, guid: 82e70755851bd9f4ab2fadd1a93e0522, type: 3}
+  icon: {fileID: 21300000, guid: 5526f2cfde69ea949a7cf67e97771cab, type: 3}
   description: "\uB4DC\uB798\uACE4\uC5D0\uAC8C \uB808\uBAAC\uC999\uC744 \uD130\uB728\uB824 \uD53C\uD574\uB97C \uC918\uC694."
   price: 45
   unlimitedStock: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_SmokeRoll
   m_EditorClassIdentifier: Assembly-CSharp::Dramon.ShopItemData
   displayName: "\uC5F0\uB9C9 \uAD6C\uB974\uAE30"
-  icon: {fileID: 21300000, guid: 7fb0ec3ff8c415a304a0f742a4df2395, type: 3}
+  icon: {fileID: 21300000, guid: 4a04c954d24ad7840a5c2bff11bdbe8b, type: 3}
   description: "\uB4DC\uB798\uACE4\uC758 \uACF5\uACA9\uC744 \uD55C \uBC88 \uD53C\uD574\uC694."
   price: 40
   unlimitedStock: 1

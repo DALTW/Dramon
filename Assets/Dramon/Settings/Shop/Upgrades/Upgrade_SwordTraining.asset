@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Upgrade_SwordTraining
   m_EditorClassIdentifier: Assembly-CSharp::Dramon.ShopUpgradeData
   displayName: "\uAC80 \uB2E8\uB828"
-  icon: {fileID: 21300000, guid: 065d0325f503d1c274f64c1dca59b626, type: 3}
+  icon: {fileID: 21300000, guid: d680a657fa8e35743bc9911dca0df6aa, type: 3}
   description: "\uAC80 \uCE74\uB4DC\uC758 \uACF5\uACA9\uB825\uC774 \uC62C\uB77C\uAC00\uC694."
   stat: 0
   amountPerLevel: 1

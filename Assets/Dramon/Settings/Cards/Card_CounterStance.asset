@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ec353857c1f2764b81c15106ae9f2ab, type: 3}
+  m_Name: Card_CounterStance
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.CardData
+  displayName: "\uBC18\uACA9 \uC790\uC138"
+  type: 1
+  cost: 1
+  composedImage: {fileID: 21300000, guid: 99615c619201d8d5a3c20c4c3605fec1, type: 3}
+  art: {fileID: 21300000, guid: b2372ff6cb41206a7813bb5783bdc177, type: 3}
+  description: "\uBC29\uC5B4 {0}\n\uC774\uBC88 \uB4DC\uB798\uACE4 \uD134\uC5D0\n\uACF5\uACA9\uBC1B\uC73C\uBA74 {1} \uBC18\uC0AC"
+  tags: 0
+  effects:
+  - type: 2
+    value: 4
+    count: 1
+  - type: 7
+    value: 4
+    count: 1
+  exhaust: 0
+  heroAction: 2
+  heroActionRepeat: 1
+  shopPrice: 90
+  maxOwned: 3

@@ -35,6 +35,8 @@ namespace Dramon
         [SerializeField] NestWakeSpriteView wakeSprite;
         [Tooltip("결투 화면 배경 (드래곤별 결투 둥지 배경으로 바꿔요)")]
         [SerializeField] DuelBackgroundView background;
+        [Tooltip("결투 화면의 검사 그림 (슬라이드 인 동안 걷기 → 도착하면 대기)")]
+        [SerializeField] HeroBattlerView hero;
 
         [Header("결투 둥지")]
         [Tooltip("켜면 화면이 검게 덮인 동안 배경을 그 드래곤의 결투 둥지로 바꾸고, 드래곤·플레이어를 그 둥지의 발판 위치에 세워요")]
@@ -156,6 +158,12 @@ namespace Dramon
             }
             if (healthUI != null) healthUI.Hide();
             if (message != null) message.Hide();
+            if (hero != null)
+            {
+                hero.SetOpponent(species);
+                if (useSlideIn && slideIn != null) hero.PlayEnter(); // 오른쪽에서 걸어 들어오기
+                else hero.ShowIdle();
+            }
             if (duelScreen != null)
             {
                 duelScreen.ShowStage();
@@ -170,6 +178,7 @@ namespace Dramon
             if (wiped) StartCoroutine(wipe.Uncover(uncoverDuration));
             if (useSlideIn && slideIn != null) yield return slideIn.SlideIn(slideDuration);
             else if (wiped) yield return new WaitForSeconds(uncoverDuration);
+            if (hero != null) hero.ShowIdle(); // 도착하면 대기
 
             // ④ 어두운 색 → 원래 색, 울음소리
             if (useDarkToNormal && battler != null) yield return battler.FadeToNormal(toneDuration);
@@ -202,6 +211,7 @@ namespace Dramon
             if (message != null) message.Hide();
             RestoreNestStage();
             if (battler != null) battler.StopMotion(); // 비행 모션·흔들림 멈춤
+            if (hero != null) hero.ResetToIdle();
             IsPlaying = false;
             onFinished?.Invoke();
         }
@@ -248,6 +258,7 @@ namespace Dramon
             if (message != null) message.Hide();
             RestoreNestStage();
             if (battler != null) battler.StopMotion(); // 비행 모션·흔들림 멈춤
+            if (hero != null) hero.ResetToIdle();
         }
     }
 }

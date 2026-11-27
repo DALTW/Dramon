@@ -35,7 +35,7 @@ namespace Dramon.EditorTools
         static readonly string[] RarityKeys = { "Common", "Uncommon", "Rare" };
 
         // 배경 그림을 열어서 잰 발판 위치 (배경 왼쪽 아래 = 0,0)
-        // 드래곤: 둥지 안쪽 바닥 가운데보다 조금 앞 (쓰러진 모습이 둥지 안에 눕는 자리)
+        // 드래곤: 둥지 안쪽 바닥 가운데보다 조금 앞 (쓰러진 모습이 둥지 안에 눕는 자리) / 플레이어: 발판 윗면 가운데
         static readonly Vector2[] DragonStandPoints =
         {
             new Vector2(0.70f, 0.485f), new Vector2(0.76f, 0.58f), new Vector2(0.785f, 0.58f), new Vector2(0.72f, 0.575f), new Vector2(0.76f, 0.585f),
@@ -43,8 +43,8 @@ namespace Dramon.EditorTools
         };
         static readonly Vector2[] PlayerStandPoints =
         {
-            new Vector2(0.29f, 0.31f), new Vector2(0.20f, 0.23f), new Vector2(0.20f, 0.21f), new Vector2(0.24f, 0.23f), new Vector2(0.20f, 0.23f),
-            new Vector2(0.22f, 0.21f), new Vector2(0.28f, 0.22f), new Vector2(0.20f, 0.21f), new Vector2(0.20f, 0.20f), new Vector2(0.21f, 0.27f),
+            new Vector2(0.285f, 0.295f), new Vector2(0.21f, 0.237f), new Vector2(0.19f, 0.202f), new Vector2(0.24f, 0.237f), new Vector2(0.2f, 0.206f),
+            new Vector2(0.22f, 0.217f), new Vector2(0.28f, 0.224f), new Vector2(0.215f, 0.208f), new Vector2(0.2f, 0.206f), new Vector2(0.21f, 0.278f),
         };
 
         // 재료 이름 (흔함, 보통, 희귀) / 판매가

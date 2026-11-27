@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_HealingHerb
   m_EditorClassIdentifier: Assembly-CSharp::Dramon.ShopItemData
   displayName: "\uD68C\uBCF5 \uC57D\uCD08"
-  icon: {fileID: 21300000, guid: 5022e5f47080a4cfd76cc7967468fa7f, type: 3}
+  icon: {fileID: 21300000, guid: 6b657a48c592c1d449afeaec61c75ac0, type: 3}
   description: "\uACB0\uD22C \uC911\uC5D0 \uCCB4\uB825\uC744 \uD68C\uBCF5\uD574\uC694."
   price: 30
   unlimitedStock: 1

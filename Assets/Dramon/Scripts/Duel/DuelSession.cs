@@ -27,6 +27,17 @@ namespace Dramon
         [Tooltip("결투 화면의 드래곤 그림 (이기면 패배 모션을 보여 준 뒤 전리품으로)")]
         [SerializeField] DragonBattlerView battler;
 
+        [Tooltip("결투 화면의 검사 그림 (이기면 승리 자세, 지면 쓰러진 자세)")]
+        [SerializeField] HeroBattlerView hero;
+
+        [Tooltip("카드 결투 진행 (비워 두면 예전처럼 임시 승패 버튼으로만 끝내요)")]
+        [SerializeField] CardBattleController cardBattle;
+
+        [Header("드래곤 공격 → 검사 반응 (카드 결투 단계에서 PlayDragonAttack 호출)")]
+        [Tooltip("드래곤 공격 모션이 시작되고 검사 반응이 나오기까지 기다리는 시간 (초)")]
+        [Min(0f)]
+        [SerializeField] float reactionDelay = 0.25f;
+
         [Header("전리품")]
         [Tooltip("드랍표로 얻을 재료를 굴려요")]
         [SerializeField] LootRoller lootRoller;
@@ -97,6 +108,7 @@ namespace Dramon
             ending = true;
             if (duelScreen != null) duelScreen.SetButtonsVisible(false);
 
+            if (hero != null) hero.ShowVictory(); // 전리품 창까지 유지
             if (battler != null) battler.ShowDefeat(GrantLoot);
             else GrantLoot();
         }
@@ -117,11 +129,43 @@ namespace Dramon
         public void Lose()
         {
             if (!InDuel || ending) return;
+            ending = true;
+            if (duelScreen != null) duelScreen.SetButtonsVisible(false);
+            if (hero != null) hero.ShowDefeated(FinishLose); // 피격 → 쓰러짐을 잠깐 보여 준 뒤
+            else FinishLose();
+        }
+
+        void FinishLose()
+        {
+            if (!InDuel) return; // 그 사이 다시 시작이 됐으면 무시
             phaseController.TriggerGameOver(GameOverReason.LostDuel);
+            ending = false;
             DuelEnded?.Invoke(false);
         }
 
-        void BeginDuel() => phaseController.EnterDuel();
+        /// <summary>
+        /// 드래곤 공격 (카드 결투 단계에서 호출): 드래곤 공격 모션 + 조금 뒤 검사의 속성 반응(그 드래곤의 플레이어 피격 반응 → 자세 회복 → 대기).
+        /// </summary>
+        public void PlayDragonAttack()
+        {
+            if (!InDuel || ending) return;
+            if (battler != null) battler.ShowAttack();
+            if (hero == null) return;
+            if (reactionDelay > 0f && isActiveAndEnabled) StartCoroutine(ReactLater());
+            else hero.PlayDragonBreathReaction(CurrentSpecies);
+        }
+
+        System.Collections.IEnumerator ReactLater()
+        {
+            yield return new WaitForSeconds(reactionDelay);
+            if (InDuel && !ending && hero != null) hero.PlayDragonBreathReaction(CurrentSpecies);
+        }
+
+        void BeginDuel()
+        {
+            phaseController.EnterDuel();
+            if (cardBattle != null && cardBattle.UseCardBattle) cardBattle.Begin(CurrentSpecies); // 등장 연출 끝 → 카드 결투
+        }
 
         /// <summary>전리품 창의 [확인] 뒤: 결투 화면 페이드 아웃 → 숲으로.</summary>
         void LeaveDuel()

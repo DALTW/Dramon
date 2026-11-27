@@ -33,7 +33,7 @@ Unity로 개발 중인 2D 탑다운 게임 **Dramon** 프로젝트입니다.
 | --- | --- | --- |
 | 1. 레몬 표시 | 지뢰찾기처럼 칸을 열고, 굴이라고 생각하는 칸에 레몬을 놓는다. 걸린 시간으로 보상금 지급 | ✅ 구현 |
 | 2. 검 사냥 | 레몬으로 막아 둔 굴을 검으로 고르면 드래곤이 나타나 결투가 시작된다 | ✅ 등장 연출까지 구현 (결투는 임시 버튼) |
-| 3. 카드 결투 | 카드 게임 형식의 결투. 이기면 드래곤이 재료를 떨어뜨림 | ⏳ 예정 |
+| 3. 카드 결투 | 손패·레몬 에너지·턴 종료로 드래곤과 싸움. 이기면 재료 드랍, 지면 게임 오버 | 🔨 1단계 구현 (기본 규칙·기본 덱·할퀴기·연타·방어) |
 | 4. 상점 | 검 사냥 중 상점 버튼으로 열기. 재료 판매 → 능력 강화·아이템 구매 | ✅ 구현 (강화·아이템 효과는 카드 결투에서 사용 예정) |
 
 ## 조작법
@@ -170,6 +170,7 @@ Assets/
 │  │  ├─ Board/  Lemon/  Player/  Battle/  UI/
 │  │  ├─ Battle/Nests/  # 드래곤별 결투 둥지 배경 10장
 │  │  ├─ Items/Materials/  # 재료 아이콘 시트 (원본 + 투명 사본, 아이콘 30개로 자름)
+│  │  ├─ Items/Shop/   # 상점 아이콘 (강화 4 · 아이템 3 · 동전, 원본 시트)
 │  │  └─ Dragon/Types/01_Ember … 10_Crystal
 │  ├─ Scenes/         # Forest.unity (메인 Scene)
 │  ├─ Prefabs/
@@ -223,7 +224,7 @@ Forest
    │  ├─ TopBar               남은 굴 수(레몬 카운터) · 경과 시간 · 단계 이름 · 재료 개수(MaterialPanel) · 상점 · Restart
    │  ├─ MarkingResult        레몬 표시 완료 창 (평소 꺼짐)
    │  ├─ GameOver             게임 오버 창 (평소 꺼짐)
-   │  ├─ DuelScreen           결투 화면: 배경, 드래곤 쪽(Dragon/Motion/Sprite = 비행 모션)·플레이어 쪽, 체력 창, 메시지 창, 임시 버튼, 전리품 창(LootWindow) (평소 꺼짐)
+   │  ├─ DuelScreen           결투 화면: 배경, 드래곤 쪽(Dragon/Motion/Sprite = 비행 모션)·플레이어 쪽(PlayerSide/Hero/Motion/Sprite = 검사, 예전 Player는 꺼 둠), 플레이어 체력 창 자리(꺼 둠), 체력 창, 메시지 창, 임시 버튼, 전리품 창(LootWindow) (평소 꺼짐)
    │  ├─ ShopWindow           상점 창 (ShopWindowUI · ShopConfirmDialog)
    │  │  └─ Panel (평소 꺼짐) Dim · Window(Title · Money · CloseButton · Tabs · Pages/SellPage·UpgradePage·BuyPage · Toast) · ConfirmDialog
    │  └─ EncounterOverlay     화면 번쩍임 · 화면 전환
@@ -261,6 +262,17 @@ Forest
 | Economy | `PlayerUpgrades` / `PlayerItemBag` | 강화 단계 보관·능력별 보너스 / 산 아이템 개수 보관 |
 | Shop | `ShopUpgradeData` / `ShopItemData` / `ShopCatalog` / `UpgradeStat` | 강화 한 종류 / 아이템 한 종류 / 상점에 보일 목록·재료 순서 / 능력 종류 |
 | Shop | `MaterialSeller` / `UpgradePurchaser` / `ItemPurchaser` | 재료 판매 / 강화 구매 (가격·최대 단계 확인) / 아이템 구매 (재고·최대 보유 확인) |
+| Hero | `HeroBattlerView` | 결투 화면 검사: 대기·걷기·카드 동작·피격·속성 반응·승리·쓰러짐 (DragonFrameAnimator·DragonHoverMotion 재사용) |
+| Hero | `HeroSpriteSet` / `HeroReactionType` | 검사 동작별 프레임·fps / 속성 반응 종류 |
+| Duel | `DuelLayoutSettings` | 결투 화면 구도 값 (검사 위치·크기, 플레이어 체력 창) |
+| Battle | `CardBattleController` | 카드 결투 진행 (내 턴 ↔ 드래곤 턴, 승패 → DuelSession) |
+| Battle | `PlayerTurn` / `DragonTurn` | 내 턴 (뽑기·카드 사용·턴 끝) / 드래곤 턴 (방어 초기화·행동) |
+| Battle | `CardEffectResolver` / `DragonIntentPicker` / `DragonActionExecutor` | 카드 효과 처리 / 다음 행동 고르기 / 드래곤 행동 실행 |
+| Battle | `PlayerDeck` / `DrawPile` / `DiscardPile` / `ExhaustPile` / `Hand` | 영구 덱 / 뽑을·버린·소멸 더미 / 손패 |
+| Battle | `PlayerBattleStats` / `DragonBattleStats` | 플레이어 체력·방어·에너지 / 드래곤 방어 (체력은 DragonHealth) |
+| Battle | `BattleRules` / `CardData` / `StarterDeck` / `DragonActionData` | 규칙 / 카드 / 기본 덱 / 드래곤 행동 데이터 |
+| UI/Battle | `HandView` / `CardView` | 손패 부채꼴·마우스·드래그 / 카드 한 장 |
+| UI/Battle | `EnergyUI` / `PileCountUI` / `EndTurnButtonUI` / `PlayerHealthUI` / `DragonHealthTextUI` / `DragonBlockUI` / `BattleLogMessage` | 에너지 / 더미 장수 / 턴 종료 / 플레이어 체력 창 / 드래곤 체력 숫자 / 드래곤 방어 / 진행 문구 |
 | UI | `PhaseCursorView` / `PhaseCursorSettings` | 단계별 커서 |
 | UI | `NestCounterUI` / `MarkingTimerUI` / `PhaseNameUI` / `ShopButtonUI` | HUD 표시 |
 | UI | `MarkingResultUI` / `GameOverUI` / `DuelScreenUI` / `DragonHealthUI` | 창·결투 화면·체력 막대 |
@@ -282,6 +294,13 @@ Forest
 - **결투 둥지 배경·발판 위치**: `Dragon##_*`의 [결투 둥지] (발판 위치는 배경 왼쪽 아래 = 0,0 비율)
 - **재료 드랍 확률·개수**: `Dragon##_*`의 [재료 드랍표] / **재료 이름·아이콘·판매가**: `Settings/Materials/Mat##_*`
 - **흔함 재료 보장**: `Managers/SwordHunt/LootRoller` / **전리품 문구**: `DuelScreen`의 `LootResultUI`
+- **검사 동작 프레임·fps**: `Settings/Hero/HeroSpriteSet` / **숨쉬기·쓰러짐 시간·테스트 단축키**: `DuelScreen/Panel/PlayerSide/Hero`의 `HeroBattlerView`
+- **검사 크기·위치 구도**: `Settings/DuelLayoutSettings` → [포켓몬 구도 적용] / **드래곤별 검사 반응**: `Dragon##_*`의 [플레이어 피격 반응]
+- **드래곤 공격 뒤 검사 반응까지 시간**: `Managers/SwordHunt/DuelSession`
+- **카드 결투 규칙 (체력·에너지·뽑기·손패 최대)**: `Settings/Battle/BattleRules` / **카드**: `Settings/Cards/Card_*` (이름·종류·코스트·그림·설명·효과·소멸·검사 동작·상점 가격) / **기본 덱**: `Settings/Cards/StarterDeck`
+- **드래곤 행동 순서**: `Dragon##_*`의 [카드 결투 행동] / **행동 수치**: `Settings/Dragons/Actions/Act##_*`
+- **손패 배치·마우스 올림·사용 방식**: `DuelScreen/Panel/Battle/Hand`의 `HandView` / **카드 모양**: `Prefabs/UI/Battle/CardView`
+- **진행 시간·문구**: `Managers/Battle/CardBattleController`·`DragonTurn`·`Dragon/DragonActionExecutor`·`PlayerTurn` / **결투 테스트 버튼**: Play 중 `CardBattleController` Inspector 아래
 - **다시 시작할 때 비우기**: `PlayerWallet` / `PlayerInventory` / `PlayerUpgrades` / `PlayerItemBag`
 - **강화 (이름·아이콘·설명·능력·단계마다 오르는 양·최대 단계·단계별 가격)**: `Settings/Shop/Upgrades/Upgrade_*`
 - **아이템 (이름·아이콘·설명·가격·재고·최대 보유)**: `Settings/Shop/Items/Item_*`
@@ -306,10 +325,39 @@ Scene에 배치한 오브젝트와 Inspector 설정은 실행 중 스크립트�
 | `기능 설치 - 드래곤 등장·결투 화면 (현재 Scene)` | 드래곤 데이터·등장 연출·결투 화면 추가 |
 | `기능 설치 - 드래곤 비행 모션 (현재 Scene)` | 모션 시트 Import·4×3 자르기, 드래곤 10종 모션 프레임·기본값 연결, 모션 전용 자식(Dragon/Motion/Sprite) 추가 |
 | `기능 설치 - 결투 둥지 배경·재료 드랍 (현재 Scene)` | 둥지 배경·재료 아이콘 Import·자르기, 재료 데이터, 드랍표, 전리품 창·재료 개수 HUD 추가 |
+| `기능 설치 - 결투 검사·포켓몬 구도 (현재 Scene)` | 검사 시트 Import·자르기, HeroSpriteSet·DuelLayoutSettings, 드래곤 10종 피격 반응, PlayerSide/Hero·플레이어 체력 창 추가 |
+| `기능 설치 - 카드 결투 (현재 Scene)` | 규칙·카드 13종·기본 덱·드래곤 행동 데이터, CardView Prefab, Managers/Battle, 결투 화면 손패·에너지·더미·턴 종료·체력 창 |
+| `포켓몬 구도 적용 (현재 Scene)` | DuelLayoutSettings 값을 PlayerSide·플레이어 체력 창에 써 넣기 (누를 때만) |
 | `기능 설치 - 상점 (현재 Scene)` | 강화 4종·아이템 3종·상점 목록 데이터, 목록 줄 Prefab 3개, 강화·아이템 보관과 판매·구매 처리, 상점 창 추가, 상점 버튼 연결 |
 | `Minesweeper/Build Minesweeper Scene` | 초기 지뢰찾기 프로토타입 Scene 구성 |
 
 ## 작업 기록
+
+### 2026-11-27
+- **카드 결투 1단계** (임시 승패 버튼 → 실제 카드 결투)
+  - 정한 것: Restart하면 산 카드도 비움 / 카드는 클릭·위로 끌기 둘 다 / 결투마다 체력 가득 / 카드 빼기 기능은 이번엔 없음
+  - 규칙(`Settings/Battle/BattleRules`): 체력 50, 턴마다 에너지 3·5장 뽑기, 손패 최대 10. 방어는 내 턴 시작에 0, 드래곤 방어는 드래곤 턴 시작에 0
+  - 기본 덱 10장(검 베기 4·방패 막기 4·레몬 던지기 1·구르기 1), 카드 데이터 13종(`Settings/Cards`), 드래곤 10종 행동(`Settings/Dragons/Actions`)과 체력(40~52)
+  - 드래곤은 행동 목록을 순서대로 반복. 1단계에서는 할퀴기·연타·방어와 숨결 피해만 (숨결 상태·회복·강화·산미는 2단계)
+  - 화면: 손패(부채꼴, 마우스 올리면 커짐, 클릭·위로 끌어서 사용, 에너지가 모자라면 흐리게), 에너지, 뽑을·버린 더미, 턴 종료, 플레이어 체력 창(막대·숫자·방어), 드래곤 체력 숫자·방어
+  - 메시지 창은 손패 자리를 비우려고 위 가운데로 옮김 (Scene에서 다시 옮겨도 유지)
+  - 임시 승패 버튼은 `DuelScreenUI`의 [테스트] 켜기에서만 보임 (에디터 전용)
+- **상점 아이콘 교체**
+  - 상점 아이콘 시트(분홍 배경)에서 배경을 투명하게 하고 글자를 뺀 아이콘 8개를 `Art/Items/Shop/Shop_*.png`로 잘라 넣음 (원본은 `ShopIcons_Sheet.png`)
+  - 능력 강화 4종·아이템 3종 아이콘을 임시 카드 그림에서 새 아이콘으로 교체, 상점 돈 표시에 동전 아이콘 추가
+  - `기능 설치 - 상점`은 아이콘이 비어 있거나 처음 넣은 임시 카드 그림일 때만 바꿈 (직접 고른 그림은 그대로)
+- **플레이어 위치를 발판 가운데로**
+  - 드래곤 10종의 플레이어 발판 위치를 발판 윗면 가운데로 다시 맞춘 뒤, 검사로 바꾸면서 0.03씩 위로 올림
+- **결투 화면 플레이어를 검사(레몬 검사)로 교체**
+  - 시트 A v2(마젠타 배경)를 투명 사본 `Hero_LemonSwordsman_Back_SheetA_v2.png`로 가공 (분홍 가장자리는 안쪽 색으로 채움), 예전 시트 A는 그대로 두고 쓰지 않음
+  - 시트 A v2·B: Sprite Multiple, Point, 압축 없음, Max 2048, PPU 32, 4×4(256×256)로 다시 자르기, Pivot = 칸마다 발밑 가운데로 미세 조정
+  - `HeroSpriteSet`(동작별 프레임·fps), `HeroReactionType`(속성 반응), `DuelLayoutSettings`(검사 위치·크기, 플레이어 체력 창 자리), `HeroBattlerView`(검사 프레임 재생)
+  - 등장 슬라이드 인 중 걷기 → 도착하면 대기(3fps + 숨쉬기 1px), 승리 = 승리 자세(전리품 창까지), 패배 = 피격 → 쓰러짐을 잠깐 보여 준 뒤 게임 오버
+  - 카드 결투에서 쓸 함수: PlaySlash / PlayBlock / PlayRoll / PlayLemonThrow / PlayLemonSqueeze / PlayHerb / PlayDrawCard / PlayHit / PlayDragonBreathReaction, 드래곤 공격 + 검사 반응 = `DuelSession.PlayDragonAttack()`
+  - `DragonSpecies`에 플레이어 피격 반응 (화염·황금 화상, 숲·독늪 중독, 폭풍 감전, 그림자 공포, 서리 빙결, 해류 젖음, 바위 돌 맞음, 수정 결정 박힘)
+  - 크기·위치는 요청에 따라 예전 뒷모습 플레이어와 같게 (키 약 64px, 드래곤별 작은 발판). `DuelLayoutSettings`의 Stand On Nest Platform을 끄고 [포켓몬 구도 적용]을 누르면 화면 앞쪽 큰 구도로 바꿀 수 있음
+  - 플레이어 체력 창 자리(빈 틀, 꺼 둠): 오른쪽 아래, 메시지 창 바로 위
+  - 테스트: `HeroBattlerView` 오른쪽 클릭 메뉴(모든 동작), Play 중 1 베기 / 2 방패 / 3 레몬 던지기 / 4 속성 반응 (겹치지 않게 드래곤 테스트 단축키는 꺼 둠)
 
 ### 2026-11-26
 - **상점 (재료 판매 · 능력 강화 · 아이템 구매)**

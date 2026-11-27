@@ -24,6 +24,10 @@ namespace Dramon
         [Tooltip("플레이어 쪽이 시작하는 위치 (도착 위치 기준, 픽셀). 기본: 오른쪽 화면 밖")]
         [SerializeField] Vector2 playerStartOffset = new Vector2(640f, 0f);
 
+        [Header("발판 위치")]
+        [Tooltip("켜면 플레이어 쪽도 드래곤별 플레이어 발판 위치(둥지 배경의 작은 발판)에 세워요. 끄면 Scene에 배치한 위치(포켓몬 구도)를 그대로 써요")]
+        [SerializeField] bool usePlayerStandPoint = false;
+
         [Header("발판 위치 보정")]
         [Tooltip("드래곤별 발판 위치를 쓸 때 드래곤 쪽에 더하는 값 (픽셀). 그림 아래 빈 공간 등을 맞출 때 사용")]
         [SerializeField] Vector2 dragonStandOffset = Vector2.zero;
@@ -51,7 +55,7 @@ namespace Dramon
         {
             RecordHomes();
             dragonTarget = PointToAnchored(dragonSide, dragonPoint, dragonHome) + dragonStandOffset;
-            playerTarget = PointToAnchored(playerSide, playerPoint, playerHome) + playerStandOffset;
+            playerTarget = usePlayerStandPoint ? PointToAnchored(playerSide, playerPoint, playerHome) + playerStandOffset : playerHome;
         }
 
         /// <summary>도착 위치를 Scene 배치 위치로 되돌린다 (움직이지는 않음).</summary>

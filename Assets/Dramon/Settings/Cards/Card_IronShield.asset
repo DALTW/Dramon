@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ec353857c1f2764b81c15106ae9f2ab, type: 3}
+  m_Name: Card_IronShield
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.CardData
+  displayName: "\uAC15\uCCA0 \uBC29\uD328"
+  type: 1
+  cost: 2
+  composedImage: {fileID: 21300000, guid: 6c017c3f05e3680ffbf13c4b701e3eb2, type: 3}
+  art: {fileID: 21300000, guid: f67449f7ce5eb7ccb183d775467b8fef, type: 3}
+  description: "\uBC29\uC5B4 {0}"
+  tags: 0
+  effects:
+  - type: 2
+    value: 12
+    count: 1
+  exhaust: 0
+  heroAction: 2
+  heroActionRepeat: 1
+  shopPrice: 80
+  maxOwned: 3

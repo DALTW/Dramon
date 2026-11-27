@@ -15,7 +15,7 @@ MonoBehaviour:
   number: 3
   displayName: "\uD3ED\uD48D \uB4DC\uB798\uACE4"
   breathColor: {r: 1, g: 0.95, b: 0.35, a: 1}
-  maxHealth: 100
+  maxHealth: 28
   battleIdle: {fileID: -1361336619, guid: 533169d5427f9974ca681d87c2735cbf, type: 3}
   battleAttack: {fileID: -1187947224, guid: 533169d5427f9974ca681d87c2735cbf, type: 3}
   battleHurt: {fileID: 423687742, guid: 533169d5427f9974ca681d87c2735cbf, type: 3}
@@ -48,8 +48,13 @@ MonoBehaviour:
   duelBackground: {fileID: 21300000, guid: e7278af3fcdd4724c88bf4b1c1030965, type: 3}
   useStandPoints: 1
   dragonStandPoint: {x: 0.785, y: 0.58}
-  playerStandPoint: {x: 0.2, y: 0.21}
+  playerStandPoint: {x: 0.19, y: 0.202}
   battleSizeMultiplier: 0.76
+  playerHitReaction: 2
+  battleActions:
+  - {fileID: 11400000, guid: c082c6a05417d7549be140215be1f348, type: 2}
+  - {fileID: 11400000, guid: 8013db332a1b0d7479b08adf228943b1, type: 2}
+  - {fileID: 11400000, guid: ce42b1527c60e6f4486ed6b6491c7008, type: 2}
   attackPower: 0
   materialDrops:
   - material: {fileID: 11400000, guid: 8d403a3f84671ab4abc20fff8c2336d3, type: 2}

@@ -19,6 +19,16 @@ namespace Dramon
         [Tooltip("[임시] 결투 승리 / 결투 패배 버튼 묶음")]
         [SerializeField] GameObject buttons;
 
+        [Header("테스트 (에디터에서만)")]
+        [Tooltip("켜면 [임시] 결투 승리 / 결투 패배 버튼이 보여요 (카드 결투가 생겨서 평소에는 숨김)")]
+        [SerializeField] bool testShowTempButtons;
+
+        public bool TestShowTempButtons
+        {
+            get => testShowTempButtons;
+            set => testShowTempButtons = value;
+        }
+
         void OnEnable()
         {
             if (phaseController != null) phaseController.PhaseChanged += HandlePhaseChanged;
@@ -45,7 +55,7 @@ namespace Dramon
 
         public void SetButtonsVisible(bool visible)
         {
-            if (buttons != null) buttons.SetActive(visible);
+            if (buttons != null) buttons.SetActive(visible && Application.isEditor && testShowTempButtons);
         }
 
         /// <summary>결투 화면을 서서히 투명하게 한 뒤 닫는다.</summary>

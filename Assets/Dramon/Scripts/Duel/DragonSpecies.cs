@@ -90,11 +90,19 @@ namespace Dramon
         [SerializeField] bool useStandPoints;
         [Tooltip("드래곤 발밑이 닿을 둥지 윗면 가운데 (배경 왼쪽 아래 = 0,0 / 오른쪽 위 = 1,1)")]
         [SerializeField] Vector2 dragonStandPoint = new Vector2(0.72f, 0.56f);
-        [Tooltip("플레이어 발밑이 닿을 작은 발판 윗면 가운데 (배경 왼쪽 아래 = 0,0 / 오른쪽 위 = 1,1)")]
+        [Tooltip("(DuelLayoutSettings의 Stand On Nest Platform이 켜져 있을 때 사용) 플레이어 발밑이 닿을 작은 발판 윗면 가운데 (배경 왼쪽 아래 = 0,0 / 오른쪽 위 = 1,1)")]
         [SerializeField] Vector2 playerStandPoint = new Vector2(0.22f, 0.22f);
         [Tooltip("이 드래곤의 결투 그림 크기 배율 (결투 화면 DragonBattlerView의 크기 배율과 곱해져요). 둥지에 맞게 드래곤마다 조절")]
         [Range(0.3f, 2f)]
         [SerializeField] float battleSizeMultiplier = 1f;
+
+        [Header("플레이어 피격 반응")]
+        [Tooltip("이 드래곤의 브레스에 맞았을 때 검사가 보이는 속성 반응 (없음 = 기본 피격)")]
+        [SerializeField] HeroReactionType playerHitReaction = HeroReactionType.None;
+
+        [Header("카드 결투 행동 (위에서부터 순서대로 반복)")]
+        [Tooltip("드래곤 턴마다 하나씩 실행해요 (Settings/Dragons/Actions). 피해는 1번째 결투 기준")]
+        [SerializeField] List<DragonActionData> battleActions = new List<DragonActionData>();
 
         [Header("결투 수치 (다음 단계에서 사용)")]
         [Tooltip("공격력 (카드 결투 단계에서 사용)")]
@@ -140,6 +148,8 @@ namespace Dramon
         public Vector2 DragonStandPoint => dragonStandPoint;
         public Vector2 PlayerStandPoint => playerStandPoint;
         public float BattleSizeMultiplier => battleSizeMultiplier;
+        public HeroReactionType PlayerHitReaction => playerHitReaction;
+        public IReadOnlyList<DragonActionData> BattleActions => battleActions;
         public int AttackPower => attackPower;
         public IReadOnlyList<MaterialDrop> MaterialDrops => materialDrops;
     }
