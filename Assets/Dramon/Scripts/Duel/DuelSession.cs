@@ -32,6 +32,8 @@ namespace Dramon
 
         [Tooltip("카드 결투 진행 (비워 두면 예전처럼 임시 승패 버튼으로만 끝내요)")]
         [SerializeField] CardBattleController cardBattle;
+        [Tooltip("스테이지 배율 (등장 연출의 드래곤 체력도 배율 값으로 보여 줘요)")]
+        [SerializeField] DragonScaling scaling;
 
         [Header("드래곤 공격 → 검사 반응 (카드 결투 단계에서 PlayDragonAttack 호출)")]
         [Tooltip("드래곤 공격 모션이 시작되고 검사 반응이 나오기까지 기다리는 시간 (초)")]
@@ -52,6 +54,20 @@ namespace Dramon
         [Tooltip("켜면 드랍표의 모든 재료가 100% 확률로 나와요")]
         [SerializeField] bool testDropEverything;
 
+        readonly HashSet<DragonSpecies> excluded = new HashSet<DragonSpecies>();
+
+        /// <summary>지금 결투가 보스전인지</summary>
+        public bool IsBossDuel { get; private set; }
+
+        /// <summary>이번 판 일반 결투에서 뺄 드래곤 (보스). null이면 빼지 않음. DragonSpawnList 에셋은 그대로</summary>
+        public void SetExcludedSpecies(DragonSpecies species)
+        {
+            excluded.Clear();
+            if (species != null) excluded.Add(species);
+        }
+
+        /// <summary>등장 직전, 체력을 정하기 전 (StageProgress가 이번 결투의 스테이지 배율을 정함)</summary>
+        public event Action<DragonSpecies> EncounterPreparing;
         /// <summary>등장 연출이 시작될 때 (이번에 나온 드래곤)</summary>
         public event Action<DragonSpecies> EncounterStarted;
         /// <summary>결투가 끝날 때 (true = 승리)</summary>
@@ -79,24 +95,47 @@ namespace Dramon
             if (board == null || !board.IsSealedNest(nest)) return false;
 
             var species = TestFixedSpecies;
-            if (species == null && spawnList != null) species = spawnList.PickRandom(lastSpecies);
+            if (species != null && excluded.Contains(species)) species = null; // 테스트 고정 드래곤이 이번 판 보스면 무작위로
+            if (species == null && spawnList != null) species = spawnList.PickRandom(lastSpecies, excluded);
             if (species == null)
             {
                 Debug.LogWarning("[Dramon] DuelSession: DragonSpawnList에 나올 수 있는 드래곤이 없어요.", this);
                 return false;
             }
 
+            IsBossDuel = false;
             CurrentNest = nest;
             CurrentSpecies = species;
             lastSpecies = species;
             ending = false;
 
             board.ActivateSealedNest(nest, species.NestSprites);
-            if (dragonHealth != null) dragonHealth.ResetTo(species.MaxHealth);
+            EncounterPreparing?.Invoke(species);
+            if (dragonHealth != null) dragonHealth.ResetTo(scaling != null ? scaling.MaxHealth(species) : species.MaxHealth);
             phaseController.EnterEncounter();
             EncounterStarted?.Invoke(species);
 
             if (introSequence != null) introSequence.PlayIntro(species, nestTile.transform.position, BeginDuel);
+            else BeginDuel();
+            return true;
+        }
+
+        /// <summary>
+        /// 보스전 시작 (StageProgress·BossFight가 호출): 봉인된 굴이 아니어도 그 칸(숲 가운데)에서 등장 연출을 시작한다.
+        /// displayName = 메시지에 쓸 이름 ("숲의 주인 – 화염 드래곤")
+        /// </summary>
+        public bool StartBoss(DragonSpecies species, ForestTile tile, string displayName)
+        {
+            if (species == null || tile == null || phaseController == null || phaseController.Phase != GamePhase.SwordHunt) return false;
+            IsBossDuel = true;
+            CurrentNest = tile.GridPosition;
+            CurrentSpecies = species;
+            ending = false;
+            EncounterPreparing?.Invoke(species);
+            if (dragonHealth != null) dragonHealth.ResetTo(scaling != null ? scaling.MaxHealth(species) : species.MaxHealth);
+            phaseController.EnterEncounter();
+            EncounterStarted?.Invoke(species);
+            if (introSequence != null) introSequence.PlayIntro(species, tile.transform.position, BeginDuel, displayName);
             else BeginDuel();
             return true;
         }

@@ -32,6 +32,16 @@ namespace Dramon
         [Tooltip("에너지가 모자라 못 쓸 때 투명도")]
         [Range(0f, 1f)]
         [SerializeField] float unplayableAlpha = 0.55f;
+        [Tooltip("강화된 카드 이름 뒤에 붙는 글자")]
+        [SerializeField] string upgradedSuffix = "+";
+        [Tooltip("강화된 카드 이름 색")]
+        [SerializeField] Color upgradedNameColor = new Color(0.12f, 0.48f, 0.12f);
+        [Tooltip("코스트가 기본보다 낮아졌을 때 코스트 색")]
+        [SerializeField] Color reducedCostColor = new Color(0.12f, 0.48f, 0.12f);
+
+        Color baseNameColor = Color.black;
+        Color baseCostColor = Color.white;
+        bool colorsSaved;
 
         HandView owner;
 
@@ -39,18 +49,22 @@ namespace Dramon
         public RectTransform Rect => (RectTransform)transform;
 
         /// <summary>카드 내용 채우기 (description = 숫자가 들어간 설명)</summary>
-        public void Setup(CardInstance card, string description, HandView handOwner = null)
+        public void Setup(CardInstance card, string description, HandView handOwner = null, int cost = -1, bool upgraded = false)
         {
             Card = card;
             owner = handOwner;
             var data = card != null ? card.Data : null;
-            Show(data, description);
+            Show(data, description, cost, upgraded);
         }
 
-        /// <summary>카드 데이터만으로 보여 주기 (상점 미리보기 등)</summary>
-        public void Show(CardData data, string description)
+        /// <summary>카드 데이터만으로 보여 주기 (상점 미리보기 등). cost −1 = 카드 기본 코스트</summary>
+        public void Show(CardData data, string description) => Show(data, description, -1, false);
+
+        public void Show(CardData data, string description, int cost, bool upgraded)
         {
             if (data == null) return;
+            SaveColors();
+            if (cost < 0) cost = data.Cost;
             bool composed = data.ComposedImage != null;
             if (frame != null) frame.sprite = composed ? data.ComposedImage : FrameFor(data.Type);
             if (art != null)
@@ -58,9 +72,25 @@ namespace Dramon
                 art.enabled = !composed && data.Art != null;
                 art.sprite = data.Art;
             }
-            if (costLabel != null) costLabel.text = data.Cost.ToString();
-            if (nameLabel != null) nameLabel.text = data.DisplayName;
+            if (costLabel != null)
+            {
+                costLabel.text = cost.ToString();
+                costLabel.color = cost < data.Cost ? reducedCostColor : baseCostColor;
+            }
+            if (nameLabel != null)
+            {
+                nameLabel.text = upgraded ? data.DisplayName + upgradedSuffix : data.DisplayName;
+                nameLabel.color = upgraded ? upgradedNameColor : baseNameColor;
+            }
             if (descriptionLabel != null) descriptionLabel.text = description;
+        }
+
+        void SaveColors()
+        {
+            if (colorsSaved) return;
+            colorsSaved = true;
+            if (nameLabel != null) baseNameColor = nameLabel.color;
+            if (costLabel != null) baseCostColor = costLabel.color;
         }
 
         public void SetPlayable(bool playable)

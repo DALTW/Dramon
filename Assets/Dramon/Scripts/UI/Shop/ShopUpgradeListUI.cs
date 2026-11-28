@@ -95,7 +95,7 @@ namespace Dramon
                 string price = maxed ? maxPriceText : string.Format(priceFormat, purchaser.NextPrice(upgrade));
 
                 var row = Instantiate(rowPrefab, listRoot);
-                row.Setup(upgrade, string.Format(levelFormat, level, upgrade.MaxLevel), effect, price, reason,
+                row.Setup(upgrade, string.Format(levelFormat, level, Upgrades.MaxLevelOf(upgrade)), effect, price, reason,
                     block == UpgradePurchaser.Block.None, Buy);
                 rows.Add(row);
             }

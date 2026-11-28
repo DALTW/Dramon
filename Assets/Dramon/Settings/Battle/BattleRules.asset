@@ -17,5 +17,5 @@ MonoBehaviour:
   drawPerTurn: 5
   handLimit: 10
   itemsPerTurn: 1
-  duelScalingEnabled: 1
+  duelScalingEnabled: 0
   scalingPerDuel: 0.06

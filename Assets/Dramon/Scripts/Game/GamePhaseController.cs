@@ -19,6 +19,10 @@ namespace Dramon
         Encounter,
         /// <summary>검 사냥 중 상점 창을 연 상태 (보드·둥지 클릭이 막힘)</summary>
         Shop,
+        /// <summary>깨어난 둥지의 드래곤을 모두 쓰러뜨림 — 스테이지 클리어 창이 떠 있는 동안</summary>
+        StageClear,
+        /// <summary>일반 모드 보스를 쓰러뜨림 — 엔딩 화면이 떠 있는 동안</summary>
+        Ending,
     }
 
     /// <summary>게임 오버 이유</summary>
@@ -45,6 +49,7 @@ namespace Dramon
         public event Action Restarted;
 
         public GamePhase Phase { get; private set; } = GamePhase.LemonMarking;
+        GamePhase shopReturnPhase = GamePhase.SwordHunt;
         public GameOverReason LastGameOverReason { get; private set; }
 
         void OnEnable()
@@ -94,19 +99,49 @@ namespace Dramon
             SetPhase(GamePhase.SwordHunt);
         }
 
-        /// <summary>검 사냥 중 상점 열기. (ShopWindowUI가 호출) 열었으면 true.</summary>
+        /// <summary>검 사냥 중 또는 스테이지 클리어 창에서 상점 열기. (ShopWindowUI가 호출) 열었으면 true.</summary>
         public bool EnterShop()
         {
-            if (Phase != GamePhase.SwordHunt) return false;
+            if (Phase != GamePhase.SwordHunt && Phase != GamePhase.StageClear) return false;
+            shopReturnPhase = Phase;
             SetPhase(GamePhase.Shop);
             return true;
         }
 
-        /// <summary>상점을 닫고 검 사냥으로 돌아가기. (ShopWindowUI가 호출)</summary>
+        /// <summary>상점을 닫고 열기 전 단계(검 사냥 또는 스테이지 클리어)로 돌아가기. (ShopWindowUI가 호출)</summary>
         public void LeaveShop()
         {
             if (Phase != GamePhase.Shop) return;
-            SetPhase(GamePhase.SwordHunt);
+            SetPhase(shopReturnPhase);
+        }
+
+        /// <summary>깨어난 둥지를 모두 정화함 → 스테이지 클리어 단계로. (StageProgress가 호출)</summary>
+        public bool CompleteStage()
+        {
+            if (Phase != GamePhase.SwordHunt) return false;
+            if (board != null) board.SetLocked(true);
+            SetPhase(GamePhase.StageClear);
+            return true;
+        }
+
+        /// <summary>보스를 쓰러뜨리고 엔딩으로. (StageProgress가 호출)</summary>
+        public bool EnterEnding()
+        {
+            if (Phase != GamePhase.SwordHunt) return false;
+            if (board != null) board.SetLocked(true);
+            SetPhase(GamePhase.Ending);
+            return true;
+        }
+
+        /// <summary>
+        /// 스테이지 클리어 창의 [다음 스테이지] 뒤: 숲을 새로 덮고 레몬 표시 단계로. (StageProgress가 숲 크기를 바꾼 뒤 호출)
+        /// 돈·재료·덱은 그대로 (Restarted를 부르지 않음).
+        /// </summary>
+        public void BeginNextStage()
+        {
+            if (Phase != GamePhase.StageClear) return;
+            if (board != null) board.ResetBoard();
+            SetPhase(GamePhase.LemonMarking);
         }
 
         /// <summary>게임 오버 (굴을 직접 열었거나, 굴이 아닌 칸에 레몬을 놓았거나, 결투에서 짐).</summary>

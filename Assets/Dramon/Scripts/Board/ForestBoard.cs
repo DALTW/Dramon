@@ -7,7 +7,8 @@ namespace Dramon
     /// <summary>
     /// 숲 보드의 상태와 규칙: 둥지 배치, 안전한 칸 밝히기(연쇄), 경고 표식, 둥지 상태(봉인·결투 중·정화), 승리 판정.
     /// "어떤 도구로 골랐을 때 무엇을 할지"는 TileActionResolver가 정하고, 보드는 요청받은 일만 한다.
-    /// 칸은 Scene에 미리 배치된 ForestTile을 그대로 쓰며, 실행 중에 칸을 만들거나 옮기지 않는다.
+    /// 칸은 Scene에 미리 배치된 ForestTile을 그대로 쓴다. 단, 스테이지 진행(StageProgress)이 숲 크기를 정하면
+    /// Scene 칸이 그 크기와 다를 때만 칸 Prefab으로 '스테이지 칸'을 실행 중에 만들고 Scene 칸은 잠시 숨긴다 (Scene 칸은 지우거나 옮기지 않음).
     /// </summary>
     [RequireComponent(typeof(NestPlacer))]
     public class ForestBoard : MonoBehaviour
@@ -31,6 +32,10 @@ namespace Dramon
         [SerializeField] NestPlacer nestPlacer;
         [Tooltip("이 보드의 칸 목록. Scene에서 칸을 지우거나 옮겨도 목록에 남은 칸으로 게임이 진행돼요")]
         [SerializeField] List<ForestTile> tiles = new List<ForestTile>();
+
+        [Header("스테이지 칸 (실행 중)")]
+        [Tooltip("스테이지 크기로 만든 칸을 넣을 부모. 비우면 보드 아래에 'StageTiles'를 실행 중에 만들어요")]
+        [SerializeField] Transform stageTileParent;
 
         /// <summary>첫 행동으로 둥지가 배치됐을 때</summary>
         public event Action FirstRevealed;
@@ -62,15 +67,31 @@ namespace Dramon
         };
 
         readonly Dictionary<Vector2Int, TileState> states = new();
+        readonly List<ForestTile> activeTiles = new();
+        readonly List<ForestTile> stageTiles = new();
+        int activeWidth, activeHeight;
         bool nestsPlaced;
         int nestTotal;
         int revealedSafeCount;
 
-        public int Width => width;
-        public int Height => height;
+        /// <summary>지금 쓰는 숲의 가로 칸 수 (스테이지 칸이면 스테이지 크기)</summary>
+        public int Width => activeWidth > 0 ? activeWidth : width;
+        /// <summary>지금 쓰는 숲의 세로 칸 수</summary>
+        public int Height => activeHeight > 0 ? activeHeight : height;
         public float TileSpacing => tileSpacing;
         public ForestTile TilePrefab => tilePrefab;
-        public IReadOnlyList<ForestTile> Tiles => tiles;
+        /// <summary>지금 게임에 쓰는 칸 (Scene 칸 또는 스테이지 칸)</summary>
+        public IReadOnlyList<ForestTile> Tiles => activeTiles.Count > 0 ? activeTiles : tiles;
+        /// <summary>검 사냥 대상(깨어난 둥지)으로 남은 수</summary>
+        public int SealedNestCount
+        {
+            get
+            {
+                int n = 0;
+                foreach (var s in states.Values) if (s.nest && s.lemoned && s.nestStatus == NestStatus.Hidden) n++;
+                return n;
+            }
+        }
 
         /// <summary>true면 입력을 받지 않는다 (게임 오버·클리어·결투 중).</summary>
         public bool IsLocked { get; private set; }
@@ -93,14 +114,116 @@ namespace Dramon
         void Awake()
         {
             if (nestPlacer == null) nestPlacer = GetComponent<NestPlacer>();
+            UseSceneTiles();
             BuildLookup();
             ResetBoard();
+        }
+
+        void UseSceneTiles()
+        {
+            activeTiles.Clear();
+            foreach (var t in tiles) if (t != null) activeTiles.Add(t);
+            activeWidth = activeHeight = 0;
+        }
+
+        /// <summary>
+        /// 숲을 w×h 크기로 맞춘다 (스테이지 시작 때 StageProgress가 호출). Scene 칸이 정확히 그 크기면 Scene 칸을 그대로 쓰고,
+        /// 아니면 칸 Prefab으로 스테이지 칸을 새로 만들고 Scene 칸은 숨긴다. 끝나면 보드를 처음 상태로 되돌린다.
+        /// </summary>
+        public void BuildStageTiles(int w, int h)
+        {
+            w = Mathf.Max(2, w);
+            h = Mathf.Max(2, h);
+            ClearStageTiles();
+            if (SceneTilesMatch(w, h))
+            {
+                SetSceneTilesVisible(true);
+                UseSceneTiles();
+            }
+            else if (tilePrefab == null)
+            {
+                Debug.LogWarning("[ForestBoard] 'Tile Prefab'이 비어 있어서 스테이지 크기로 칸을 만들 수 없어요. Scene 칸을 그대로 써요.", this);
+                SetSceneTilesVisible(true);
+                UseSceneTiles();
+            }
+            else
+            {
+                SetSceneTilesVisible(false);
+                var parent = StageParent();
+                activeTiles.Clear();
+                for (int y = h - 1; y >= 0; y--)
+                for (int x = 0; x < w; x++)
+                {
+                    var tile = Instantiate(tilePrefab, parent);
+                    tile.name = $"StageTile_{x}_{y}";
+                    tile.transform.localPosition = GetTileLocalPosition(x, y, w, h);
+                    tile.AssignRuntime(this, new Vector2Int(x, y));
+                    stageTiles.Add(tile);
+                    activeTiles.Add(tile);
+                }
+                activeWidth = w;
+                activeHeight = h;
+            }
+            BuildLookup();
+            ResetBoard();
+        }
+
+        bool SceneTilesMatch(int w, int h)
+        {
+            int count = 0;
+            var seen = new HashSet<Vector2Int>();
+            foreach (var t in tiles)
+            {
+                if (t == null) continue;
+                var p = t.GridPosition;
+                if (p.x < 0 || p.y < 0 || p.x >= w || p.y >= h || !seen.Add(p)) return false;
+                count++;
+            }
+            return count == w * h;
+        }
+
+        void SetSceneTilesVisible(bool visible)
+        {
+            foreach (var t in tiles) if (t != null && t.gameObject.activeSelf != visible) t.gameObject.SetActive(visible);
+        }
+
+        void ClearStageTiles()
+        {
+            foreach (var t in stageTiles) if (t != null) Destroy(t.gameObject);
+            stageTiles.Clear();
+        }
+
+        Transform StageParent()
+        {
+            if (stageTileParent != null) return stageTileParent;
+            var existing = transform.Find("StageTiles");
+            if (existing != null) return existing;
+            var go = new GameObject("StageTiles");
+            go.transform.SetParent(transform, false);
+            return go.transform;
+        }
+
+        /// <summary>지금 숲의 월드 범위 (칸 가장자리까지)</summary>
+        public Bounds WorldBounds
+        {
+            get
+            {
+                bool any = false;
+                var b = new Bounds();
+                foreach (var t in activeTiles)
+                {
+                    if (t == null) continue;
+                    var c = new Bounds(t.transform.position, Vector3.one * tileSpacing * t.transform.lossyScale.x);
+                    if (!any) { b = c; any = true; } else b.Encapsulate(c);
+                }
+                return any ? b : new Bounds(transform.position, Vector3.zero);
+            }
         }
 
         void BuildLookup()
         {
             states.Clear();
-            foreach (var tile in tiles)
+            foreach (var tile in activeTiles)
             {
                 if (tile == null) continue;
                 if (states.ContainsKey(tile.GridPosition))
@@ -243,11 +366,29 @@ namespace Dramon
             return LemonPlacement.OnSafeTile;
         }
 
-        /// <summary>레몬으로 막아 둔 굴을 모두 '봉인된 굴'(Nest_Revealed + 레몬) 모습으로 바꾼다.</summary>
+        /// <summary>레몬으로 막아 둔 굴(아직 결투하지 않은 깨어난 둥지)을 모두 '봉인된 굴'(Nest_Revealed + 레몬) 모습으로 바꾼다.</summary>
         public void ShowLemonedNestsAsSealed()
         {
             foreach (var s in states.Values)
-                if (s.nest && s.lemoned) s.view.ShowSealedNest();
+                if (s.nest && s.lemoned && s.nestStatus == NestStatus.Hidden) s.view.ShowSealedNest();
+        }
+
+        /// <summary>검 사냥 대상인 봉인된 굴 좌표 목록 (깨어난 둥지를 고를 때 씀)</summary>
+        public List<Vector2Int> GetSealedNests()
+        {
+            var list = new List<Vector2Int>();
+            foreach (var pair in states)
+                if (pair.Value.nest && pair.Value.lemoned && pair.Value.nestStatus == NestStatus.Hidden) list.Add(pair.Key);
+            return list;
+        }
+
+        /// <summary>깨어나지 않은 둥지: 레몬 봉인으로 끝 (결투 없음, 정화된 둥지 모습)</summary>
+        public void SetNestDormant(Vector2Int pos)
+        {
+            if (!IsSealedNest(pos)) return;
+            var s = states[pos];
+            s.nestStatus = NestStatus.Sealed;
+            s.view.ShowNestPurified();
         }
 
         public void ToggleMarker(Vector2Int pos)
@@ -342,7 +483,10 @@ namespace Dramon
         }
 
         /// <summary>'칸 다시 만들기' 때 칸이 놓일 로컬 위치 (보드 중심 기준).</summary>
-        public Vector3 GetDefaultTileLocalPosition(int x, int y) =>
-            new Vector3((x - (width - 1) * 0.5f) * tileSpacing, (y - (height - 1) * 0.5f) * tileSpacing, 0f);
+        public Vector3 GetDefaultTileLocalPosition(int x, int y) => GetTileLocalPosition(x, y, width, height);
+
+        /// <summary>w×h 숲에서 칸이 놓일 로컬 위치 (보드 중심 기준)</summary>
+        public Vector3 GetTileLocalPosition(int x, int y, int w, int h) =>
+            new Vector3((x - (w - 1) * 0.5f) * tileSpacing, (y - (h - 1) * 0.5f) * tileSpacing, 0f);
     }
 }

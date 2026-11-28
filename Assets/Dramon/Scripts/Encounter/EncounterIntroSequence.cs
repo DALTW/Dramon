@@ -118,12 +118,19 @@ namespace Dramon
         }
 
         /// <summary>등장 연출 시작. 끝나면 onFinished 호출 (결투 시작).</summary>
-        public void PlayIntro(DragonSpecies species, Vector3 nestWorldPosition, Action onFinished)
+        public void PlayIntro(DragonSpecies species, Vector3 nestWorldPosition, Action onFinished) =>
+            PlayIntro(species, nestWorldPosition, onFinished, null);
+
+        /// <summary>등장 연출 시작 (displayName = 메시지에 쓸 이름, 비우면 드래곤 이름 / 보스면 "숲의 주인 – …")</summary>
+        public void PlayIntro(DragonSpecies species, Vector3 nestWorldPosition, Action onFinished, string displayName)
         {
             StopAll();
             IsPlaying = true;
+            introName = displayName;
             StartCoroutine(Intro(species, nestWorldPosition, onFinished));
         }
+
+        string introName;
 
         /// <summary>결투 화면을 페이드 아웃하고 숲으로 돌아간다. 끝나면 onFinished 호출.</summary>
         public void PlayOutro(Action onFinished)
@@ -194,7 +201,7 @@ namespace Dramon
             // ⑥ 메시지
             if (showMessage && message != null && species != null)
             {
-                yield return message.Show(string.Format(messageFormat, species.DisplayName));
+                yield return message.Show(string.Format(messageFormat, string.IsNullOrEmpty(introName) ? species.DisplayName : introName));
                 if (afterMessageDelay > 0f) yield return new WaitForSeconds(afterMessageDelay);
             }
 

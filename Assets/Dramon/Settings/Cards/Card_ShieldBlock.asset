@@ -26,5 +26,13 @@ MonoBehaviour:
   exhaust: 0
   heroAction: 2
   heroActionRepeat: 1
+  upgradable: 1
+  upgradePrice: 110
+  upgradedCost: -1
+  upgradedEffects:
+  - type: 2
+    value: 8
+    count: 1
   shopPrice: 0
   maxOwned: 3
+  tempAssetNote: 

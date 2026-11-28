@@ -15,6 +15,12 @@ namespace Dramon
         [SerializeField] PlayerTurn playerTurn;
         [Tooltip("에너지가 바뀌면 쓸 수 있는 카드를 다시 계산해요")]
         [SerializeField] PlayerBattleStats playerStats;
+        [Tooltip("강화·상태가 반영된 설명과 코스트")]
+        [SerializeField] CardStatCalculator calculator;
+        [Tooltip("공포·젖음이 바뀌면 설명 숫자를 다시 써요")]
+        [SerializeField] StatusEffects playerStatus;
+        [Tooltip("카드 강화가 바뀌면 다시 써요")]
+        [SerializeField] CardUpgradeState cardUpgrades;
         [Tooltip("카드 한 장 Prefab")]
         [SerializeField] CardView cardPrefab;
         [Tooltip("카드가 놓일 곳 (이 오브젝트의 아래 가운데 기준)")]
@@ -59,6 +65,8 @@ namespace Dramon
         {
             if (hand != null) hand.Changed += Rebuild;
             if (playerStats != null) playerStats.Changed += RefreshPlayable;
+            if (playerStatus != null) playerStatus.Changed += RefreshTexts;
+            if (cardUpgrades != null) cardUpgrades.Changed += RefreshTexts;
             Rebuild();
         }
 
@@ -66,6 +74,8 @@ namespace Dramon
         {
             if (hand != null) hand.Changed -= Rebuild;
             if (playerStats != null) playerStats.Changed -= RefreshPlayable;
+            if (playerStatus != null) playerStatus.Changed -= RefreshTexts;
+            if (cardUpgrades != null) cardUpgrades.Changed -= RefreshTexts;
             hovered = null;
             dragging = null;
         }
@@ -92,7 +102,7 @@ namespace Dramon
                 if (v == null)
                 {
                     v = Instantiate(cardPrefab, container);
-                    v.Setup(c, CardText.Format(c.Data), this);
+                    v.Setup(c, Describe(c.Data), this, CostOf(c), IsUpgraded(c.Data));
                     var rt = v.Rect;
                     rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0f);
                     rt.pivot = new Vector2(0.5f, 0f);
@@ -104,6 +114,18 @@ namespace Dramon
             views.Clear();
             views.AddRange(ordered);
             for (int i = 0; i < views.Count; i++) views[i].transform.SetSiblingIndex(i);
+            RefreshPlayable();
+        }
+
+        string Describe(CardData data) => calculator != null ? calculator.Describe(data) : CardText.Format(data);
+        int CostOf(CardInstance c) => playerTurn != null ? playerTurn.CostOf(c) : c.Data.Cost;
+        bool IsUpgraded(CardData data) => calculator != null && calculator.IsUpgraded(data);
+
+        /// <summary>설명·코스트를 다시 쓴다 (공포·젖음·강화가 바뀔 때)</summary>
+        void RefreshTexts()
+        {
+            foreach (var v in views)
+                if (v != null && v.Card != null) v.Show(v.Card.Data, Describe(v.Card.Data), CostOf(v.Card), IsUpgraded(v.Card.Data));
             RefreshPlayable();
         }
 

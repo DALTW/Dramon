@@ -47,6 +47,7 @@ namespace Dramon
         }
 
         /// <summary>level 단계일 때의 능력 보너스</summary>
-        public int BonusAt(int level) => amountPerLevel * Mathf.Clamp(level, 0, maxLevel);
+        /// (최대 단계는 PlayerUpgrades가 모드별 상한으로 막아요. 여기서는 단계 × 양만 계산)
+        public int BonusAt(int level) => amountPerLevel * Mathf.Max(0, level);
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Dramon
 {
-    /// <summary>내 턴: 시작(방어 초기화·에너지 채우기·뽑기), 카드 사용, 끝(남은 손패 버리기)</summary>
+    /// <summary>내 턴: 시작(방어 초기화·에너지 채우기·지속 효과·뽑기), 카드 사용, 끝(남은 손패 버리기)</summary>
     public class PlayerTurn : MonoBehaviour
     {
         [Header("연결")]
@@ -13,31 +13,52 @@ namespace Dramon
         [SerializeField] ExhaustPile exhaustPile;
         [SerializeField] Hand hand;
         [SerializeField] CardEffectResolver resolver;
+        [Tooltip("강화가 반영된 코스트")]
+        [SerializeField] CardStatCalculator calculator;
+        [Tooltip("감전·빙결·출혈 처리")]
+        [SerializeField] StatusEffectProcessor statusProcessor;
+        [Tooltip("드래곤 상태 효과 (지속 효과로 산미를 줄 때)")]
+        [SerializeField] StatusEffects dragonStatus;
+        [Tooltip("카드 동작 모션")]
+        [SerializeField] BattleMotionLink motions;
+        [Tooltip("떠오르는 숫자")]
+        [SerializeField] FloatingNumberUI floating;
         [Tooltip("진행 문구")]
         [SerializeField] BattleLogMessage log;
 
-        [Header("문구")]
-        [Tooltip("{0} = 카드 이름, {1} = 피해")]
-        [SerializeField] string damageFormat = "{0}! 드래곤에게 {1} 피해";
-        [Tooltip("{0} = 카드 이름, {1} = 방어")]
-        [SerializeField] string blockFormat = "{0}! 방어 {1}";
-        [Tooltip("{0} = 카드 이름")]
-        [SerializeField] string usedFormat = "{0}!";
+        int sourAura;
 
         public bool IsActive { get; private set; }
 
         /// <summary>카드를 냈을 때</summary>
         public event Action<CardInstance, CardEffectResolver.Result> CardPlayed;
 
-        /// <summary>내 턴 시작</summary>
-        public void BeginTurn(int energy, int draw)
+        /// <summary>결투 시작: 지속 효과 초기화</summary>
+        public void ResetForDuel()
         {
+            sourAura = 0;
+            IsActive = false;
+        }
+
+        /// <summary>지속 효과 (상큼한 기운): 내 턴 시작마다 드래곤에게 산미</summary>
+        public void AddSourAura(int amount) => sourAura += Mathf.Max(0, amount);
+
+        /// <summary>내 턴 시작</summary>
+        public void BeginTurn(int maxEnergy, int draw)
+        {
+            var (energyPenalty, drawPenalty) = statusProcessor != null ? statusProcessor.PlayerTurnStartPenalty() : (0, 0);
             if (stats != null)
             {
                 stats.ClearBlock();
-                stats.RefillEnergy(energy);
+                stats.RefillEnergy(maxEnergy);
+                if (energyPenalty > 0) stats.AddEnergy(-energyPenalty);
             }
-            Draw(draw);
+            if (sourAura > 0 && dragonStatus != null)
+            {
+                dragonStatus.Add(StatusType.Sour, sourAura);
+                if (floating != null) floating.OnDragon($"산미 +{sourAura}", FloatingNumberUI.Kind.Status);
+            }
+            Draw(Mathf.Max(0, draw - drawPenalty));
             IsActive = true;
         }
 
@@ -56,19 +77,24 @@ namespace Dramon
             return drawn;
         }
 
+        public int CostOf(CardInstance card) =>
+            card == null || card.Data == null ? 0 : calculator != null ? calculator.Cost(card.Data) : card.Data.Cost;
+
         public bool CanPlay(CardInstance card) =>
-            IsActive && card != null && card.Data != null && stats != null && stats.Energy >= card.Data.Cost && Contains(card);
+            IsActive && card != null && card.Data != null && stats != null && stats.Energy >= CostOf(card) && Contains(card);
 
         /// <summary>카드를 낸다. 성공하면 true</summary>
         public bool TryPlay(CardInstance card)
         {
             if (!CanPlay(card)) return false;
-            stats.TrySpendEnergy(card.Data.Cost);
+            stats.TrySpendEnergy(CostOf(card));
             hand.Remove(card);
+            if (motions != null) motions.PlayCard(card.Data);
             var result = resolver != null ? resolver.Apply(card.Data) : default;
             if (card.Data.Exhaust && exhaustPile != null) exhaustPile.Add(card);
             else discardPile.Add(card);
-            Log(card.Data, result);
+            if (log != null) log.Show(CardEffectResolver.Describe(card.Data, result));
+            if (statusProcessor != null) statusProcessor.OnCardPlayed(); // 출혈
             CardPlayed?.Invoke(card, result);
             return true;
         }
@@ -87,14 +113,6 @@ namespace Dramon
         {
             foreach (var c in hand.Cards) if (c == card) return true;
             return false;
-        }
-
-        void Log(CardData card, CardEffectResolver.Result r)
-        {
-            if (log == null) return;
-            if (r.hits > 0) log.Show(string.Format(damageFormat, card.DisplayName, r.damage));
-            else if (r.block > 0) log.Show(string.Format(blockFormat, card.DisplayName, r.block));
-            else log.Show(string.Format(usedFormat, card.DisplayName));
         }
     }
 }

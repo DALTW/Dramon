@@ -21,6 +21,10 @@ namespace Dramon
         [Tooltip("비활성일 때 투명도 (0 = 안 보임, 1 = 그대로)")]
         [SerializeField, Range(0f, 1f)] float disabledAlpha = 0.45f;
 
+        [Header("v3")]
+        [Tooltip("켜면 스테이지 클리어 창이 떠 있을 때도 상점을 열 수 있어요")]
+        [SerializeField] bool openOnStageClear = true;
+
         void OnEnable()
         {
             if (phaseController != null) phaseController.PhaseChanged += Refresh;
@@ -38,7 +42,7 @@ namespace Dramon
 
         void Refresh(GamePhase phase)
         {
-            bool active = phase == GamePhase.SwordHunt;
+            bool active = phase == GamePhase.SwordHunt || (openOnStageClear && phase == GamePhase.StageClear);
             if (button != null) button.interactable = active;
             if (canvasGroup != null) canvasGroup.alpha = active ? 1f : disabledAlpha;
         }

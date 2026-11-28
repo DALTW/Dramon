@@ -29,6 +29,21 @@ namespace Dramon.EditorTools
                 if (GUILayout.Button("테스트 카드 손패에 넣기")) c.TestAddCardToHand();
                 if (GUILayout.Button("임시 승패 버튼 보이기·숨기기")) c.TestToggleTempButtons();
             }
+            EditorGUILayout.LabelField("상태 효과 주기", EditorStyles.miniBoldLabel);
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                if (GUILayout.Button("화상 3")) c.TestAddPlayerStatus(StatusType.Burn, 3);
+                if (GUILayout.Button("중독 3")) c.TestAddPlayerStatus(StatusType.Poison, 3);
+                if (GUILayout.Button("감전")) c.TestAddPlayerStatus(StatusType.Shock, 1);
+                if (GUILayout.Button("빙결")) c.TestAddPlayerStatus(StatusType.Frozen, 1);
+            }
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                if (GUILayout.Button("젖음")) c.TestAddPlayerStatus(StatusType.Drenched, 1);
+                if (GUILayout.Button("공포 2")) c.TestAddPlayerStatus(StatusType.Fear, 2);
+                if (GUILayout.Button("출혈 3")) c.TestAddPlayerStatus(StatusType.Bleed, 3);
+                if (GUILayout.Button("드래곤 산미 5")) c.TestAddDragonSour(5);
+            }
         }
     }
 }

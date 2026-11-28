@@ -48,6 +48,7 @@ namespace Dramon
         [InspectorName("산미 비례 피해 (산미 × 수치)")] SourScaledDamage,
         [InspectorName("산미 있을 때 추가 피해")] BonusDamageIfSour,
         [InspectorName("지속: 내 턴마다 산미")] SourEachTurn,
+        [InspectorName("다음 드래곤 공격 1번 무효")] NegateNextAttack,
     }
 
     /// <summary>카드 효과 하나 (종류 + 수치 + 횟수)</summary>

@@ -16,6 +16,10 @@ namespace Dramon
         public int Energy { get; private set; }
         public int MaxEnergy { get; private set; }
         public bool IsDead => Health <= 0;
+        /// <summary>이번 드래곤 턴에 공격받을 때마다 반사할 피해 (반격 자세)</summary>
+        public int Reflect { get; private set; }
+        /// <summary>다음 드래곤 공격을 무효로 할 횟수 (연막 구르기)</summary>
+        public int NegateCharges { get; private set; }
 
         /// <summary>체력·방어·에너지가 바뀔 때</summary>
         public event Action Changed;
@@ -36,7 +40,39 @@ namespace Dramon
             Block = 0;
             Energy = 0;
             MaxEnergy = 0;
+            Reflect = 0;
+            NegateCharges = 0;
             Changed?.Invoke();
+        }
+
+        public void AddReflect(int amount)
+        {
+            if (amount <= 0) return;
+            Reflect += amount;
+            Changed?.Invoke();
+        }
+
+        public void ClearReflect()
+        {
+            if (Reflect == 0) return;
+            Reflect = 0;
+            Changed?.Invoke();
+        }
+
+        public void AddNegate(int count = 1)
+        {
+            if (count <= 0) return;
+            NegateCharges += count;
+            Changed?.Invoke();
+        }
+
+        /// <summary>무효 횟수가 있으면 1 쓰고 true</summary>
+        public bool TryConsumeNegate()
+        {
+            if (NegateCharges <= 0) return false;
+            NegateCharges--;
+            Changed?.Invoke();
+            return true;
         }
 
         public void ClearBlock()

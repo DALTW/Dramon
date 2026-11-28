@@ -42,6 +42,23 @@ namespace Dramon
         public bool PlayAttackMotion => playAttackMotion;
         public bool IsAttack => type == DragonActionType.Claw || type == DragonActionType.MultiHit || type == DragonActionType.Breath;
 
+        /// <summary>실행 중에만 쓰는 행동 만들기 (보스 필살 숨결). 에셋으로 저장하지 않아요</summary>
+        public static DragonActionData CreateRuntime(string name, DragonActionType type, int value, int hits, StatusType status, int statusAmount, float blockIgnore, bool attackMotion = true)
+        {
+            var a = CreateInstance<DragonActionData>();
+            a.name = "Runtime_" + name;
+            a.hideFlags = HideFlags.DontSave;
+            a.displayName = name;
+            a.type = type;
+            a.value = value;
+            a.hits = Mathf.Max(1, hits);
+            a.status = status;
+            a.statusAmount = statusAmount;
+            a.blockIgnoreRatio = blockIgnore;
+            a.playAttackMotion = attackMotion;
+            return a;
+        }
+
         public string DisplayName
         {
             get

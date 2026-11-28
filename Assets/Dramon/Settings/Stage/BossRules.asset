@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51875f33d0f0b804aac2108dddcee84a, type: 3}
+  m_Name: BossRules
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.BossRules
+  healthMultiplier: 1.8
+  attackMultiplier: 1.2
+  enrageHealthRatio: 0.5
+  finisherName: "\uD544\uC0B4 \uC228\uACB0"
+  finisherDamageMultiplier: 1.5
+  finisherStatusMultiplier: 2
+  enrageMessage: "{0}\uC774(\uAC00) \uBD84\uB178\uD588\uB2E4!"
+  sizeMultiplier: 1.25
+  nameFormat: "\uC232\uC758 \uC8FC\uC778 \u2013 {0}"
+  hintFromStage: 3

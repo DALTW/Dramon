@@ -55,6 +55,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3f013f3d260afe241841b30935aa556f, type: 2}
   - {fileID: 11400000, guid: 9db2870d247e99944a94d2bbd1feccc6, type: 2}
   - {fileID: 11400000, guid: ad50adbc9e61595499dc538172957b1e, type: 2}
+  bossHint: "\uC232 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uBD88\uAF43 \uB0C4\uC0C8\uAC00 \uB09C\uB2E4\u2026"
   attackPower: 0
   materialDrops:
   - material: {fileID: 11400000, guid: d90f890eb842ccf4fbe7c65c5dce58c1, type: 2}

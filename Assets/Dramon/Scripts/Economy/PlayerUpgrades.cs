@@ -34,6 +34,7 @@ namespace Dramon
         public event Action Changed;
 
         readonly Dictionary<ShopUpgradeData, int> levels = new Dictionary<ShopUpgradeData, int>();
+        readonly Dictionary<UpgradeStat, int> statCaps = new Dictionary<UpgradeStat, int>();
 
         void Awake() => currentLevels.Clear();
 
@@ -50,7 +51,21 @@ namespace Dramon
         public int GetLevel(ShopUpgradeData upgrade) =>
             upgrade != null && levels.TryGetValue(upgrade, out int n) ? n : 0;
 
-        public bool IsMaxed(ShopUpgradeData upgrade) => upgrade != null && GetLevel(upgrade) >= upgrade.MaxLevel;
+        public bool IsMaxed(ShopUpgradeData upgrade) => upgrade != null && GetLevel(upgrade) >= MaxLevelOf(upgrade);
+
+        /// <summary>이 강화의 최대 단계: 모드가 정한 상한이 있으면 그 값, 없으면 강화 데이터의 Max Level</summary>
+        public int MaxLevelOf(ShopUpgradeData upgrade)
+        {
+            if (upgrade == null) return 0;
+            return statCaps.TryGetValue(upgrade.Stat, out int cap) && cap > 0 ? cap : upgrade.MaxLevel;
+        }
+
+        /// <summary>모드별 상한 (예: 일반 모드 체력 증가 5단계, 무한 모드 50단계). 0이면 강화 데이터 값</summary>
+        public void SetStatLevelCap(UpgradeStat stat, int cap)
+        {
+            statCaps[stat] = Mathf.Max(0, cap);
+            Changed?.Invoke();
+        }
 
         /// <summary>한 단계 올린다 (돈 계산은 UpgradePurchaser가 함). 최대 단계면 false.</summary>
         public bool LevelUp(ShopUpgradeData upgrade)

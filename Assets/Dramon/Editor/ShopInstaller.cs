@@ -596,7 +596,7 @@ namespace Dramon.EditorTools
             return ui;
         }
 
-        static GameObject NewPage(string name, Transform parent)
+        internal static GameObject NewPage(string name, Transform parent)
         {
             var page = NewUI(name, parent);
             Stretch((RectTransform)page.transform);
@@ -604,7 +604,7 @@ namespace Dramon.EditorTools
         }
 
         /// <summary>세로 스크롤 목록을 만들고 줄이 들어갈 Content를 돌려준다. bottomSpace = 아래쪽에 비워 둘 높이(버튼 자리).</summary>
-        static RectTransform NewScroll(Transform page, float bottomSpace)
+        internal static RectTransform NewScroll(Transform page, float bottomSpace)
         {
             var scroll = NewUI("Scroll", page);
             var rt = (RectTransform)scroll.transform;

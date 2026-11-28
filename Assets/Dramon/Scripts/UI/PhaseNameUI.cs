@@ -21,6 +21,9 @@ namespace Dramon
         [Tooltip("상점 창이 열려 있는 동안 보여줄 이름")]
         [SerializeField] string shopName = "상점";
         [SerializeField] string gameOverName = "게임 오버";
+        [Tooltip("스테이지 클리어 창이 떠 있는 동안 보여줄 이름")]
+        [SerializeField] string stageClearName = "스테이지 클리어";
+        [SerializeField] string endingName = "엔딩";
 
         void OnEnable()
         {
@@ -48,6 +51,8 @@ namespace Dramon
                 GamePhase.Duel => duelName,
                 GamePhase.Encounter => duelName,
                 GamePhase.Shop => shopName,
+                GamePhase.StageClear => stageClearName,
+                GamePhase.Ending => endingName,
                 _ => gameOverName,
             };
         }

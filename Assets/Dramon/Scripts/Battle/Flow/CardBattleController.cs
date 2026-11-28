@@ -30,6 +30,20 @@ namespace Dramon
         [SerializeField] PlayerBattleStats playerStats;
         [SerializeField] DragonBattleStats dragonStats;
 
+        [Header("연결 — 상태·배율 (v3)")]
+        [Tooltip("드래곤 체력·공격 배율 (스테이지·결투 순서·보스)")]
+        [SerializeField] DragonScaling scaling;
+        [Tooltip("스테이지별 최대 에너지·뽑기 장수. 비우면 BattleRules 값")]
+        [SerializeField] StageRules stageRules;
+        [Tooltip("화상·중독 등 내 턴 끝 처리")]
+        [SerializeField] StatusEffectProcessor statusProcessor;
+        [SerializeField] StatusEffects playerStatus;
+        [SerializeField] StatusEffects dragonStatus;
+        [Tooltip("체력 증가 강화를 시작 체력에 더해요")]
+        [SerializeField] PlayerUpgrades playerUpgrades;
+        [Tooltip("검사 저체력 표시 등에 씀")]
+        [SerializeField] HeroBattlerView hero;
+
         [Header("연결 — 화면")]
         [Tooltip("카드 결투 화면 묶음 (손패·에너지·더미·턴 종료, 평소에는 꺼짐)")]
         [SerializeField] GameObject battleRoot;
@@ -44,6 +58,12 @@ namespace Dramon
         [Tooltip("내 턴이 시작되기 전 잠깐 기다리는 시간(초)")]
         [Min(0f)]
         [SerializeField] float turnStartDelay = 0.2f;
+        [Tooltip("내 턴 끝에 화상·중독 문구를 보여 주는 시간(초)")]
+        [Min(0f)]
+        [SerializeField] float statusTickDelay = 0.6f;
+        [Tooltip("체력이 이 비율 아래면 검사가 지친 모습 (0이면 끔)")]
+        [Range(0f, 1f)]
+        [SerializeField] float lowHealthRatio = 0.3f;
         [Tooltip("드래곤이 쓰러진 뒤 승리 처리까지(초)")]
         [Min(0f)]
         [SerializeField] float endDelay = 0.6f;
@@ -64,6 +84,10 @@ namespace Dramon
         public bool IsRunning => running;
         public bool IsPlayerTurn => running && playerTurn != null && playerTurn.IsActive;
         public int Turn { get; private set; }
+        /// <summary>이번 결투 최대 에너지</summary>
+        public int MaxEnergy => stageRules != null && scaling != null ? stageRules.Get(scaling.Stage).maxEnergy : rules != null ? rules.EnergyPerTurn : 3;
+        /// <summary>이번 결투 턴마다 뽑는 장수</summary>
+        public int DrawPerTurn => stageRules != null && scaling != null ? stageRules.Get(scaling.Stage).draw : rules != null ? rules.DrawPerTurn : 5;
 
         /// <summary>결투 상태가 바뀔 때 (시작·끝·턴 변경)</summary>
         public event Action StateChanged;
@@ -73,6 +97,7 @@ namespace Dramon
             if (phaseController != null) phaseController.PhaseChanged += HandlePhaseChanged;
             if (playerStats != null) playerStats.Died += HandlePlayerDied;
             if (dragonStats != null) dragonStats.Died += HandleDragonDied;
+            if (playerStats != null) playerStats.Changed += HandlePlayerChanged;
             HideUI();
         }
 
@@ -81,6 +106,7 @@ namespace Dramon
             if (phaseController != null) phaseController.PhaseChanged -= HandlePhaseChanged;
             if (playerStats != null) playerStats.Died -= HandlePlayerDied;
             if (dragonStats != null) dragonStats.Died -= HandleDragonDied;
+            if (playerStats != null) playerStats.Changed -= HandlePlayerChanged;
         }
 
         /// <summary>카드 결투 시작 (등장 연출이 끝난 뒤 DuelSession이 호출)</summary>
@@ -90,8 +116,12 @@ namespace Dramon
             running = true;
             Turn = 0;
 
-            playerStats.ResetForDuel(rules != null ? rules.StartHealth : 50);
-            dragonStats.ResetForDuel(species != null ? species.MaxHealth : 1);
+            int bonusHealth = playerUpgrades != null ? playerUpgrades.GetBonus(UpgradeStat.MaxHealth) : 0;
+            playerStats.ResetForDuel((rules != null ? rules.StartHealth : 50) + bonusHealth);
+            dragonStats.ResetForDuel(scaling != null ? scaling.MaxHealth(species) : species != null ? species.MaxHealth : 1);
+            if (playerStatus != null) playerStatus.ClearAll();
+            if (dragonStatus != null) dragonStatus.ClearAll();
+            playerTurn.ResetForDuel();
             intent.ResetFor(species);
 
             drawPile.Clear();
@@ -122,13 +152,23 @@ namespace Dramon
                 if (turnStartDelay > 0f) yield return new WaitForSeconds(turnStartDelay);
                 ShowIntent();
                 endTurnRequested = false;
-                playerTurn.BeginTurn(rules != null ? rules.EnergyPerTurn : 3, rules != null ? rules.DrawPerTurn : 5);
+                playerTurn.BeginTurn(MaxEnergy, DrawPerTurn);
                 StateChanged?.Invoke();
                 while (running && !endTurnRequested) yield return null;
                 if (!running) yield break;
 
                 playerTurn.EndTurn();
                 StateChanged?.Invoke();
+                if (statusProcessor != null)
+                {
+                    var lines = statusProcessor.OnPlayerTurnEnd(); // 화상·중독
+                    if (lines.Count > 0)
+                    {
+                        if (log != null) log.Show(string.Join(", ", lines));
+                        if (statusTickDelay > 0f) yield return new WaitForSeconds(statusTickDelay);
+                    }
+                    if (!running) yield break;
+                }
                 yield return dragonTurn.Run();
             }
         }
@@ -138,9 +178,15 @@ namespace Dramon
             var action = intent.Current;
             var species = intent.Species;
             if (log == null || action == null || species == null) return;
-            int value = action.IsAttack ? dragonActions.DamageOf(action) : action.Value;
+            int value = dragonActions.DamageOf(action);
             string amount = action.Type == DragonActionType.MultiHit ? $"{value}×{action.Hits}" : value.ToString();
             log.Show(string.Format(intentFormat, species.DisplayName, action.DisplayName, amount));
+        }
+
+        void HandlePlayerChanged()
+        {
+            if (hero == null || playerStats == null || !running) return;
+            hero.SetLowHealth(lowHealthRatio > 0f && playerStats.Health < playerStats.MaxHealth * lowHealthRatio);
         }
 
         void HandleDragonDied()
@@ -222,6 +268,18 @@ namespace Dramon
         {
             if (!Application.isEditor || !running || testCard == null || hand.IsFull) return;
             hand.Add(new CardInstance(testCard));
+        }
+
+        /// <summary>테스트: 플레이어에게 상태 효과 주기</summary>
+        public void TestAddPlayerStatus(StatusType type, int amount)
+        {
+            if (Application.isEditor && running && playerStatus != null) playerStatus.Add(type, amount);
+        }
+
+        /// <summary>테스트: 드래곤에게 산미 주기</summary>
+        public void TestAddDragonSour(int amount)
+        {
+            if (Application.isEditor && running && dragonStatus != null) dragonStatus.Add(StatusType.Sour, amount);
         }
 
         public void TestToggleTempButtons()

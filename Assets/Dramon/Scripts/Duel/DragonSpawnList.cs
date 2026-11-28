@@ -16,11 +16,14 @@ namespace Dramon
         public IReadOnlyList<DragonSpecies> Species => species;
 
         /// <summary>목록에서 균등하게 무작위로 한 마리. 비어 있으면 null.</summary>
-        public DragonSpecies PickRandom(DragonSpecies previous = null)
+        public DragonSpecies PickRandom(DragonSpecies previous = null) => PickRandom(previous, null);
+
+        /// <summary>excluded(이번 판 보스 등)를 뺀 목록에서 무작위로 한 마리. 이 에셋의 목록은 바꾸지 않는다.</summary>
+        public DragonSpecies PickRandom(DragonSpecies previous, ICollection<DragonSpecies> excluded)
         {
             var pool = new List<DragonSpecies>();
             foreach (var s in species)
-                if (s != null) pool.Add(s);
+                if (s != null && (excluded == null || !excluded.Contains(s))) pool.Add(s);
             if (pool.Count == 0) return null;
             if (avoidSameTwiceInARow && previous != null && pool.Count > 1)
                 pool.RemoveAll(x => x == previous);

@@ -23,9 +23,9 @@ namespace Dramon
         [Min(0)]
         [SerializeField] int itemsPerTurn = 1;
 
-        [Header("결투 순서 강화 (3단계에서 사용)")]
-        [Tooltip("켜면 이번 판에서 결투를 거듭할수록 드래곤 체력·할퀴기·숨결 피해가 늘어나요")]
-        [SerializeField] bool duelScalingEnabled = true;
+        [Header("예전 결투 순서 강화 (v3에서는 꺼 둠)")]
+        [Tooltip("켜면 v3 스테이지 배율에 더해, 결투를 거듭할수록 드래곤 체력·공격 피해가 이 비율만큼 더 늘어나요. v3 규칙은 StageRules에 있어요")]
+        [SerializeField] bool duelScalingEnabled = false;
         [Tooltip("결투 한 번마다 늘어나는 비율 (0.06 = 6%)")]
         [Min(0f)]
         [SerializeField] float scalingPerDuel = 0.06f;

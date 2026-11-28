@@ -32,6 +32,13 @@ namespace Dramon
         public Vector2Int GridPosition => gridPosition;
         public ForestBoard Board => board;
 
+        /// <summary>스테이지 크기로 실행 중에 만든 칸: 보드와 좌표를 정해 준다 (ForestBoard가 호출)</summary>
+        public void AssignRuntime(ForestBoard owner, Vector2Int position)
+        {
+            board = owner;
+            gridPosition = position;
+        }
+
         public void ShowHidden()
         {
             showingHiddenForest = true;

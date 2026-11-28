@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f021348dd969ad6488764d70c8f77161, type: 3}
+  m_Name: Mode_Normal
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.GameModeData
+  displayName: "\uC77C\uBC18 \uBAA8\uB4DC"
+  description: "5 \uC2A4\uD14C\uC774\uC9C0\uB97C \uC9C0\uB098 \uC232\uC758 \uC8FC\uC778\uC744 \uC4F0\uB7EC\uB728\uB824\uC694"
+  lockedMessage: 
+  stageRules: {fileID: 11400000, guid: 0869d172d180656438ca9dd4aae0968e, type: 2}
+  lastStage: 5
+  useBoss: 1
+  bossRules: {fileID: 11400000, guid: b546dd60c33fd7941a61cd239284940a, type: 2}
+  maxHealthUpgradeLevel: 5
+  endScreen: 0
+  unlock: 0

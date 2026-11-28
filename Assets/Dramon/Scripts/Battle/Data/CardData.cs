@@ -39,6 +39,18 @@ namespace Dramon
         [Min(1)]
         [SerializeField] int heroActionRepeat = 1;
 
+        [Header("카드 강화 (카드 종류 단위 1단계 \"+\")")]
+        [Tooltip("켜면 상점에서 이 카드를 강화할 수 있어요")]
+        [SerializeField] bool upgradable = true;
+        [Tooltip("강화 가격")]
+        [Min(0)]
+        [SerializeField] int upgradePrice = 100;
+        [Tooltip("강화 후 코스트 (-1 = 그대로)")]
+        [Min(-1)]
+        [SerializeField] int upgradedCost = -1;
+        [Tooltip("강화 후 효과 수치. 위 효과 목록과 같은 순서로 수치·횟수만 바꿔 넣어요 (비우면 그대로)")]
+        [SerializeField] List<CardEffect> upgradedEffects = new List<CardEffect>();
+
         [Header("상점")]
         [Tooltip("상점 가격 (0 = 상점에서 팔지 않음)")]
         [Min(0)]
@@ -46,6 +58,10 @@ namespace Dramon
         [Tooltip("덱에 가질 수 있는 최대 장수 (상점 구매 기준, 0 = 제한 없음)")]
         [Min(0)]
         [SerializeField] int maxOwned = 3;
+
+        [Header("임시 에셋 표시")]
+        [Tooltip("그림을 임시로 다른 카드 그림으로 채웠으면 여기에 적어 둬요 (비어 있으면 정식 그림)")]
+        [SerializeField] string tempAssetNote = "";
 
         public string DisplayName => displayName;
         public CardType Type => type;
@@ -61,5 +77,20 @@ namespace Dramon
         public int ShopPrice => shopPrice;
         public int MaxOwned => maxOwned;
         public bool HasTag(CardTag tag) => (tags & tag) != 0;
+        public bool Upgradable => upgradable;
+        public int UpgradePrice => upgradePrice;
+        public string TempAssetNote => tempAssetNote;
+
+        /// <summary>강화 여부에 따른 코스트</summary>
+        public int CostFor(bool upgraded) => upgraded && upgradedCost >= 0 ? upgradedCost : cost;
+
+        /// <summary>강화 여부에 따른 효과 i (강화 수치가 없으면 기본)</summary>
+        public CardEffect EffectFor(int i, bool upgraded)
+        {
+            var e = effects[i];
+            if (!upgraded || upgradedEffects == null || i >= upgradedEffects.Count || upgradedEffects[i] == null) return e;
+            var u = upgradedEffects[i];
+            return new CardEffect(e.type, u.value, Mathf.Max(1, u.count));
+        }
     }
 }

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f021348dd969ad6488764d70c8f77161, type: 3}
+  m_Name: Mode_Endless
+  m_EditorClassIdentifier: Assembly-CSharp::Dramon.GameModeData
+  displayName: "\uBB34\uD55C \uBAA8\uB4DC"
+  description: "10\uC885 \uB4DC\uB798\uACE4\uC774 \uBB34\uC791\uC704\uB85C \uB098\uC640\uC694. \uC5B4\uB514\uAE4C\uC9C0 \uAC08 \uC218 \uC788\uC744\uAE4C\uC694?"
+  lockedMessage: "\uC77C\uBC18 \uBAA8\uB4DC\uB97C \uD074\uB9AC\uC5B4\uD558\uBA74 \uC5F4\uB824\uC694"
+  stageRules: {fileID: 11400000, guid: 0869d172d180656438ca9dd4aae0968e, type: 2}
+  lastStage: 0
+  useBoss: 0
+  bossRules: {fileID: 0}
+  maxHealthUpgradeLevel: 50
+  endScreen: 1
+  unlock: 1

@@ -14,6 +14,8 @@ namespace Dramon
         public int Health => health != null ? health.Current : 0;
         public int MaxHealth => health != null ? health.Max : 0;
         public bool IsDead => health != null && health.Current <= 0;
+        /// <summary>다음 공격 1번에 더해질 피해 (강화 행동)</summary>
+        public int NextAttackBonus { get; private set; }
 
         /// <summary>방어가 바뀔 때</summary>
         public event Action Changed;
@@ -25,6 +27,7 @@ namespace Dramon
         {
             if (health != null) health.ResetTo(maxHealth);
             Block = 0;
+            NextAttackBonus = 0;
             Changed?.Invoke();
         }
 
@@ -51,6 +54,23 @@ namespace Dramon
             int lost = LoseHealth(amount - blocked);
             Changed?.Invoke();
             return (blocked, lost);
+        }
+
+        public void AddAttackBonus(int amount)
+        {
+            if (amount <= 0) return;
+            NextAttackBonus += amount;
+            Changed?.Invoke();
+        }
+
+        /// <summary>강화 보너스를 꺼내 쓰고 0으로</summary>
+        public int ConsumeAttackBonus()
+        {
+            int b = NextAttackBonus;
+            if (b == 0) return 0;
+            NextAttackBonus = 0;
+            Changed?.Invoke();
+            return b;
         }
 
         public int Heal(int amount)

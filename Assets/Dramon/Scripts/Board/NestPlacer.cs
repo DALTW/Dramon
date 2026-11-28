@@ -16,11 +16,17 @@ namespace Dramon
         [Tooltip("0이면 매번 무작위. 0이 아닌 값을 넣으면 같은 배치가 반복돼요 (디버그용)")]
         [SerializeField] int fixedSeed = 0;
 
-        public int NestCount => nestCount;
+        int stageNestCount;
+
+        /// <summary>둥지 수: 스테이지 값이 정해져 있으면 그 값, 아니면 Inspector 값</summary>
+        public int NestCount => stageNestCount > 0 ? stageNestCount : nestCount;
+
+        /// <summary>스테이지 진행이 정한 둥지 수 (0이면 Inspector 값으로 돌아감). Inspector 값은 바꾸지 않는다</summary>
+        public void SetStageNestCount(int count) => stageNestCount = Mathf.Max(0, count);
 
         public HashSet<Vector2Int> Place(IReadOnlyCollection<Vector2Int> tilePositions, Vector2Int firstReveal)
         {
-            int count = Mathf.Clamp(nestCount, 1, Mathf.Max(1, tilePositions.Count - 1));
+            int count = Mathf.Clamp(NestCount, 1, Mathf.Max(1, tilePositions.Count - 1));
 
             var candidates = BuildCandidates(tilePositions, firstReveal, safeFirstReveal);
             if (candidates.Count < count) candidates = BuildCandidates(tilePositions, firstReveal, false);

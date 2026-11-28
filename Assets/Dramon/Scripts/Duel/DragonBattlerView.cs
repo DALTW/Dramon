@@ -44,6 +44,14 @@ namespace Dramon
 
         DragonSpecies species;
         Coroutine revert;
+        float runtimeScale = 1f;
+
+        /// <summary>실행 중 추가 크기 배율 (보스 1.25배 등). 1이면 원래 크기</summary>
+        public void SetRuntimeScale(float scale)
+        {
+            runtimeScale = Mathf.Max(0.1f, scale);
+            ApplySize();
+        }
 
         public DragonSpecies Species => species;
 
@@ -185,7 +193,7 @@ namespace Dramon
         void ApplySize()
         {
             if (image == null) return;
-            float m = sizeMultiplier * (species != null ? species.BattleSizeMultiplier : 1f);
+            float m = sizeMultiplier * runtimeScale * (species != null ? species.BattleSizeMultiplier : 1f);
             image.rectTransform.localScale = new Vector3(m, m, 1f);
         }
 

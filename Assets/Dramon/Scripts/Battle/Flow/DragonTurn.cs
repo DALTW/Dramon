@@ -3,13 +3,15 @@ using UnityEngine;
 
 namespace Dramon
 {
-    /// <summary>드래곤 턴: 드래곤 방어 초기화 → 예고한 행동 실행 → 다음 행동 예고</summary>
+    /// <summary>드래곤 턴: 드래곤 방어 초기화 → 예고한 행동 실행 → 다음 행동 예고 → 산미 1 감소·반사 해제</summary>
     public class DragonTurn : MonoBehaviour
     {
         [Header("연결")]
         [SerializeField] DragonBattleStats dragon;
         [SerializeField] DragonIntentPicker intent;
         [SerializeField] DragonActionExecutor executor;
+        [Tooltip("드래곤 턴 끝 상태 처리 (산미 감소)")]
+        [SerializeField] StatusEffectProcessor statusProcessor;
 
         [Header("연출 시간")]
         [Tooltip("드래곤 턴이 시작되고 행동하기까지(초)")]
@@ -28,6 +30,7 @@ namespace Dramon
                 yield return executor.Execute(intent.Species, intent.Current);
                 intent.Advance();
             }
+            if (statusProcessor != null) statusProcessor.OnDragonTurnEnd();
             if (endDelay > 0f) yield return new WaitForSeconds(endDelay);
         }
     }

@@ -104,6 +104,10 @@ namespace Dramon
         [Tooltip("드래곤 턴마다 하나씩 실행해요 (Settings/Dragons/Actions). 피해는 1번째 결투 기준")]
         [SerializeField] List<DragonActionData> battleActions = new List<DragonActionData>();
 
+        [Header("보스")]
+        [Tooltip("이 종이 보스일 때 3 스테이지부터 보여 줄 힌트 메시지 (보스 속성을 살짝 알려 줘요)")]
+        [SerializeField] string bossHint = "숲 깊은 곳에서 낯선 기척이 느껴진다…";
+
         [Header("결투 수치 (다음 단계에서 사용)")]
         [Tooltip("공격력 (카드 결투 단계에서 사용)")]
         [Min(0)]
@@ -150,6 +154,7 @@ namespace Dramon
         public float BattleSizeMultiplier => battleSizeMultiplier;
         public HeroReactionType PlayerHitReaction => playerHitReaction;
         public IReadOnlyList<DragonActionData> BattleActions => battleActions;
+        public string BossHint => bossHint;
         public int AttackPower => attackPower;
         public IReadOnlyList<MaterialDrop> MaterialDrops => materialDrops;
     }
