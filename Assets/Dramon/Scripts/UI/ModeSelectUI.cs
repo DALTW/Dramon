@@ -28,6 +28,14 @@ namespace Dramon
         [Tooltip("잠긴 모드를 눌렀을 때 문구")]
         [SerializeField] Text messageLabel;
 
+        [Header("그림 칸 (그림이 비어 있으면 숨겨요)")]
+        [Tooltip("모드 선택 화면 배경 그림 (Panel/TEMP_Background, 화면 전체)")]
+        [SerializeField] Image backgroundPicture;
+        [Tooltip("제목 그림 (Window/TEMP_TitleLogo). 그림을 넣으면 아래 제목 글자는 숨겨요")]
+        [SerializeField] Image titlePicture;
+        [Tooltip("제목 글자 \"Dramon\" (제목 그림이 있으면 숨김)")]
+        [SerializeField] Text titleLabel;
+
         [Header("진행")]
         [Tooltip("켜면 게임을 켤 때 모드 선택 화면부터 보여요")]
         [SerializeField] bool showOnStart = true;
@@ -43,7 +51,7 @@ namespace Dramon
 
         [Header("임시 에셋 표시")]
         [TextArea(1, 3)]
-        [SerializeField] string tempAssetNote = "임시: 기본 창과 글자 버튼만 씀. 모드 선택 화면 그림(배경·제목)과 잠금 아이콘(Lock Icon 칸)이 비어 있음";
+        [SerializeField] string tempAssetNote = "임시: 기본 창과 글자 버튼만 씀. 모드 선택 화면 그림(Background Picture·Title Picture 칸)과 잠금 아이콘(Lock Icon 칸)이 비어 있음";
 
         Color endlessButtonColor = Color.white;
 
@@ -97,6 +105,13 @@ namespace Dramon
             if (endlessButton != null && endlessButton.image != null)
                 endlessButton.image.color = endlessOpen ? endlessButtonColor : lockedButtonColor;
             if (lockIcon != null) lockIcon.gameObject.SetActive(!endlessOpen && lockIcon.sprite != null);
+            if (backgroundPicture != null) backgroundPicture.gameObject.SetActive(backgroundPicture.sprite != null);
+            if (titlePicture != null)
+            {
+                bool hasTitle = titlePicture.sprite != null;
+                titlePicture.gameObject.SetActive(hasTitle);
+                if (titleLabel != null) titleLabel.gameObject.SetActive(!hasTitle);
+            }
             if (recordLabel != null && save != null)
             {
                 float best = save.BestClearSeconds;

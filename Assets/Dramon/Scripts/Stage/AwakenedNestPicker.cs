@@ -25,6 +25,10 @@ namespace Dramon
         [SerializeField] int testAwakenedCount;
 
         public int LastAwakened { get; private set; }
+        /// <summary>켜져 있으면 깨어난 둥지만 결투, 꺼져 있으면 레몬을 놓은 둥지 모두와 결투</summary>
+        public bool UseAwakenedCount => useAwakenedCount;
+        /// <summary>그 스테이지에서 결투할 둥지 수 (클리어 창 안내용)</summary>
+        public int DuelCount(StageRules.StageValues v) => useAwakenedCount ? v.awakened : v.nests;
 
         void OnEnable()
         {

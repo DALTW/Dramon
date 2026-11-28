@@ -80,6 +80,7 @@ namespace Dramon.EditorTools
             var record = BuildRecord(hud.transform, progress, phase, save, buttonPrefab);
             var ending = BuildEnding(hud.transform, progress, phase, save, buttonPrefab);
             var modeSelect = BuildModeSelect(hud.transform, progress, save, normal, endless, buttonPrefab);
+            AddModeSelectPictures(modeSelect);
             // 엔딩·기록의 [모드 선택] 버튼
             ConnectModeButton(ending != null ? ending.transform.Find("Panel/Window/ModeButton") : null, modeSelect);
             ConnectModeButton(record != null ? record.transform.Find("Panel/ModeButton") : null, modeSelect);
@@ -307,6 +308,47 @@ namespace Dramon.EditorTools
             SetRef(ui, "recordLabel", recordText);
             SetRef(ui, "messageLabel", message);
             return ui;
+        }
+
+        /// <summary>
+        /// 모드 선택 화면 그림 칸 (v3 5단계에서 추가): Panel/TEMP_Background(배경, 화면 전체), Window/TEMP_TitleLogo(제목 그림).
+        /// 이미 있으면 다시 만들지 않고, 사용자가 연결한 칸은 덮어쓰지 않는다. 그림이 비어 있으면 실행 중 숨겨진다.
+        /// </summary>
+        static void AddModeSelectPictures(ModeSelectUI ui)
+        {
+            if (ui == null) return;
+            var so = new SerializedObject(ui);
+            var panel = so.FindProperty("panel").objectReferenceValue as GameObject;
+            var window = panel != null ? panel.transform.Find("Window") : null;
+            if (panel == null || window == null) { Debug.LogWarning("[Dramon] ModeSelect/Panel/Window를 찾지 못해 그림 칸을 만들지 않았어요."); return; }
+
+            var bg = panel.transform.Find("TEMP_Background");
+            if (bg == null)
+            {
+                var go = NewUI("TEMP_Background", panel.transform);
+                Stretch((RectTransform)go.transform);
+                var img = go.AddComponent<Image>();
+                img.raycastTarget = false;
+                go.transform.SetSiblingIndex(0); // Window 뒤
+                go.SetActive(false);
+                bg = go.transform;
+            }
+            var logo = window.Find("TEMP_TitleLogo");
+            if (logo == null)
+            {
+                var go = NewUI("TEMP_TitleLogo", window);
+                var top = new Vector2(0.5f, 1f);
+                SetAnchored((RectTransform)go.transform, top, top, new Vector2(0, -8), new Vector2(240, 40));
+                var img = go.AddComponent<Image>();
+                img.preserveAspect = true;
+                img.raycastTarget = false;
+                go.SetActive(false);
+                logo = go.transform;
+            }
+            SetRefIfEmpty(ui, "backgroundPicture", bg.GetComponent<Image>());
+            SetRefIfEmpty(ui, "titlePicture", logo.GetComponent<Image>());
+            var title = window.Find("Title");
+            if (title != null) SetRefIfEmpty(ui, "titleLabel", title.GetComponent<Text>());
         }
 
         static void ConnectModeButton(Transform t, ModeSelectUI modeSelect)

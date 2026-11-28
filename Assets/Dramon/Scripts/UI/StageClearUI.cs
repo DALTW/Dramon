@@ -19,6 +19,8 @@ namespace Dramon
         [SerializeField] Text nextLabel;
         [Tooltip("클리어 그림 칸 (그림이 비어 있으면 숨겨요). 스테이지 클리어 그림이 생기면 여기에 넣기")]
         [SerializeField] Image banner;
+        [Tooltip("다음 스테이지 결투 수를 알려 줘요 (깨어난 둥지만 결투인지, 모든 둥지와 결투인지)")]
+        [SerializeField] AwakenedNestPicker nestPicker;
 
         [Header("문구")]
         [Tooltip("{0} = 클리어한 스테이지")]
@@ -57,7 +59,8 @@ namespace Dramon
             if (nextLabel != null && stageProgress != null)
             {
                 var n = stageProgress.Next;
-                nextLabel.text = string.Format(nextFormat, n.stage, n.width, n.height, n.nests, n.awakened, n.maxEnergy);
+                int duels = nestPicker != null ? nestPicker.DuelCount(n) : n.awakened;
+                nextLabel.text = string.Format(nextFormat, n.stage, n.width, n.height, n.nests, duels, n.maxEnergy);
             }
             if (banner != null) banner.gameObject.SetActive(banner.sprite != null);
             hasResult = true;

@@ -330,7 +330,8 @@ Scene에 배치한 오브젝트와 Inspector 설정은 실행 중 스크립트�
 | `기능 설치 - v3 1단계 (결투 상태 효과·스테이지 데이터, 현재 Scene)` | 스테이지·보스·모드 데이터, 새 카드 2종·카드 강화 수치·보스 힌트, 상태 효과·의도 아이콘·떠오르는 숫자·모션 연결 (카드 결투가 없으면 먼저 설치) |
 | `기능 설치 - v3 2단계 (스테이지 진행, 현재 Scene)` | 스테이지 진행·깨어난 둥지 고르기, 카메라 칸 크기 맞춤·이동, 스테이지 번호·클리어 창, 레몬 표시 보상 시간·결투 배율 연결 (v3 1단계가 없으면 먼저 설치) |
 | `기능 설치 - v3 3단계 (상점 개편, 현재 Scene)` | 상점 탭을 재료 판매·카드 구매·카드 강화·덱(제거)·체력 증가로, 카드 구매·강화·제거 처리, 카드 한 줄 Prefab, 스테이지 클리어 창 [상점] (아이템 구매 탭은 숨김) |
-| `기능 설치 - v3 4단계 (모드·보스, 현재 Scene)` | 기록 저장·보스전, 붉은 기운·보스 이름 띠(임시), 보스 힌트·모드 선택 화면·엔딩·게임 오버 기록 창 |
+| `기능 설치 - v3 4단계 (모드·보스, 현재 Scene)` | 기록 저장·보스전, 붉은 기운·보스 이름 띠(임시), 보스 힌트·모드 선택 화면(배경·제목 그림 칸)·엔딩·게임 오버 기록 창 |
+| `기능 설치 - v3 정식 그림 (현재 Scene)` | v3 정식 그림 Import 설정·이펙트 시트 자르기, 레몬 폭탄·연막 구르기 카드 그림, 잠든 둥지, 클리어 띠·붉은 기운·이름 띠·모드 선택·엔딩 그림, 연타·필살 숨결 예고, 반사·무효 아이콘 연결, 분노·숨결 이펙트 오브젝트 추가 (임시 그림이거나 비어 있을 때만 바꿈) |
 | `포켓몬 구도 적용 (현재 Scene)` | DuelLayoutSettings 값을 PlayerSide·플레이어 체력 창에 써 넣기 (누를 때만) |
 | `기능 설치 - 상점 (현재 Scene)` | 강화 4종·아이템 3종·상점 목록 데이터, 목록 줄 Prefab 3개, 강화·아이템 보관과 판매·구매 처리, 상점 창 추가, 상점 버튼 연결 |
 | `Minesweeper/Build Minesweeper Scene` | 초기 지뢰찾기 프로토타입 Scene 구성 |
@@ -380,6 +381,28 @@ Scene에 배치한 오브젝트와 Inspector 설정은 실행 중 스크립트�
   - 게임 오버 때 기록 창(`HUD Canvas/RunRecord`): 무한 모드면 도달·최고 스테이지, 일반 모드면 쓰러진 스테이지, [모드 선택]
   - 무한 모드: 보스 없음, 10종 모두 무작위, 스테이지 끝없음, 체력 증가 50단계까지
   - 테스트: `StageProgress` Inspector [보스전 바로 시작]·[골드 +500]·[무한 모드 잠금 해제]·[기록 지우기], `BossFight`의 Test Boss(보스 고정), `ModeSelectUI`의 Show On Start
+- **v3 5단계: 마무리 (전체 흐름 테스트·에셋 목록)**
+  - 시험용 임시 스크립트로 전체 흐름을 2번 끝까지 돌림 (실제 버튼에 클릭 이벤트를 보내서 누름, 오류 로그 0): 모드 선택(무한 모드 잠김) → 일반 1~5 스테이지 (레몬 표시 → 검 사냥 → 결투 → 클리어 → 상점 5개 탭에서 사고·강화·빼기) → 보스전·분노 → 엔딩 → 무한 모드 열림 → 무한 1~3 스테이지 → 4 스테이지 게임 오버 기록 → 일반 모드 게임 오버 기록. 덱 빼기는 따로 확인 (확인 창 → 50·75·100·125·150 G, 5장이 되면 버튼이 흐려지고 "덱이 너무 작아요"). 임시 스크립트는 지웠고, 테스트 기록(PlayerPrefs)도 지움
+  - 고친 것: 보스(1.25배)의 날개·머리가 화면 위로 잘림 (10종 중 7종) → `DragonBattlerView`에 Lower When Enlarged(기본 1) 추가. 실행 중 크게 키운 만큼 드래곤(Dragon 오브젝트)을 아래로 내려서 위쪽 끝이 보통 크기 때와 같은 높이. 보통 결투(배율 1)는 그대로, 보스전이 끝나면 원래 자리로. Scene 배치는 건드리지 않음
+  - 추가: 모드 선택 화면 그림 칸 `HUD Canvas/ModeSelect/Panel/TEMP_Background`(배경, 화면 전체)·`Panel/Window/TEMP_TitleLogo`(제목 그림 240×40). `ModeSelectUI`의 Background Picture·Title Picture·Title Label에 연결, 그림이 비어 있으면 숨기고 제목 그림을 넣으면 "Dramon" 글자를 숨김. `기능 설치 - v3 4단계`가 없을 때만 만듦
+  - 테스트 중 본 것 (값·설정이라 고치지 않음): 2 스테이지부터 드래곤 체력이 크게 뜀 (`StageRules` 체력 배율 1 → 3, 46 → 145~164). 강화 없이 카드만 단순하게 쓰면 2~3 스테이지 결투마다 체력 35~40을 잃고 4 스테이지에서 쓰러짐 / 같은 드래곤이 연속으로 나올 수 있음 (`ForestDragonSpawnList`의 Avoid Same Twice In A Row 꺼짐) / 반격 자세(반사)·연막 구르기(무효)는 화면에 표시가 없음 / 보스를 이기면 전리품 창 → 엔딩 순서
+  - 정식 그림·소리가 필요한 자리는 5단계 보고의 에셋 목록 표에 정리
+- **v3 정식 그림 넣기 (Meshy 18장)**
+  - 받은 그림(`Downloads/Meshy_images_20261128_222438`)을 마젠타 배경 빼기·자르기·크기 맞추기만 해서 새 파일로 넣음 (기존 그림은 바꾸지 않음). Import: Sprite, Point, 압축 없음, PPU 32
+    - `Art/Battle/Cards/Art/CardArt_LemonBomb`(카드 그림 시트의 레몬 폭탄 칸)·`CardArt_SmokeRoll`, `Art/Battle/Cards/Composed/Card_LemonBomb`(비용 보석 안은 다른 카드처럼 레몬색으로 채움)
+    - `Art/Battle/Cards/Icons/Icon_Intent_MultiHit`·`Icon_Intent_Finisher`·`Icon_Status_Reflect`·`Icon_Status_Negate`, `Art/Board/Nest_Dormant`(32×32, 아래 "DRAGON NEST" 글자는 잘라냄)
+    - `Art/UI/UI_StageClear_Banner`·`UI_BossNameBand`(양끝 모양은 두고 가운데만 늘려 460×44)·`UI_Title_Logo`·`UI_Icon_Lock`·`UI_ModeSelect_BG`(640×360)·`UI_Ending_Picture`(520×160로 위아래 자름)
+    - `Art/Battle/FX/FX_BossAura`, `FX_BossEnrage_Sheet`(4칸 128×128), `FX_Breath_Sheet`(5칸 160×120, 흰색 — 실행 중 속성 색을 곱함)
+  - 정한 것: 연막 구르기 완성 카드(Meshy 그림 속 인물이 검은 닌자)는 넣지 않고 Composed Image를 비워 둠 → 기본 방어 틀 + 검사가 나오는 카드 그림으로 보임. 카드 그림 시트의 나머지 14칸(기존 카드의 새 버전)은 쓰지 않음
+  - 새 칸: `ForestTileSpriteSet` Nest Dormant(잠든 둥지, 비우면 정화된 둥지), `DragonIntentUI` Finisher Icon·Boss Fight(필살 숨결 예고), `StatusIconsUI` Guard Source·Reflect Icon·Negate Icon(플레이어 줄에 반격 자세 반사량·연막 구르기 남은 횟수), `BossFight` Enrage Effect, `DragonActionExecutor` Breath Effect
+  - 새 스크립트: `UIFramePlayer`(UI Image 프레임 재생, 한 번 보이고 숨김), `BreathEffectView`(숨결 때 드래곤 피격 반응별 색으로 숨결 재생, 색 목록은 Inspector)
+  - 새 오브젝트: `DuelScreen/Panel/DragonSide/Dragon/EnrageFX`(분노 때 한 번), `DuelScreen/Panel/BreathFX`(드래곤과 검사 사이, 15° 기울임 — 위치·크기·각도는 Scene에서 바꿔도 됨)
+  - 바꾼 값: 붉은 기운 `BossAuraView` Color 빨강 → 흰색(그림 색 그대로), 밝기 0.15~0.45 → 0.5~0.85 (분노 0.35~0.8 → 0.8~1), 이름 띠 `TEMP_Band`는 Simple·흰색. 임시 에셋 메모(Temp Asset Note)는 비움
+  - Play로 확인: 모드 선택(배경·로고·잠금 → 클리어 뒤 잠금 사라짐), 잠든 둥지, 폭풍 드래곤 연타 예고, 새 카드 2장(손패·상점), 반사·무효 아이콘, 숨결 4색, 클리어 띠, 보스 기운·이름 띠·분노 이펙트·필살 숨결 예고, 엔딩 그림. 오류 로그 0. 테스트 기록은 지움
+- **규칙 변경: 레몬을 놓은 둥지 모두와 결투**
+  - 깨어난 둥지만 고르던 방식(나머지는 잠든 둥지로 끝)이 이미 클리어한 둥지처럼 보여 헷갈려서, 모든 둥지가 깨어나 결투하도록 바꿈: `Managers/Stage/AwakenedNestPicker`의 Use Awakened Count 끔 (켜면 예전 방식, 코드·`StageRules`의 깨어난 둥지 값은 그대로)
+  - 결투 수 = 둥지 수 (1~5 스테이지 4·6·8·10·12, 일반 모드 전체 40번 — 예전 14번). 드래곤 배율은 같은 스테이지 결투마다 +5%라 뒤쪽 결투일수록 더 세짐
+  - 스테이지 클리어 창 "다음: … 결투 N"이 Use Awakened Count에 맞게 나오도록 `StageClearUI`에 Nest Picker 칸 추가·연결 (`기능 설치 - v3 2단계`도 비어 있으면 연결)
 
 ### 2026-11-27
 - **카드 결투 1단계** (임시 승패 버튼 → 실제 카드 결투)

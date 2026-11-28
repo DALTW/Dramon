@@ -382,13 +382,13 @@ namespace Dramon
             return list;
         }
 
-        /// <summary>깨어나지 않은 둥지: 레몬 봉인으로 끝 (결투 없음, 정화된 둥지 모습)</summary>
+        /// <summary>깨어나지 않은 둥지: 레몬 봉인으로 끝 (결투 없음, 잠든 둥지 모습 Nest_Dormant)</summary>
         public void SetNestDormant(Vector2Int pos)
         {
             if (!IsSealedNest(pos)) return;
             var s = states[pos];
             s.nestStatus = NestStatus.Sealed;
-            s.view.ShowNestPurified();
+            s.view.ShowNestDormant();
         }
 
         public void ToggleMarker(Vector2Int pos)

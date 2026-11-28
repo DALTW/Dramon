@@ -5,7 +5,7 @@ namespace Dramon
 {
     /// <summary>
     /// 보스 붉은 기운: 드래곤 뒤의 그림이 천천히 밝아졌다 어두워진다. 분노하면 더 진하고 빠르게.
-    /// 임시로 Unity 기본 원(Knob)을 쓰고 있어요 — 붉은 기운 그림이 생기면 Image의 Source Image를 바꾸면 돼요.
+    /// 그림은 Image의 Source Image (FX_BossAura). Color는 그림에 곱해지는 색이에요.
     /// </summary>
     [RequireComponent(typeof(Image))]
     public class BossAuraView : MonoBehaviour

@@ -97,6 +97,8 @@ namespace Dramon.EditorTools
 
             SetRefIfEmpty(reward, "stageProgress", progress);
             SetRefIfEmpty(session, "scaling", scaling);
+            var clearUI = Object.FindAnyObjectByType<StageClearUI>(FindObjectsInactive.Include);
+            if (clearUI != null) SetRefIfEmpty(clearUI, "nestPicker", picker);
 
             if (wallet == null) Debug.LogWarning("[Dramon] PlayerWallet을 찾지 못해 클리어 보상 연결을 건너뛰었어요.");
             return true;

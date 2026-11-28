@@ -22,6 +22,8 @@ namespace Dramon
         [SerializeField] FloatingNumberUI floating;
         [Tooltip("진행 문구")]
         [SerializeField] BattleLogMessage log;
+        [Tooltip("숨결 공격 때 보여 줄 숨결 이펙트 (비우면 이펙트 없음)")]
+        [SerializeField] BreathEffectView breathEffect;
 
         [Header("연출 시간")]
         [Tooltip("공격 모션이 시작되고 피해가 들어가기까지(초)")]
@@ -97,6 +99,7 @@ namespace Dramon
             bool breath = action.Type == DragonActionType.Breath;
 
             if (action.PlayAttackMotion && motions != null) motions.DragonAttack();
+            if (breath && breathEffect != null) breathEffect.Play(species);
             if (attackLead > 0f) yield return new WaitForSeconds(attackLead);
 
             // 연막 구르기: 이 공격 전체를 무효

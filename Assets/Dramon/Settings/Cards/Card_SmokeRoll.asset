@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 1
   cost: 1
   composedImage: {fileID: 0}
-  art: {fileID: 21300000, guid: 198ce91541c1a6bedd9ee69fe0add80d, type: 3}
+  art: {fileID: 21300000, guid: 713abfd3841cd4849b2a567d1c42480d, type: 3}
   description: "\uB2E4\uC74C \uB4DC\uB798\uACE4 \uACF5\uACA9\n1\uBC88 \uBB34\uD6A8\n\uC18C\uBA78"
   tags: 0
   effects:
@@ -32,4 +32,4 @@ MonoBehaviour:
   upgradedEffects: []
   shopPrice: 80
   maxOwned: 3
-  tempAssetNote: "\uC784\uC2DC: \uAD6C\uB974\uAE30 \uADF8\uB9BC(CardArt_DodgeRoll)\uC744 \uC500. \uC815\uC2DD \uADF8\uB9BC CardArt_SmokeRoll\uB85C \uAD50\uCCB4"
+  tempAssetNote: 

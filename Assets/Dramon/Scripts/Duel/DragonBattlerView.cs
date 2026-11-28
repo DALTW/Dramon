@@ -30,6 +30,9 @@ namespace Dramon
         [Tooltip("모든 드래곤 공통 그림 크기 배율 (1 = Dragon 영역에 꽉 맞춤). 드래곤별 결투 크기 배율과 곱해지고, 그림 칸의 아래 가운데를 기준으로 커지고 작아져요")]
         [Min(0.1f)]
         [SerializeField] float sizeMultiplier = 1f;
+        [Tooltip("보스처럼 실행 중에 더 크게 키울 때, 늘어난 키 중 이 비율만큼 드래곤을 아래로 내려요. 1 = 위쪽 끝이 보통 크기 때와 같은 높이 (화면 위로 넘치지 않게), 0 = 발밑 기준으로만 커짐 (위로 넘칠 수 있음)")]
+        [Range(0f, 1f)]
+        [SerializeField] float lowerWhenEnlarged = 1f;
 
         [Header("연출")]
         [Tooltip("모션 프레임이 없을 때: 공격·피격 그림을 보여 준 뒤 대기 그림으로 돌아올 때까지의 시간(초)")]
@@ -45,6 +48,7 @@ namespace Dramon
         DragonSpecies species;
         Coroutine revert;
         float runtimeScale = 1f;
+        float appliedLowering; // 크게 키워서 지금 아래로 내린 양 (Dragon 기준 좌표)
 
         /// <summary>실행 중 추가 크기 배율 (보스 1.25배 등). 1이면 원래 크기</summary>
         public void SetRuntimeScale(float scale)
@@ -193,8 +197,23 @@ namespace Dramon
         void ApplySize()
         {
             if (image == null) return;
-            float m = sizeMultiplier * runtimeScale * (species != null ? species.BattleSizeMultiplier : 1f);
+            float baseM = sizeMultiplier * (species != null ? species.BattleSizeMultiplier : 1f);
+            float m = baseM * runtimeScale;
             image.rectTransform.localScale = new Vector3(m, m, 1f);
+            ApplyLowering(Mathf.Max(0f, m - baseM));
+        }
+
+        /// <summary>
+        /// 실행 중 크게 키운 만큼(extraScale) 드래곤(이 오브젝트)을 아래로 내린다. 지금 위치에서 바뀐 양만 더하고 빼서,
+        /// 실행 중 Scene에서 옮긴 위치는 그대로 둔다. 에디터에서 Play 중이 아닐 때는 위치를 건드리지 않는다.
+        /// </summary>
+        void ApplyLowering(float extraScale)
+        {
+            if (!Application.isPlaying || !(transform is RectTransform self)) return;
+            float lowering = image.rectTransform.rect.height * extraScale * lowerWhenEnlarged;
+            if (Mathf.Approximately(lowering, appliedLowering)) return;
+            self.anchoredPosition += new Vector2(0f, appliedLowering - lowering);
+            appliedLowering = lowering;
         }
 
         /// <summary>빈 칸을 뺀 프레임 목록 (한 장도 없으면 null).</summary>

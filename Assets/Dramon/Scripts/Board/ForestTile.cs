@@ -97,6 +97,15 @@ namespace Dramon
             SetLemon(false);
         }
 
+        /// <summary>깨어나지 않은 둥지 (레몬 봉인으로 끝, 결투 없음). 그림이 비어 있으면 정화된 둥지 그림.</summary>
+        public void ShowNestDormant()
+        {
+            showingHiddenForest = false;
+            SetGround(spriteSet ? spriteSet.NestDormant : null);
+            SetNumber(null);
+            SetLemon(false);
+        }
+
         static bool IsComplete(Sprite[] frames)
         {
             if (frames == null || frames.Length == 0) return false;

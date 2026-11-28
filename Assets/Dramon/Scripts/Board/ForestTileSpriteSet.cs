@@ -29,6 +29,8 @@ namespace Dramon
         [SerializeField] Sprite[] nestActiveFrames = new Sprite[2];
         [Tooltip("레몬으로 봉인했거나 결투에서 이겨 정화된 둥지 (Nest_Purified)")]
         [SerializeField] Sprite nestPurified;
+        [Tooltip("깨어나지 않고 잠든 둥지 (Nest_Dormant) — 레몬 봉인으로 끝난 둥지. 비우면 정화된 둥지 그림")]
+        [SerializeField] Sprite nestDormant;
 
         [Header("레몬")]
         [Tooltip("굴로 표시하려고 칸 위에 놓은 레몬 (Lemon_Ground) — 바닥 위에 겹쳐 표시")]
@@ -42,6 +44,7 @@ namespace Dramon
         public Sprite NestRevealed => nestRevealed;
         public Sprite[] NestActiveFrames => nestActiveFrames;
         public Sprite NestPurified => nestPurified;
+        public Sprite NestDormant => nestDormant != null ? nestDormant : nestPurified;
 
         /// <summary>주변 둥지 수(1~8)에 맞는 숫자 스프라이트. 0이면 null.</summary>
         public Sprite GetNumber(int nearbyNests)

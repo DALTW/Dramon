@@ -18,6 +18,8 @@ namespace Dramon
         [SerializeField] GameObject root;
         [SerializeField] Image icon;
         [SerializeField] Text valueLabel;
+        [Tooltip("보스의 필살 숨결인지 알려 줘요 (비우면 필살 숨결도 숨결 아이콘)")]
+        [SerializeField] BossFight bossFight;
 
         [Header("행동별 아이콘 (Art/Battle/Cards/Icons/Icon_Intent_*)")]
         [SerializeField] Sprite clawIcon;
@@ -27,6 +29,8 @@ namespace Dramon
         [SerializeField] Sprite defendIcon;
         [SerializeField] Sprite healIcon;
         [SerializeField] Sprite buffIcon;
+        [Tooltip("보스 필살 숨결 (비우면 숨결 아이콘)")]
+        [SerializeField] Sprite finisherIcon;
 
         void OnEnable()
         {
@@ -49,7 +53,7 @@ namespace Dramon
             bool show = action != null && (controller == null || controller.IsRunning);
             if (root != null) root.SetActive(show);
             if (!show) return;
-            if (icon != null) icon.sprite = IconFor(action.Type);
+            if (icon != null) icon.sprite = IconFor(action);
             if (valueLabel != null)
             {
                 int v = executor != null ? executor.DamageOf(action) : action.Value;
@@ -64,9 +68,10 @@ namespace Dramon
             }
         }
 
-        Sprite IconFor(DragonActionType type)
+        Sprite IconFor(DragonActionData action)
         {
-            switch (type)
+            if (finisherIcon != null && bossFight != null && bossFight.IsFinisher(action)) return finisherIcon;
+            switch (action.Type)
             {
                 case DragonActionType.MultiHit: return multiHitIcon != null ? multiHitIcon : clawIcon;
                 case DragonActionType.Breath: return breathIcon;

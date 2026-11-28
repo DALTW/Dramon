@@ -21,10 +21,12 @@ namespace Dramon
         [SerializeField] DragonIntentPicker intent;
         [SerializeField] BattleLogMessage log;
         [SerializeField] FloatingNumberUI floating;
-        [Tooltip("붉은 기운 (임시: 기본 원 그림)")]
+        [Tooltip("붉은 기운")]
         [SerializeField] BossAuraView aura;
-        [Tooltip("보스 이름 띠 (임시: 기본 창)")]
+        [Tooltip("보스 이름 띠")]
         [SerializeField] BossNameBandUI nameBand;
+        [Tooltip("분노할 때 한 번 보여 줄 이펙트 (Dragon/EnrageFX, 비우면 이펙트 없음)")]
+        [SerializeField] UIFramePlayer enrageEffect;
 
         [Header("문구")]
         [Tooltip("분노 때 드래곤 위에 뜨는 글자")]
@@ -43,6 +45,9 @@ namespace Dramon
         /// <summary>지금 보스전 중인지</summary>
         public bool IsActive { get; private set; }
         public bool Enraged { get; private set; }
+        /// <summary>이 행동이 분노 때 더한 필살 숨결인지 (예고 아이콘용)</summary>
+        public bool IsFinisher(DragonActionData action) => action != null && action == finisher;
+
         public string BossName => Boss == null ? "" : rules != null ? string.Format(rules.NameFormat, Boss.DisplayName) : Boss.DisplayName;
 
         void OnEnable()
@@ -98,6 +103,7 @@ namespace Dramon
             if (battler != null) battler.SetRuntimeScale(1f);
             if (aura != null) aura.Hide();
             if (nameBand != null) nameBand.Hide();
+            if (enrageEffect != null) enrageEffect.Stop();
         }
 
         ForestTile CenterTile()
@@ -146,6 +152,7 @@ namespace Dramon
             if (floating != null) floating.OnDragon(enrageFloatText, FloatingNumberUI.Kind.Damage);
             if (battler != null) battler.ShowAttack();
             if (aura != null) aura.Show(true);
+            if (enrageEffect != null) enrageEffect.Play();
         }
 
         /// <summary>필살 숨결: 그 드래곤의 숨결 × 1.5 피해, 상태 2배 (숨결이 없으면 가장 센 공격으로)</summary>
